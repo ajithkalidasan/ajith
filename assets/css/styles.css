@@ -1,0 +1,546 @@
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --dark: #0f172a;
+    --darker: #020617;
+    --indigo-400: #818cf8;
+    --purple-500: #a855f7;
+    --pink-500: #ec4899;
+    --blue-400: #60a5fa;
+    --yellow-400: #facc15;
+    --orange-500: #f97316;
+    --teal-400: #2dd4bf;
+}
+
+body {
+    background-color: var(--darker);
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+}
+
+.glass-card {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Animations */
+@keyframes blob {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+        transform: translate(0px, 0px) scale(1);
+    }
+}
+
+.animate-blob {
+    animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+/* Typewriter effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--indigo-400) }
+}
+
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 3px solid var(--indigo-400);
+    white-space: nowrap;
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+}
+
+/* Gradient Text Animation */
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #4f46e5, #8b5cf6, #ec4899, #f59e0b);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.gradient-text:hover {
+    animation: gradient-shift 2s ease infinite;
+    text-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+}
+
+/* Enhanced hover effects for interactive elements */
+.nav-link, .project-card, .btn, button, a[href^="mailto:"], a[href^="http"] {
+    transition: all 0.3s ease;
+}
+
+/* Button hover effect */
+.btn-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+/* Social icon hover effect */
+.social-icon {
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px) scale(1.1);
+    color: #8b5cf6 !important;
+}
+
+/* Project card hover effect */
+.project-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+.tech-chip {
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+/* Tech Stack Items */
+.tech-item {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tech-item:hover {
+    background: rgba(99, 102, 241, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.1);
+}
+
+.tech-item i {
+    transition: all 0.3s ease;
+}
+
+.tech-item:hover i {
+    transform: scale(1.2);
+}
+
+/* Scroll indicator animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-bounce {
+    animation: bounce 2s infinite;
+}
+
+/* Animations */
+@keyframes blob {
+    0% {
+        transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+        transform: translate(0px, 0px) scale(1);
+    }
+}
+
+.animate-blob {
+    animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+/* Experience Section Styles */
+.experience-timeline {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.experience-timeline::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Snap scrolling for experience cards */
+.snap-x {
+    scroll-snap-type: x mandatory;
+}
+
+.snap-center {
+    scroll-snap-align: center;
+}
+
+/* Experience card styles */
+.experience-card {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    height: 100%;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.experience-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4f46e5, #8b5cf6);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-card:hover::before {
+    transform: scaleX(1);
+}
+
+.experience-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.25);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+.experience-card-content {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.experience-card-header {
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+
+.experience-role {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+    background: linear-gradient(90deg, #f8fafc, #cbd5e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.experience-company {
+    color: #8b5cf6;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(139, 92, 246, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.experience-company i {
+    color: #a78bfa;
+    font-size: 1rem;
+}
+
+.experience-duration {
+    color: #94a3b8;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.experience-duration i {
+    color: #64748b;
+}
+
+.experience-description {
+    color: #e2e8f0;
+    flex-grow: 1;
+    margin-bottom: 1.75rem;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.experience-description::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+}
+
+.experience-description p {
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 0.75rem;
+}
+
+.experience-description p::before {
+    content: '•';
+    position: absolute;
+    left: -0.5rem;
+    color: #8b5cf6;
+    font-weight: bold;
+}
+
+.experience-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.skill-tag {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    color: #a5b4fc;
+    padding: 0.35rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.skill-tag i {
+    font-size: 0.9em;
+    color: #818cf8;
+}
+
+.skill-tag:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.1), 0 2px 4px -1px rgba(99, 102, 241, 0.06);
+    color: #c7d2fe;
+}
+
+/* Scroll indicators */
+.scroll-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.scroll-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+}
+
+.scroll-indicator:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.scroll-indicator.active {
+    width: 32px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .experience-card {
+        min-height: 420px;
+    }
+}
+
+@media (max-width: 768px) {
+    .experience-card {
+        min-height: 440px;
+    }
+    
+    .experience-role {
+        font-size: 1.25rem;
+    }
+    
+    .experience-company {
+        font-size: 0.85rem;
+        padding: 0.2rem 0.6rem;
+    }
+    
+    .experience-duration {
+        font-size: 0.825rem;
+    }
+    
+    .experience-description {
+        font-size: 0.925rem;
+        line-height: 1.65;
+    }
+    
+    .experience-skills {
+        gap: 0.5rem;
+    }
+    
+    .skill-tag {
+        font-size: 0.775rem;
+        padding: 0.3rem 0.75rem;
+    }
+    
+    .scroll-indicator {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .scroll-indicator.active {
+        width: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .experience-card {
+        min-height: 460px;
+    }
+    
+    .experience-card-content {
+        padding: 1.5rem 1.25rem;
+    }
+    
+    .experience-role {
+        font-size: 1.15rem;
+    }
+    
+    .experience-company {
+        font-size: 0.8rem;
+    }
+    
+    .experience-description {
+        font-size: 0.9rem;
+        padding-left: 1rem;
+    }
+    
+    .skill-tag {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.65rem;
+    }
+}
+
+.contact-input {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(226, 232, 240, 0.1);
+    transition: all 0.3s ease;
+}
+
+.contact-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.fade-in.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.fade-in.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.fade-in.delay-3 {
+    animation-delay: 0.6s;
+}
