@@ -155,19 +155,67 @@ body {
     transform: scale(1.2);
 }
 
-/* Scroll indicator animation */
+/* Scroll indicator */
+.scroll-indicator {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 50;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-indicator.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-indicator:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3);
+}
+
 @keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .animate-bounce {
     animation: bounce 2s infinite;
 }
+
+/* Page Load Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+.delay-4 { animation-delay: 0.8s; }
 
 /* Animations */
 @keyframes blob {
@@ -326,53 +374,24 @@ body {
 }
 
 .experience-description {
-    color: #e2e8f0;
-    flex-grow: 1;
-    margin-bottom: 1.75rem;
+    color: #cbd5e1;
     line-height: 1.7;
-    font-size: 0.95rem;
-    position: relative;
-    padding-left: 1.25rem;
-}
-
-.experience-description::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.65em;
-    height: 6px;
-    width: 6px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-}
-
-.experience-description p {
-    margin-bottom: 0.75rem;
-    position: relative;
-    padding-left: 0.75rem;
-}
-
-.experience-description p::before {
-    content: '•';
-    position: absolute;
-    left: -0.5rem;
-    color: #8b5cf6;
-    font-weight: bold;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
 }
 
 .experience-skills {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem;
+    gap: 0.5rem;
     margin-top: auto;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(99, 102, 241, 0.1);
 }
 
 .skill-tag {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
-    color: #a5b4fc;
-    padding: 0.35rem 0.9rem;
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--indigo-300);
+    padding: 0.35rem 0.85rem;
+    border-radius: 2rem;
     border-radius: 6px;
     font-size: 0.8rem;
     font-weight: 500;
@@ -522,6 +541,27 @@ body {
 
 .floating {
     animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+    animation: gradient-shift 5s ease infinite;
+    background-size: 200% 200%;
+}
+
+.animate-gradient-shift {
+    animation: gradient-shift 5s ease infinite;
+    background-size: 200% 200%;
 }
 
 @keyframes fadeIn {
