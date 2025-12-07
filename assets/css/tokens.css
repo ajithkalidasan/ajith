@@ -1,0 +1,227 @@
+/*
+ * Design Tokens - Light Theme with 3D Depth
+ * Portfolio: Ajith K - Python Developer
+ */
+
+:root {
+  /* ================================
+     LIGHT BASE COLORS
+     ================================ */
+  --color-base: #FAFAFA;
+  --color-surface-1: #FFFFFF;
+  --color-surface-2: #F4F6F8;
+  --color-surface-3: #E9EDF1;
+  --color-surface-elevated: #FFFFFF;
+  
+  /* ================================
+     TEXT COLORS
+     ================================ */
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #4A4A68;
+  --color-text-muted: #7A7A93;
+  --color-text-inverse: #FFFFFF;
+  
+  /* ================================
+     ACCENT COLORS
+     ================================ */
+  --color-accent-primary: #0066FF;
+  --color-accent-primary-hover: #0052CC;
+  --color-accent-primary-light: rgba(0, 102, 255, 0.1);
+  --color-accent-warm: #FF6B5C;
+  --color-accent-warm-light: rgba(255, 107, 92, 0.1);
+  --color-accent-gradient: linear-gradient(135deg, #0066FF 0%, #6366F1 50%, #8B5CF6 100%);
+  --color-accent-gradient-warm: linear-gradient(135deg, #FF6B5C 0%, #FF8F6B 100%);
+  
+  /* Tech stack colors */
+  --color-python: #3776AB;
+  --color-django: #092E20;
+  --color-odoo: #875A7B;
+  --color-postgres: #336791;
+  --color-docker: #2496ED;
+  --color-git: #F05032;
+  
+  /* ================================
+     DEPTH & SHADOWS (3D-ish effect)
+     ================================ */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 
+               0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.04), 
+               0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.06), 
+               0 16px 48px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.08), 
+               0 24px 64px rgba(0, 0, 0, 0.12);
+  --shadow-3d: 0 20px 40px rgba(0, 0, 0, 0.08), 
+               0 0 80px rgba(0, 102, 255, 0.04);
+  --shadow-3d-hover: 0 24px 48px rgba(0, 0, 0, 0.12), 
+                     0 0 100px rgba(0, 102, 255, 0.08);
+  
+  /* Ambient occlusion gradient for depth */
+  --ambient-occlusion: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0) 0%, 
+    rgba(0, 0, 0, 0.02) 100%);
+  
+  /* ================================
+     TYPOGRAPHY SCALE (Fluid/Clamp)
+     ================================ */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  /* Giant headings with clamp() */
+  --font-h1: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  --font-h2: clamp(1.75rem, 4vw + 0.5rem, 3rem);
+  --font-h3: clamp(1.25rem, 2.5vw + 0.25rem, 1.75rem);
+  --font-h4: clamp(1.125rem, 2vw + 0.125rem, 1.375rem);
+  
+  /* Body and utility */
+  --font-body: 1rem;
+  --font-body-lg: 1.125rem;
+  --font-small: 0.875rem;
+  --font-xs: 0.75rem;
+  
+  /* Line heights */
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* Letter spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-wider: 0.05em;
+  
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* ================================
+     SPACING SCALE
+     ================================ */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+  
+  /* ================================
+     BORDER RADIUS
+     ================================ */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* ================================
+     ANIMATION & EASING (Physics-based)
+     ================================ */
+  
+  /* Spring easing curves */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-spring-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Standard easing */
+  --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  
+  /* Durations */
+  --duration-instant: 50ms;
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 800ms;
+  
+  /* ================================
+     Z-INDEX SCALE
+     ================================ */
+  --z-below: -1;
+  --z-base: 0;
+  --z-above: 1;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal-backdrop: 40;
+  --z-modal: 50;
+  --z-tooltip: 60;
+  
+  /* ================================
+     GLASSMORPHISM
+     ================================ */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-strong: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-blur: 16px;
+  
+  /* ================================
+     3D CANVAS / PARALLAX
+     ================================ */
+  --parallax-strength: 20;
+  --rotation-max: 15deg;
+}
+
+/* ================================
+   REDUCED MOTION SUPPORT
+   ================================ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-instant: 0.01ms;
+    --duration-fast: 0.01ms;
+    --duration-normal: 0.01ms;
+    --duration-slow: 0.01ms;
+    --duration-slower: 0.01ms;
+    --parallax-strength: 0;
+    --rotation-max: 0deg;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ================================
+   UTILITY CLASSES
+   ================================ */
+
+/* Text gradient */
+.text-gradient {
+  background: var(--color-accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Depth layers */
+.depth-layer-1 { box-shadow: var(--shadow-sm); }
+.depth-layer-2 { box-shadow: var(--shadow-md); }
+.depth-layer-3 { box-shadow: var(--shadow-lg); }
+.depth-layer-4 { box-shadow: var(--shadow-xl); }
+.depth-3d { box-shadow: var(--shadow-3d); }
+
+/* Spring transition helpers */
+.transition-spring {
+  transition-timing-function: var(--ease-spring);
+  transition-duration: var(--duration-normal);
+}
+
+.transition-spring-slow {
+  transition-timing-function: var(--ease-spring);
+  transition-duration: var(--duration-slow);
+}
