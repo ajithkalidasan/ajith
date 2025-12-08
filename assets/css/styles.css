@@ -735,6 +735,67 @@ a:hover {
 }
 
 /* ================================
+   DECORATIVE ELEMENTS (Minimal)
+   ================================ */
+
+/* Floating shapes container */
+.floating-elements {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Base floating shape */
+.floating-shape {
+    position: absolute;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Code bracket decorations */
+.shape-bracket {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--color-accent-primary);
+    opacity: 0.3;
+    font-family: 'Courier New', monospace;
+}
+
+/* Simple float animation */
+@keyframes floatVertical {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.animate-float-slow {
+    animation: floatVertical 8s ease-in-out infinite;
+}
+
+/* Responsive hiding for decorations */
+@media (max-width: 768px) {
+    .hide-mobile-decoration {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .floating-shape,
+    .animate-float-slow {
+        animation: none;
+    }
+}
+
+/* ================================
    BACKGROUND DECORATIONS
    ================================ */
 
