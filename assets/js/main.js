@@ -1,400 +1,256 @@
 /**
- * Main JavaScript for Portfolio Website
- * Portfolio: Ajith K - Python Developer
- * 
- * Updated for light theme with physics-based motion
+ * Portfolio — Ajith K
+ * Main JavaScript: typewriter, scroll reveal, code window, nav, counters
  */
 
-document.addEventListener('DOMContentLoaded', function () {
-    'use strict';
+(function () {
+  'use strict';
 
-    // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // ================================
-    // TYPEWRITER EFFECT
-    // ================================
+  /* ────────────────────────────────
+     NAV — scroll effect + active link
+  ──────────────────────────────── */
 
-    const typewriterElement = document.getElementById('typewriter');
-    const roles = ['Backend Developer', 'Django & Odoo Expert', 'Python Engineer'];
-    let roleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
-    let pauseDuration = 2000;
-    let currentTimeout;
+  const nav = document.getElementById('main-nav');
 
-    function typeWriter() {
-        if (prefersReducedMotion) {
-            // Show full text without animation
-            typewriterElement.textContent = roles[roleIndex];
-            roleIndex = (roleIndex + 1) % roles.length;
-            currentTimeout = setTimeout(typeWriter, 3000);
-            return;
-        }
-
-        const currentRole = roles[roleIndex];
-
-        if (isDeleting) {
-            typewriterElement.textContent = currentRole.substring(0, charIndex - 1);
-            charIndex--;
-            typingSpeed = 50;
-        } else {
-            typewriterElement.textContent = currentRole.substring(0, charIndex + 1);
-            charIndex++;
-            typingSpeed = 100;
-        }
-
-        if (!isDeleting && charIndex === currentRole.length) {
-            typingSpeed = pauseDuration;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-        }
-
-        currentTimeout = setTimeout(typeWriter, typingSpeed);
+  function updateNav() {
+    if (window.scrollY > 60) {
+      nav?.classList.add('scrolled');
+    } else {
+      nav?.classList.remove('scrolled');
     }
+  }
 
-    if (typewriterElement) {
-        setTimeout(typeWriter, 1000);
-    }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
 
-    window.addEventListener('beforeunload', () => {
-        if (currentTimeout) clearTimeout(currentTimeout);
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks  = document.querySelectorAll('.nav-link');
+
+  function highlightNav() {
+    const scrollY = window.scrollY + 120;
+    sections.forEach(section => {
+      if (scrollY >= section.offsetTop && scrollY < section.offsetTop + section.offsetHeight) {
+        const id = section.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', highlightNav, { passive: true });
+  highlightNav();
+
+  /* ────────────────────────────────
+     MOBILE MENU
+  ──────────────────────────────── */
+
+  const menuBtn    = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  let menuOpen     = false;
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      menuBtn.innerHTML = menuOpen
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+      menuBtn.setAttribute('aria-expanded', menuOpen);
     });
 
-    // ================================
-    // EXPERIENCE CAROUSEL
-    // ================================
-
-    const experiences = [
-        {
-            text: 'I build resilient backends and thoughtful developer experiences. Django, PostgreSQL, and clean engineering—delivered with care.',
-            icon: 'fas fa-laptop-code'
-        },
-        {
-            text: 'Creative Python Developer with 1+ year of experience in Odoo ERP development. Skilled in building custom modules and streamlining business workflows.',
-            icon: 'fas fa-cogs'
-        },
-        {
-            text: 'Hands-on experience with PostgreSQL and Docker, ensuring robust database structures and efficient, containerized deployments.',
-            icon: 'fas fa-database'
-        },
-        {
-            text: 'Proficient in Git, GitHub, HTML, CSS, XML, and JavaScript—empowering seamless integration across backend and frontend workflows.',
-            icon: 'fas fa-code'
-        }
-    ];
-
-    let currentExpIndex = 0;
-    const expElement = document.getElementById('experience-text');
-    const prevBtn = document.getElementById('prev-exp');
-    const nextBtn = document.getElementById('next-exp');
-    let autoRotateInterval;
-
-    function updateExperience() {
-        const exp = experiences[currentExpIndex];
-        expElement.innerHTML = `
-            <div class="flex items-start gap-3">
-                <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style="background: var(--color-accent-primary-light);">
-                    <i class="${exp.icon}" style="color: var(--color-accent-primary);"></i>
-                </div>
-                <span style="color: var(--color-text-secondary);">${exp.text}</span>
-            </div>
-        `;
-
-        if (!prefersReducedMotion) {
-            expElement.style.opacity = '0';
-            expElement.style.transform = 'translateY(10px)';
-            setTimeout(() => {
-                expElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                expElement.style.opacity = '1';
-                expElement.style.transform = 'translateY(0)';
-            }, 10);
-        }
-    }
-
-    function changeExperience(direction) {
-        if (!prefersReducedMotion) {
-            expElement.style.opacity = '0';
-            expElement.style.transform = 'translateY(-10px)';
-        }
-
-        setTimeout(() => {
-            currentExpIndex = (currentExpIndex + direction + experiences.length) % experiences.length;
-            updateExperience();
-            resetAutoRotate();
-        }, prefersReducedMotion ? 0 : 300);
-    }
-
-    function startAutoRotate() {
-        autoRotateInterval = setInterval(() => {
-            changeExperience(1);
-        }, 5000);
-    }
-
-    function resetAutoRotate() {
-        clearInterval(autoRotateInterval);
-        startAutoRotate();
-    }
-
-    if (expElement && prevBtn && nextBtn) {
-        updateExperience();
-        startAutoRotate();
-
-        prevBtn.addEventListener('click', () => changeExperience(-1));
-        nextBtn.addEventListener('click', () => changeExperience(1));
-
-        expElement.parentElement.addEventListener('mouseenter', () => {
-            clearInterval(autoRotateInterval);
-        });
-
-        expElement.parentElement.addEventListener('mouseleave', () => {
-            startAutoRotate();
-        });
-    }
-
-    // ================================
-    // MOBILE MENU
-    // ================================
-
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    let menuOpen = false;
-
-    if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => {
-            menuOpen = !menuOpen;
-
-            if (menuOpen) {
-                mobileMenu.style.display = 'block';
-                mobileMenu.style.transform = 'scaleY(1)';
-                mobileMenu.style.height = 'auto';
-                menuBtn.innerHTML = '<i class="fas fa-times text-xl"></i>';
-            } else {
-                mobileMenu.style.transform = 'scaleY(0)';
-                mobileMenu.style.height = '0';
-                menuBtn.innerHTML = '<i class="fas fa-bars text-xl"></i>';
-            }
-        });
-
-        // Close mobile menu when clicking a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuOpen = false;
-                mobileMenu.style.transform = 'scaleY(0)';
-                mobileMenu.style.height = '0';
-                menuBtn.innerHTML = '<i class="fas fa-bars text-xl"></i>';
-            });
-        });
-    }
-
-    // ================================
-    // SMOOTH SCROLLING
-    // ================================
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                const offset = 80;
-                const targetPosition = targetElement.offsetTop - offset;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: prefersReducedMotion ? 'auto' : 'smooth'
-                });
-            }
-        });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.classList.remove('open');
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
     });
+  }
 
-    // ================================
-    // BACK TO TOP BUTTON
-    // ================================
+  /* ────────────────────────────────
+     SMOOTH SCROLL
+  ──────────────────────────────── */
 
-    const backToTopBtn = document.getElementById('back-to-top');
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const id = anchor.getAttribute('href');
+      if (id === '#') return;
+      const target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      const offset = 80;
+      window.scrollTo({
+        top: target.offsetTop - offset,
+        behavior: reducedMotion ? 'auto' : 'smooth'
+      });
+    });
+  });
 
-    if (backToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        });
+  /* ────────────────────────────────
+     SCROLL REVEAL
+  ──────────────────────────────── */
 
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: prefersReducedMotion ? 'auto' : 'smooth'
-            });
-        });
+  if (!reducedMotion) {
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  }
+
+  /* ────────────────────────────────
+     TYPEWRITER
+  ──────────────────────────────── */
+
+  const typeEl = document.getElementById('typewriter');
+  const roles  = ['Python Developer', 'Odoo ERP Specialist', 'Django Engineer', 'Backend Architect'];
+  let roleIdx  = 0;
+  let charIdx  = 0;
+  let deleting = false;
+  let speed    = 100;
+  let timer;
+
+  function type() {
+    if (!typeEl) return;
+    const current = roles[roleIdx];
+
+    if (reducedMotion) {
+      typeEl.textContent = current;
+      roleIdx = (roleIdx + 1) % roles.length;
+      timer = setTimeout(type, 3000);
+      return;
     }
 
-    // ================================
-    // NAVIGATION SCROLL EFFECT
-    // ================================
-
-    const nav = document.getElementById('main-nav');
-    let lastScroll = 0;
-
-    if (nav) {
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-
-            if (currentScroll > 100) {
-                nav.style.background = 'var(--glass-bg-strong)';
-                nav.style.backdropFilter = 'blur(16px)';
-                nav.style.boxShadow = 'var(--shadow-md)';
-            } else {
-                nav.style.background = 'transparent';
-                nav.style.backdropFilter = 'none';
-                nav.style.boxShadow = 'none';
-            }
-
-            lastScroll = currentScroll;
-        });
+    if (deleting) {
+      typeEl.textContent = current.slice(0, charIdx - 1);
+      charIdx--;
+      speed = 45;
+    } else {
+      typeEl.textContent = current.slice(0, charIdx + 1);
+      charIdx++;
+      speed = 95;
     }
 
-    // ================================
-    // FADE IN ON SCROLL
-    // ================================
+    if (!deleting && charIdx === current.length) {
+      speed = 2200;
+      deleting = true;
+    } else if (deleting && charIdx === 0) {
+      deleting = false;
+      roleIdx  = (roleIdx + 1) % roles.length;
+      speed    = 400;
+    }
 
-    const fadeElements = document.querySelectorAll('.fade-in:not(.initialized)');
+    timer = setTimeout(type, speed);
+  }
 
-    if (!prefersReducedMotion) {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+  if (typeEl) setTimeout(type, 800);
+  window.addEventListener('beforeunload', () => clearTimeout(timer));
+
+  /* ────────────────────────────────
+     STAT COUNTERS
+  ──────────────────────────────── */
+
+  const counterEls = document.querySelectorAll('.counter[data-target]');
+
+  if (counterEls.length && !reducedMotion) {
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el     = entry.target;
+        const target = parseInt(el.dataset.target, 10);
+        const dur    = 1400;
+        const step   = dur / target;
+        let current  = 0;
+
+        const tick = () => {
+          current++;
+          el.textContent = current;
+          if (current < target) setTimeout(tick, step);
         };
 
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('initialized');
-                    entry.target.style.animationPlayState = 'running';
-                    fadeObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
+        setTimeout(tick, step);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
 
-        fadeElements.forEach(element => {
-            element.style.animationPlayState = 'paused';
-            fadeObserver.observe(element);
-        });
-    } else {
-        // Show all elements immediately without animation
-        fadeElements.forEach(element => {
-            element.style.opacity = '1';
-            element.style.transform = 'none';
-            element.style.animation = 'none';
-        });
-    }
+    counterEls.forEach(el => counterObserver.observe(el));
+  } else {
+    counterEls.forEach(el => { el.textContent = el.dataset.target; });
+  }
 
-    // ================================
-    // ACTIVE NAVIGATION HIGHLIGHTING
-    // ================================
+  /* ────────────────────────────────
+     CODE WINDOW FILE SWITCHER
+  ──────────────────────────────── */
 
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+  const codeTabs     = document.querySelectorAll('.code-tab');
+  const codeSnippets = document.querySelectorAll('.code-snippet');
+  let codeInterval;
+  let currentCode = 0;
 
-    function highlightActiveSection() {
-        const scrollPosition = window.scrollY + 100;
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-
-    window.addEventListener('scroll', highlightActiveSection);
-    highlightActiveSection();
-
-    // ================================
-    // LAZY LOAD SCRIPTS
-    // ================================
-
-    function loadScript(src, callback) {
-        const script = document.createElement('script');
-        script.src = src;
-        script.defer = true;
-        if (callback) {
-            script.onload = callback;
-        }
-        document.body.appendChild(script);
-    }
-
-    // Lazy load Three.js and the scene
-    if (document.getElementById('hero-3d-canvas')) {
-        // Check if Three.js is already loaded
-        if (typeof THREE === 'undefined') {
-            loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js', () => {
-                // Three.js scene will initialize automatically
-            });
-        }
-    }
-
-    // ================================
-    // PROJECT CARD EXPANSION
-    // ================================
-
-    document.querySelectorAll('.project-card').forEach(card => {
-        const expandBtn = card.querySelector('.expand-btn');
-        const details = card.querySelector('.project-card-details');
-
-        if (expandBtn && details) {
-            expandBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-
-                card.classList.toggle('expanded');
-
-                if (card.classList.contains('expanded')) {
-                    expandBtn.style.transform = 'rotate(180deg)';
-                } else {
-                    expandBtn.style.transform = 'rotate(0deg)';
-                }
-            });
-        }
+  function switchCode(idx) {
+    codeTabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+    codeSnippets.forEach((s, i) => {
+      s.classList.toggle('active', i === idx);
     });
+    currentCode = idx;
+  }
 
-    // ================================
-    // SKILL NODES KEYBOARD SUPPORT
-    // ================================
-
-    document.querySelectorAll('.skill-node').forEach(node => {
-        node.setAttribute('tabindex', '0');
-        node.setAttribute('role', 'button');
-
-        node.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                node.click();
-            }
-        });
+  codeTabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      clearInterval(codeInterval);
+      switchCode(i);
+      startCodeCycle();
     });
+  });
 
-    // ================================
-    // CONSOLE EASTER EGG
-    // ================================
+  function startCodeCycle() {
+    if (reducedMotion) return;
+    codeInterval = setInterval(() => {
+      switchCode((currentCode + 1) % codeTabs.length);
+    }, 4500);
+  }
 
-    console.log('%c👋 Hello, fellow developer!', 'font-size: 16px; font-weight: bold; color: #0066FF;');
-    console.log('%cInterested in the code? Check out my GitHub!', 'font-size: 12px; color: #4A4A68;');
-    console.log('%chttps://github.com/ajithkalidasan', 'font-size: 12px; color: #0066FF;');
-});
+  if (codeTabs.length) startCodeCycle();
+
+  /* ────────────────────────────────
+     BACK TO TOP
+  ──────────────────────────────── */
+
+  const backToTop = document.getElementById('back-to-top');
+
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+    });
+  }
+
+  /* ────────────────────────────────
+     CONSOLE EASTER EGG
+  ──────────────────────────────── */
+
+  console.log('%c⚡ Ajith K — Backend Developer', 'font-size:15px;font-weight:bold;color:#4D80FF;');
+  console.log('%cPython · Odoo · Django · PostgreSQL', 'font-size:12px;color:#8B96B5;');
+  console.log('%c→ https://github.com/ajithkalidasan', 'font-size:12px;color:#4D80FF;');
+
+})();
