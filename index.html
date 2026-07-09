@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07080F">
+  <meta name="theme-color" content="#F4F7FB">
   <meta name="description"
-    content="Ajith K — Python Developer & Odoo ERP Specialist. I build backend systems, customize ERP workflows, and integrate APIs that help businesses run smarter. Available for freelance and full-time.">
+    content="Ajith K — Django & FastAPI Developer, Odoo ERP Specialist. I build high-performance Python backends and customize Odoo for businesses that want to move faster. Available for freelance and full-time.">
   <meta name="keywords"
     content="Python Developer, Odoo ERP, Django, FastAPI, PostgreSQL, API Integration, Backend Developer, Freelance, Bangalore">
   <meta name="author" content="Ajith K">
@@ -17,7 +17,7 @@
     content="Python backends, Odoo ERP customization, and API integration — built for real businesses.">
   <meta property="og:type" content="website">
 
-  <title>Ajith K | Python & Odoo Developer</title>
+  <title>Ajith K | Django & FastAPI Developer | Odoo ERP Specialist</title>
 
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,10 +37,10 @@
       theme: {
         extend: {
           colors: {
-            base: '#07080F',
-            surface: { 1: '#0D1020', 2: '#131829', 3: '#1B2035' },
-            accent: { primary: '#4D80FF', purple: '#7C5AFC', warm: '#FF6935', green: '#0EC47A' },
-            text: { primary: '#EEF2FF', secondary: '#8B96B5', muted: '#525C78' }
+            base: '#F4F7FB',
+            surface: { 1: '#FFFFFF', 2: '#EDF1FA', 3: '#DDE5F5' },
+            accent: { primary: '#1A56DB', purple: '#7E3AF2', warm: '#E05D1A', green: '#0B7C5A' },
+            text: { primary: '#0B1526', secondary: '#475569', muted: '#8A97A8' }
           },
           fontFamily: {
             sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -127,9 +127,9 @@
 
             <!-- Headline -->
             <h1 class="hero-title">
-              Backend Developer.<br>
-              <span class="text-gradient-animated">ERP Specialist.</span><br>
-              Problem Solver.
+              Django &amp; FastAPI<br>
+              <span class="text-gradient-animated">Developer.</span><br>
+              Odoo ERP Specialist.
             </h1>
 
             <!-- Typewriter -->
@@ -141,8 +141,8 @@
 
             <!-- Tagline -->
             <p class="hero-tagline">
-              I help businesses automate workflows, customize Odoo ERP systems, and ship
-              production-ready Python backends — on time and built to last.
+              I build high-performance Django &amp; FastAPI backends and customize Odoo ERP
+              systems for businesses that want clean code, real automation, and results they can measure.
             </p>
 
             <!-- CTAs -->
@@ -402,49 +402,55 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-          <!-- Service 1 -->
-          <div class="service-card reveal">
-            <div class="service-icon-wrap">
-              <i class="fas fa-server"></i>
+          <!-- Service 1 — PRIMARY: Django & FastAPI -->
+          <div class="service-card featured reveal">
+            <div class="flex items-center justify-between mb-5">
+              <div class="service-icon-wrap" style="margin-bottom:0;">
+                <i class="fas fa-server"></i>
+              </div>
+              <span style="font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:var(--color-accent-primary-light);color:var(--color-accent-primary);padding:0.2rem 0.6rem;border-radius:var(--radius-full);border:1px solid var(--border-accent);">Core Service</span>
             </div>
-            <h3 class="service-title">Custom Backend Development</h3>
+            <h3 class="service-title">Django &amp; FastAPI Development</h3>
             <p class="service-desc">
-              Robust, scalable Python backends built with Django or FastAPI. From data models
-              to production-ready REST APIs — designed for growth from day one.
+              High-performance Python backends built with Django REST Framework or FastAPI.
+              Clean architecture, async-ready, documented, and production-tested.
             </p>
             <ul class="service-deliverables">
-              <li>REST API design &amp; development</li>
-              <li>Authentication, permissions &amp; JWT</li>
-              <li>Admin panels &amp; dashboards</li>
+              <li>REST &amp; async API design with DRF / FastAPI</li>
+              <li>Authentication, permissions, JWT &amp; OAuth2</li>
+              <li>Admin panels, dashboards &amp; background jobs</li>
             </ul>
           </div>
 
-          <!-- Service 2 -->
-          <div class="service-card reveal delay-1">
-            <div class="service-icon-wrap" style="background:rgba(168,85,247,0.12);color:#A855F7;">
-              <i class="fas fa-cogs"></i>
+          <!-- Service 2 — PRIMARY: Odoo ERP -->
+          <div class="service-card featured reveal delay-1">
+            <div class="flex items-center justify-between mb-5">
+              <div class="service-icon-wrap" style="background:rgba(126,58,242,0.10);color:var(--color-accent-purple);margin-bottom:0;">
+                <i class="fas fa-cogs"></i>
+              </div>
+              <span style="font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:rgba(126,58,242,0.08);color:var(--color-accent-purple);padding:0.2rem 0.6rem;border-radius:var(--radius-full);border:1px solid rgba(126,58,242,0.2);">Core Service</span>
             </div>
             <h3 class="service-title">Odoo ERP Customization</h3>
             <p class="service-desc">
               Custom Odoo modules tailored to how your business actually works — not a generic
-              template. Sales, inventory, HR, purchase, and accounting workflows.
+              template. Sales, inventory, HR, purchase, and accounting.
             </p>
             <ul class="service-deliverables">
               <li>Custom module development (v14–v18)</li>
-              <li>Business workflow automation</li>
-              <li>Odoo module integration &amp; upgrades</li>
+              <li>Business workflow automation &amp; approvals</li>
+              <li>Module integration, migration &amp; upgrades</li>
             </ul>
           </div>
 
           <!-- Service 3 -->
           <div class="service-card reveal delay-2">
-            <div class="service-icon-wrap" style="background:rgba(14,196,122,0.12);color:var(--color-accent-green);">
+            <div class="service-icon-wrap" style="background:rgba(11,124,90,0.10);color:var(--color-accent-green);">
               <i class="fas fa-plug"></i>
             </div>
             <h3 class="service-title">API Integration &amp; Automation</h3>
             <p class="service-desc">
               Connect your tools and eliminate manual data entry. I integrate third-party services
-              using REST, XML-RPC, webhooks, and scheduled jobs.
+              via REST, XML-RPC, webhooks, and background schedulers.
             </p>
             <ul class="service-deliverables">
               <li>Third-party API integration</li>
@@ -455,13 +461,13 @@
 
           <!-- Service 4 -->
           <div class="service-card reveal">
-            <div class="service-icon-wrap" style="background:rgba(74,144,217,0.12);color:#4A90D9;">
+            <div class="service-icon-wrap" style="background:rgba(51,103,145,0.10);color:#336791;">
               <i class="fas fa-database"></i>
             </div>
             <h3 class="service-title">Database Design &amp; Optimization</h3>
             <p class="service-desc">
-              Well-structured PostgreSQL schemas and query optimization that keep your app fast
-              as data grows. I've cut query times by up to 60% through indexing and refactoring.
+              PostgreSQL schemas and query tuning that keep your app fast as data grows.
+              I've reduced query times by up to 60% through indexing and refactoring.
             </p>
             <ul class="service-deliverables">
               <li>Schema design &amp; migrations</li>
@@ -472,30 +478,30 @@
 
           <!-- Service 5 -->
           <div class="service-card reveal delay-1">
-            <div class="service-icon-wrap" style="background:rgba(245,158,11,0.12);color:#F59E0B;">
+            <div class="service-icon-wrap" style="background:rgba(180,83,9,0.10);color:var(--color-accent-amber);">
               <i class="fas fa-robot"></i>
             </div>
             <h3 class="service-title">Business Process Automation</h3>
             <p class="service-desc">
-              Replace repetitive manual tasks with Python scripts and scheduled jobs.
-              Inventory sync, report generation, data migration — reliably automated.
+              Replace repetitive manual work with Python scripts and Celery jobs — inventory sync,
+              report generation, data migration — running reliably in the background.
             </p>
             <ul class="service-deliverables">
               <li>Python automation scripts</li>
-              <li>Scheduled &amp; background jobs</li>
+              <li>Celery &amp; scheduled background jobs</li>
               <li>Data migration &amp; ETL pipelines</li>
             </ul>
           </div>
 
           <!-- Service 6 -->
           <div class="service-card reveal delay-2">
-            <div class="service-icon-wrap" style="background:rgba(255,105,53,0.12);color:var(--color-accent-warm);">
+            <div class="service-icon-wrap" style="background:var(--color-accent-warm-light);color:var(--color-accent-warm);">
               <i class="fas fa-wrench"></i>
             </div>
             <h3 class="service-title">Maintenance &amp; Bug Fixing</h3>
             <p class="service-desc">
-              Diagnose and fix issues in existing Python or Odoo codebases. Code review,
-              refactoring, and performance improvements — without breaking what works.
+              Diagnose and fix issues in existing Django, FastAPI, or Odoo codebases —
+              code review, refactoring, and performance wins without breaking what works.
             </p>
             <ul class="service-deliverables">
               <li>Bug diagnosis &amp; resolution</li>

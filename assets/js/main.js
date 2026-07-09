@@ -120,7 +120,7 @@
   ──────────────────────────────── */
 
   const typeEl = document.getElementById('typewriter');
-  const roles  = ['Python Developer', 'Odoo ERP Specialist', 'Django Engineer', 'Backend Architect'];
+  const roles  = ['Django Developer', 'FastAPI Engineer', 'Odoo ERP Specialist', 'Backend Developer'];
   let roleIdx  = 0;
   let charIdx  = 0;
   let deleting = false;
