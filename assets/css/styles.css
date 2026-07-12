@@ -573,12 +573,12 @@ main { position: relative; z-index: 1; }
    CONTACT — "reach me" (three cards + ghost number)
 ─────────────────────────────────────────────── */
 .ghost-num {
-  position: absolute; top: clamp(2.5rem, 5vw, 4.5rem); right: 0; z-index: 0;
+  position: absolute; top: clamp(2rem, 4.5vw, 4rem); right: 0; z-index: -1;
   font-family: var(--font-display); font-weight: 700; letter-spacing: -0.04em;
   font-size: clamp(6rem, 15vw, 12rem); line-height: 0.8;
-  color: var(--text-ghost); opacity: 0.55; pointer-events: none; user-select: none;
+  color: var(--text-ghost); opacity: 0.5; pointer-events: none; user-select: none;
 }
-#contact .section-head { position: relative; z-index: 1; }
+.section-head { position: relative; }
 
 .reach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; position: relative; z-index: 1; }
 .reach-card {
