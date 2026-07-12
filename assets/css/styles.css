@@ -192,6 +192,18 @@ main { position: relative; z-index: 1; }
 }
 .center .section-sub { margin-inline: auto; }
 
+/* Section command prompt — threads the terminal metaphor through every section */
+.term-cmd {
+  font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim);
+  display: inline-flex; gap: 0.5rem; align-items: center;
+  border: 1px solid var(--line); border-radius: var(--r-sm);
+  padding: 0.45rem 0.85rem; background: var(--bg-elev); margin-top: 1.5rem;
+  max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.term-cmd .p { color: var(--sig-green); flex-shrink: 0; }
+.term-cmd .o { color: var(--text-faint); }
+.term-cmd .cur { display: inline-block; width: 7px; height: 1em; background: var(--amber); vertical-align: -0.15em; animation: blink 1.05s steps(1) infinite; flex-shrink: 0; }
+
 /* ───────────────────────────────────────────────
    HERO / BOOT TERMINAL  (signature)
 ─────────────────────────────────────────────── */
