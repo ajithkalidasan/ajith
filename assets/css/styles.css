@@ -528,9 +528,9 @@ main { position: relative; z-index: 1; }
 .proj-desc { font-size: 0.86rem; color: var(--text-dim); line-height: 1.65; margin: 0 0 1.2rem; }
 .proj-desc strong { color: var(--amber); font-weight: 600; }
 
-.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-sm); overflow: hidden; margin-bottom: 1.2rem; }
-.metric { background: var(--bg-inset); padding: 0.75rem 0.6rem; text-align: center; }
-.metric-v { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--amber); line-height: 1.1; }
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-sm); overflow: hidden; margin-bottom: 1.2rem; }
+.metric { background: var(--bg-inset); padding: 0.75rem 0.5rem; text-align: center; min-width: 0; }
+.metric-v { font-family: var(--font-display); font-size: clamp(0.95rem, 3.4vw, 1.15rem); font-weight: 600; color: var(--amber); line-height: 1.15; overflow-wrap: anywhere; }
 .metric-l { font-family: var(--font-mono); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); margin-top: 0.25rem; line-height: 1.3; }
 
 .proj-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
@@ -551,7 +551,11 @@ main { position: relative; z-index: 1; }
 /* ───────────────────────────────────────────────
    TESTIMONIALS
 ─────────────────────────────────────────────── */
-.grid-quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.grid-quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
+.grid-quotes.solo { grid-template-columns: minmax(0, 680px); justify-content: center; }
+.grid-quotes.solo .quote { padding: 2.4rem clamp(1.6rem, 4vw, 2.6rem); }
+.grid-quotes.solo .quote-text { font-size: 1.15rem; line-height: 1.75; }
+.grid-quotes.solo .quote-mark { font-size: 3.6rem; }
 .quote {
   border: 1px solid var(--line); border-radius: var(--r); background: var(--bg-elev);
   padding: 1.6rem 1.5rem; position: relative; transition: border-color .25s var(--ease);
@@ -740,8 +744,13 @@ main { position: relative; z-index: 1; }
   .hero-title { font-size: clamp(2.1rem, 9vw, 3rem); }
   .footer-inner { flex-direction: column; align-items: flex-start; }
   .footer-right { align-items: flex-start; }
-  .metrics { grid-template-columns: repeat(3, 1fr); }
+  .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+/* Overflow safety — let grid/flex text children shrink instead of forcing width */
+.hero-grid > *, .about-grid > *, .proj, .proj-body, .commit, .reach-card, .svc, .quote { min-width: 0; }
+.gitlog-cmd { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+.proj-title, .commit-title, .quote-text, .prose p, .hero-lede, .section-sub { overflow-wrap: break-word; }
 
 @media (max-width: 420px) {
   .contact-sub { grid-template-columns: 1fr; }
