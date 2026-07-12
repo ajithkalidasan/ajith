@@ -33,6 +33,16 @@
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Theme: apply saved preference before paint to avoid flash -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 
 <body>
@@ -57,6 +67,9 @@
       <div class="nav-right">
         <button class="kbd-hint" id="kbd-open" aria-label="Keyboard shortcuts">
           press <kbd>?</kbd>
+        </button>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light / dark theme">
+          <i class="fas fa-moon"></i><i class="fas fa-sun"></i>
         </button>
         <a href="#contact" class="btn-bracket">[ hire me ]</a>
         <button class="menu-btn" id="menu-btn" aria-label="Toggle menu" aria-expanded="false">
@@ -106,7 +119,7 @@
 
           <div class="hero-status">
             <div class="hstat">
-              <div class="hstat-num"><span class="counter" data-target="1">0</span>+</div>
+              <div class="hstat-num"><span class="counter" data-target="2">0</span>+</div>
               <div class="hstat-label">yrs exp</div>
             </div>
             <div class="hstat">
@@ -410,7 +423,7 @@
                 <span class="xp-period"><span class="live"></span> Oct 2024 — Present</span>
               </div>
               <ul>
-                <li><i class="fas fa-caret-right"></i><span>Developed and customized <strong>10+ Odoo modules</strong> for sales, inventory, and HR — improving operational efficiency by 40%.</span></li>
+                <li><i class="fas fa-caret-right"></i><span>Developed and customized <strong>30+ Odoo modules</strong> for sales, inventory, and HR — improving operational efficiency by 40%.</span></li>
                 <li><i class="fas fa-caret-right"></i><span>Integrated <strong>10+ third-party APIs</strong> with Odoo via XML-RPC and JSON-RPC for seamless data exchange.</span></li>
                 <li><i class="fas fa-caret-right"></i><span>Optimized PostgreSQL queries and schemas for a <strong>60% improvement</strong> in backend response times.</span></li>
                 <li><i class="fas fa-caret-right"></i><span>Built Docker-based dev environments for consistent, reproducible deployments across the team.</span></li>
@@ -479,8 +492,77 @@
             </div>
           </div>
 
-          <!-- Storenova -->
+          <!-- Odoo ERP (NDA) -->
           <div class="proj reveal d1">
+            <div class="proj-head">
+              <span class="fname"><i class="fas fa-cogs"></i> odoo-erp</span>
+              <span class="proj-cat">erp / odoo</span>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">Odoo 18 — Enterprise ERP Integration</h3>
+              <p class="proj-desc"><strong>Challenge:</strong> A manufacturer needed custom Odoo 18 modules to automate purchase approvals, inventory reordering, and financial reporting — plus 5+ external vendor API integrations.</p>
+              <div class="metrics">
+                <div class="metric"><div class="metric-v">40%</div><div class="metric-l">efficiency</div></div>
+                <div class="metric"><div class="metric-v">5+</div><div class="metric-l">apis</div></div>
+                <div class="metric"><div class="metric-v">10+</div><div class="metric-l">workflows</div></div>
+              </div>
+              <div class="proj-tech">
+                <span class="chip">Odoo 18</span><span class="chip">Python</span><span class="chip">OWL</span><span class="chip">XML-RPC</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span>
+              </div>
+              <div class="proj-foot">
+                <span class="proj-private"><i class="fas fa-lock"></i> private — NDA project</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hedera (NDA) -->
+          <div class="proj reveal">
+            <div class="proj-head">
+              <span class="fname"><i class="fas fa-cubes"></i> hedera-odoo</span>
+              <span class="proj-cat">blockchain / odoo</span>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">Hedera × Odoo — On-Chain Record Traceability</h3>
+              <p class="proj-desc"><strong>Challenge:</strong> An enterprise needed tamper-proof, auditable records for critical ERP transactions — integrating the Hedera Hashgraph ledger into Odoo 18 so key events are anchored on-chain and independently verifiable.</p>
+              <div class="metrics">
+                <div class="metric"><div class="metric-v">Hedera</div><div class="metric-l">ledger</div></div>
+                <div class="metric"><div class="metric-v">Immutable</div><div class="metric-l">audit trail</div></div>
+                <div class="metric"><div class="metric-v">Odoo 18</div><div class="metric-l">erp core</div></div>
+              </div>
+              <div class="proj-tech">
+                <span class="chip">Odoo 18</span><span class="chip">Python</span><span class="chip">Hedera Hashgraph</span><span class="chip">Web3</span><span class="chip">PostgreSQL</span>
+              </div>
+              <div class="proj-foot">
+                <span class="proj-private"><i class="fas fa-lock"></i> private — NDA project</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Legacy migration (NDA) -->
+          <div class="proj reveal d1">
+            <div class="proj-head">
+              <span class="fname"><i class="fas fa-right-left"></i> legacy-migration</span>
+              <span class="proj-cat">data migration / odoo</span>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">Legacy Re-Platform — PHP + SQL Server → Odoo 18</h3>
+              <p class="proj-desc"><strong>Challenge:</strong> A business ran on a legacy PHP app backed by SQL Server. The goal: migrate all historical data into Odoo 18 on PostgreSQL — mapping schemas across engines while preserving relational integrity with zero data loss.</p>
+              <div class="metrics">
+                <div class="metric"><div class="metric-v">Zero</div><div class="metric-l">data loss</div></div>
+                <div class="metric"><div class="metric-v">SQL→PG</div><div class="metric-l">engine swap</div></div>
+                <div class="metric"><div class="metric-v">PHP→Odoo</div><div class="metric-l">re-platform</div></div>
+              </div>
+              <div class="proj-tech">
+                <span class="chip">Odoo 18</span><span class="chip">Python</span><span class="chip">PostgreSQL</span><span class="chip">SQL Server</span><span class="chip">ETL</span><span class="chip">Data Mapping</span>
+              </div>
+              <div class="proj-foot">
+                <span class="proj-private"><i class="fas fa-lock"></i> private — NDA project</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Storenova -->
+          <div class="proj reveal">
             <div class="proj-head">
               <span class="fname"><i class="fas fa-store"></i> storenova</span>
               <span class="proj-cat">e-commerce</span>
@@ -503,7 +585,7 @@
           </div>
 
           <!-- DevCollab -->
-          <div class="proj reveal">
+          <div class="proj reveal d1">
             <div class="proj-head">
               <span class="fname"><i class="fas fa-users"></i> devcollab</span>
               <span class="proj-cat">social platform</span>
@@ -526,7 +608,7 @@
           </div>
 
           <!-- Storefront -->
-          <div class="proj reveal d1">
+          <div class="proj reveal">
             <div class="proj-head">
               <span class="fname"><i class="fas fa-bolt"></i> storefront</span>
               <span class="proj-cat">backend api</span>
@@ -544,75 +626,6 @@
               </div>
               <div class="proj-foot">
                 <a href="https://github.com/ajithkalidasan/storefront" target="_blank" rel="noopener noreferrer" class="proj-link">view on github <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Odoo ERP -->
-          <div class="proj reveal">
-            <div class="proj-head">
-              <span class="fname"><i class="fas fa-cogs"></i> odoo-erp</span>
-              <span class="proj-cat">erp / odoo</span>
-            </div>
-            <div class="proj-body">
-              <h3 class="proj-title">Odoo 18 — Enterprise ERP Integration</h3>
-              <p class="proj-desc"><strong>Challenge:</strong> A manufacturer needed custom Odoo 18 modules to automate purchase approvals, inventory reordering, and financial reporting — plus 5+ external vendor API integrations.</p>
-              <div class="metrics">
-                <div class="metric"><div class="metric-v">40%</div><div class="metric-l">efficiency</div></div>
-                <div class="metric"><div class="metric-v">5+</div><div class="metric-l">apis</div></div>
-                <div class="metric"><div class="metric-v">10+</div><div class="metric-l">workflows</div></div>
-              </div>
-              <div class="proj-tech">
-                <span class="chip">Odoo 18</span><span class="chip">Python</span><span class="chip">OWL</span><span class="chip">XML-RPC</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span>
-              </div>
-              <div class="proj-foot">
-                <span class="proj-private"><i class="fas fa-lock"></i> private — NDA project</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hedera -->
-          <div class="proj reveal d1">
-            <div class="proj-head">
-              <span class="fname"><i class="fas fa-cubes"></i> hedera-odoo</span>
-              <span class="proj-cat">blockchain / odoo</span>
-            </div>
-            <div class="proj-body">
-              <h3 class="proj-title">Hedera × Odoo — On-Chain Record Traceability</h3>
-              <p class="proj-desc"><strong>Challenge:</strong> An enterprise needed tamper-proof, auditable records for critical ERP transactions — integrating the Hedera Hashgraph ledger into Odoo 18 so key events are anchored on-chain and independently verifiable.</p>
-              <div class="metrics">
-                <div class="metric"><div class="metric-v">Hedera</div><div class="metric-l">ledger</div></div>
-                <div class="metric"><div class="metric-v">Immutable</div><div class="metric-l">audit trail</div></div>
-                <div class="metric"><div class="metric-v">Odoo 18</div><div class="metric-l">erp core</div></div>
-              </div>
-              <div class="proj-tech">
-                <span class="chip">Odoo 18</span><span class="chip">Python</span><span class="chip">Hedera Hashgraph</span><span class="chip">Web3</span><span class="chip">PostgreSQL</span>
-              </div>
-              <div class="proj-foot">
-                <span class="proj-private"><i class="fas fa-lock"></i> private — NDA project</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Legacy migration -->
-          <div class="proj reveal">
-            <div class="proj-head">
-              <span class="fname"><i class="fas fa-right-left"></i> legacy-migration</span>
-              <span class="proj-cat">data migration / odoo</span>
-            </div>
-            <div class="proj-body">
-              <h3 class="proj-title">Legacy Re-Platform — PHP + SQL Server → Odoo 18</h3>
-              <p class="proj-desc"><strong>Challenge:</strong> A business ran on a legacy PHP app backed by SQL Server. The goal: migrate all historical data into Odoo 18 on PostgreSQL — mapping schemas across engines while preserving relational integrity with zero data loss.</p>
-              <div class="metrics">
-                <div class="metric"><div class="metric-v">Zero</div><div class="metric-l">data loss</div></div>
-                <div class="metric"><div class="metric-v">SQL→PG</div><div class="metric-l">engine swap</div></div>
-                <div class="metric"><div class="metric-v">PHP→Odoo</div><div class="metric-l">re-platform</div></div>
-              </div>
-              <div class="proj-tech">
-                <span class="chip">Odoo 18</span><span class="chip">Python</span><span class="chip">PostgreSQL</span><span class="chip">SQL Server</span><span class="chip">ETL</span><span class="chip">Data Mapping</span>
-              </div>
-              <div class="proj-foot">
-                <span class="proj-private"><i class="fas fa-lock"></i> private — NDA project</span>
               </div>
             </div>
           </div>
@@ -715,9 +728,9 @@
         <div class="contact-grid">
           <div class="contact-panel reveal">
             <h3>Contact information</h3>
-            <a href="mailto:ajithkalidasan@outlook.com" class="crow">
+            <a href="mailto:joinwithajith@gmail.com" class="crow">
               <div class="crow-ico"><i class="fas fa-envelope"></i></div>
-              <div><div class="crow-k">email</div><div class="crow-v amber">ajithkalidasan@outlook.com</div></div>
+              <div><div class="crow-k">email</div><div class="crow-v amber">joinwithajith@gmail.com</div></div>
             </a>
             <div class="crow">
               <div class="crow-ico"><i class="fas fa-map-marker-alt"></i></div>
@@ -735,7 +748,7 @@
               <div class="contact-cta-ico"><i class="fas fa-envelope"></i></div>
               <h3>Send an email</h3>
               <p>Tell me about your project — what you're building, timeline, and budget. I'll reply within 24 hours.</p>
-              <a href="mailto:ajithkalidasan@outlook.com" class="btn btn-primary"><i class="fas fa-paper-plane" style="font-size:0.7rem;"></i> start a conversation</a>
+              <a href="mailto:joinwithajith@gmail.com" class="btn btn-primary"><i class="fas fa-paper-plane" style="font-size:0.7rem;"></i> start a conversation</a>
               <div class="contact-sub" style="width:100%;">
                 <a href="https://www.linkedin.com/in/kalidasanajith/" target="_blank" rel="noopener noreferrer" class="contact-mini">
                   <i class="fab fa-linkedin-in"></i><span class="n">LinkedIn</span><span class="d">connect &amp; message</span>

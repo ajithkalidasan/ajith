@@ -9,6 +9,22 @@
   const $  = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
+  /* ── THEME TOGGLE ── */
+  const root = document.documentElement;
+  const themeBtn = $('#theme-toggle');
+  function setTheme(t) {
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem('theme', t); } catch (e) {}
+    if (themeBtn) themeBtn.setAttribute('aria-pressed', String(t === 'light'));
+    const meta = $('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', t === 'light' ? '#F4F1EA' : '#0A0B0D');
+  }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      setTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+    });
+  }
+
   /* ── NAV: scroll state + active link ── */
   const nav = $('#main-nav');
   const setNav = () => nav && nav.classList.toggle('scrolled', window.scrollY > 50);
@@ -83,6 +99,21 @@
     counters.forEach(el => io.observe(el));
   } else {
     counters.forEach(el => { el.textContent = el.dataset.target; });
+  }
+
+  /* ── HERO STATS: staggered entrance ── */
+  const heroStatus = $('.hero-status');
+  if (heroStatus) {
+    if (reduced || !('IntersectionObserver' in window)) {
+      heroStatus.classList.add('stats-in');
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) { heroStatus.classList.add('stats-in'); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.4 });
+      io.observe(heroStatus);
+    }
   }
 
   /* ── BOOT TERMINAL (signature) ── */

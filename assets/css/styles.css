@@ -122,6 +122,18 @@ img { max-width: 100%; display: block; }
 }
 .menu-btn:hover { color: var(--text); border-color: var(--line-bright); }
 
+/* Theme toggle */
+.theme-toggle {
+  width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line); border-radius: var(--r-sm);
+  background: transparent; color: var(--text-dim); cursor: pointer;
+  transition: all .2s var(--ease); flex-shrink: 0;
+}
+.theme-toggle:hover { color: var(--amber); border-color: var(--amber-line); }
+.theme-toggle .fa-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .fa-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .fa-sun { display: inline; }
+
 /* Bracket button (terminal CTA) */
 .btn-bracket {
   font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500;
@@ -242,6 +254,19 @@ main { position: relative; z-index: 1; }
 .hstat-label {
   font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase;
   letter-spacing: 0.12em; color: var(--text-faint);
+}
+
+/* Staggered entrance — stats "print" one by one like a readout */
+.hero-status .hstat { opacity: 0; transform: translateY(12px); }
+.hero-status.stats-in .hstat { animation: statIn .55s var(--ease-out) forwards; }
+.hero-status.stats-in .hstat:nth-child(1) { animation-delay: .00s; }
+.hero-status.stats-in .hstat:nth-child(2) { animation-delay: .12s; }
+.hero-status.stats-in .hstat:nth-child(3) { animation-delay: .24s; }
+.hero-status.stats-in .hstat:nth-child(4) { animation-delay: .36s; }
+@keyframes statIn { to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-status .hstat { opacity: 1; transform: none; animation: none; }
 }
 
 .hero-social { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.8rem; }
@@ -647,4 +672,36 @@ main { position: relative; z-index: 1; }
 
 @media (max-width: 420px) {
   .contact-sub { grid-template-columns: 1fr; }
+}
+
+/* ───────────────────────────────────────────────
+   LIGHT THEME — component adjustments
+─────────────────────────────────────────────── */
+:root[data-theme="light"] body { color: var(--text); }
+:root[data-theme="light"] ::selection { background: var(--amber); color: #fff; }
+
+:root[data-theme="light"] #main-nav.scrolled {
+  background: rgba(244,241,234,0.82);
+  border-bottom-color: var(--line);
+}
+:root[data-theme="light"] #mobile-menu { background: rgba(244,241,234,0.97); }
+
+/* Amber fills need light text on top in light mode */
+:root[data-theme="light"] .btn-primary { color: #fff; }
+:root[data-theme="light"] .btn-bracket:hover { color: #fff; }
+
+/* Soften heavy dark shadows on paper */
+:root[data-theme="light"] .terminal {
+  box-shadow: 0 30px 60px -34px rgba(40,30,10,0.35), 0 0 0 1px rgba(180,83,14,0.05);
+}
+:root[data-theme="light"] .kb-modal { box-shadow: 0 30px 60px -30px rgba(40,30,10,0.35); }
+
+/* Terminal window: keep signal dots crisp on light paper */
+:root[data-theme="light"] .dot-r { background: #FF5F56; }
+:root[data-theme="light"] .dot-y { background: #FFBD2E; }
+:root[data-theme="light"] .dot-g { background: #27C93F; }
+
+/* Page background subtle warmth */
+:root[data-theme="light"] body::before {
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 25%, transparent 78%);
 }

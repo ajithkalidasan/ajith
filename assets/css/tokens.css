@@ -53,6 +53,36 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ══════════════════════════════════════════════════════════════
+   LIGHT THEME — "paper terminal"
+   Warm off-white base · burnt-amber accent · same brutalist system
+   ══════════════════════════════════════════════════════════════ */
+:root[data-theme="light"] {
+  --bg:            #F4F1EA;
+  --bg-elev:       #FBF9F4;
+  --bg-elev-2:     #FFFFFF;
+  --bg-inset:      #ECE8DE;
+
+  --line:          #E1DDD1;
+  --line-bright:   #CEC9BA;
+  --grid:          rgba(30,26,16,0.028);
+
+  --text:          #1B1D1E;
+  --text-dim:      #53575C;
+  --text-faint:    #86897F;
+  --text-ghost:    #BDBAAF;
+
+  --amber:         #B4530E;   /* burnt amber — readable on paper */
+  --amber-soft:    #C8641A;
+  --amber-dim:     rgba(180,83,14,0.09);
+  --amber-line:    rgba(180,83,14,0.30);
+  --amber-glow:    rgba(180,83,14,0.16);
+
+  --sig-red:       #CF4B3F;
+  --sig-yellow:    #C08A00;
+  --sig-green:     #157F3B;
+}
+
 /* Tailwind CDN color hooks (so any reused utility classes resolve) */
 :root {
   --color-accent-primary: var(--amber);
