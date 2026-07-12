@@ -187,6 +187,27 @@
     gArmed = false;
   });
 
+  /* ── COPY BUTTONS (contact) ── */
+  $$('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const text = btn.getAttribute('data-copy');
+      let ok = false;
+      try { await navigator.clipboard.writeText(text); ok = true; }
+      catch (e) {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select();
+          ok = document.execCommand('copy'); document.body.removeChild(ta);
+        } catch (e2) { ok = false; }
+      }
+      const label = btn.textContent;
+      btn.textContent = ok ? 'copied ✓' : 'failed';
+      btn.classList.toggle('copied', ok);
+      setTimeout(() => { btn.textContent = label; btn.classList.remove('copied'); }, 1600);
+    });
+  });
+
   /* ── BACK TO TOP ── */
   const top = $('#back-to-top');
   if (top) {
