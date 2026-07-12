@@ -1,256 +1,170 @@
 /**
- * Portfolio — Ajith K
- * Main JavaScript: typewriter, scroll reveal, code window, nav, counters
+ * Portfolio — Ajith K · "Terminal" theme
+ * Boot-sequence hero, keyboard navigation, scroll reveal, counters, nav.
  */
-
 (function () {
   'use strict';
 
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $  = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
-  /* ────────────────────────────────
-     NAV — scroll effect + active link
-  ──────────────────────────────── */
+  /* ── NAV: scroll state + active link ── */
+  const nav = $('#main-nav');
+  const setNav = () => nav && nav.classList.toggle('scrolled', window.scrollY > 50);
+  window.addEventListener('scroll', setNav, { passive: true });
+  setNav();
 
-  const nav = document.getElementById('main-nav');
+  const sections = $$('section[id]');
+  const navLinks = $$('.nav-link');
+  function highlight() {
+    const y = window.scrollY + 140;
+    let current = '';
+    sections.forEach(s => { if (y >= s.offsetTop) current = s.id; });
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${current}`));
+  }
+  window.addEventListener('scroll', highlight, { passive: true });
+  highlight();
 
-  function updateNav() {
-    if (window.scrollY > 60) {
-      nav?.classList.add('scrolled');
-    } else {
-      nav?.classList.remove('scrolled');
-    }
+  /* ── MOBILE MENU ── */
+  const menuBtn = $('#menu-btn');
+  const mobile  = $('#mobile-menu');
+  let menuOpen = false;
+  if (menuBtn && mobile) {
+    const toggle = (open) => {
+      menuOpen = open;
+      mobile.classList.toggle('open', open);
+      menuBtn.innerHTML = open ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+      menuBtn.setAttribute('aria-expanded', String(open));
+    };
+    menuBtn.addEventListener('click', () => toggle(!menuOpen));
+    $$('a', mobile).forEach(a => a.addEventListener('click', () => toggle(false)));
   }
 
-  window.addEventListener('scroll', updateNav, { passive: true });
-  updateNav();
-
-  // Active nav link on scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks  = document.querySelectorAll('.nav-link');
-
-  function highlightNav() {
-    const scrollY = window.scrollY + 120;
-    sections.forEach(section => {
-      if (scrollY >= section.offsetTop && scrollY < section.offsetTop + section.offsetHeight) {
-        const id = section.getAttribute('id');
-        navLinks.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-        });
-      }
-    });
-  }
-
-  window.addEventListener('scroll', highlightNav, { passive: true });
-  highlightNav();
-
-  /* ────────────────────────────────
-     MOBILE MENU
-  ──────────────────────────────── */
-
-  const menuBtn    = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  let menuOpen     = false;
-
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      mobileMenu.classList.toggle('open', menuOpen);
-      menuBtn.innerHTML = menuOpen
-        ? '<i class="fas fa-times"></i>'
-        : '<i class="fas fa-bars"></i>';
-      menuBtn.setAttribute('aria-expanded', menuOpen);
-    });
-
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuOpen = false;
-        mobileMenu.classList.remove('open');
-        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        menuBtn.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  /* ────────────────────────────────
-     SMOOTH SCROLL
-  ──────────────────────────────── */
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      const id = anchor.getAttribute('href');
+  /* ── SMOOTH SCROLL ── */
+  $$('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
       if (id === '#') return;
-      const target = document.querySelector(id);
-      if (!target) return;
+      const t = $(id);
+      if (!t) return;
       e.preventDefault();
-      const offset = 80;
-      window.scrollTo({
-        top: target.offsetTop - offset,
-        behavior: reducedMotion ? 'auto' : 'smooth'
-      });
+      window.scrollTo({ top: t.offsetTop - 70, behavior: reduced ? 'auto' : 'smooth' });
     });
   });
 
-  /* ────────────────────────────────
-     SCROLL REVEAL
-  ──────────────────────────────── */
-
-  if (!reducedMotion) {
-    const revealEls = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          revealObserver.unobserve(entry.target);
-        }
+  /* ── SCROLL REVEAL ── */
+  const revealEls = $$('.reveal');
+  if (!reduced && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) { en.target.classList.add('revealed'); io.unobserve(en.target); }
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-    revealEls.forEach(el => revealObserver.observe(el));
+    revealEls.forEach(el => io.observe(el));
   } else {
-    document.querySelectorAll('.reveal').forEach(el => {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    });
+    revealEls.forEach(el => el.classList.add('revealed'));
   }
 
-  /* ────────────────────────────────
-     TYPEWRITER
-  ──────────────────────────────── */
-
-  const typeEl = document.getElementById('typewriter');
-  const roles  = ['Django Developer', 'FastAPI Engineer', 'Odoo ERP Specialist', 'Backend Developer'];
-  let roleIdx  = 0;
-  let charIdx  = 0;
-  let deleting = false;
-  let speed    = 100;
-  let timer;
-
-  function type() {
-    if (!typeEl) return;
-    const current = roles[roleIdx];
-
-    if (reducedMotion) {
-      typeEl.textContent = current;
-      roleIdx = (roleIdx + 1) % roles.length;
-      timer = setTimeout(type, 3000);
-      return;
-    }
-
-    if (deleting) {
-      typeEl.textContent = current.slice(0, charIdx - 1);
-      charIdx--;
-      speed = 45;
-    } else {
-      typeEl.textContent = current.slice(0, charIdx + 1);
-      charIdx++;
-      speed = 95;
-    }
-
-    if (!deleting && charIdx === current.length) {
-      speed = 2200;
-      deleting = true;
-    } else if (deleting && charIdx === 0) {
-      deleting = false;
-      roleIdx  = (roleIdx + 1) % roles.length;
-      speed    = 400;
-    }
-
-    timer = setTimeout(type, speed);
-  }
-
-  if (typeEl) setTimeout(type, 800);
-  window.addEventListener('beforeunload', () => clearTimeout(timer));
-
-  /* ────────────────────────────────
-     STAT COUNTERS
-  ──────────────────────────────── */
-
-  const counterEls = document.querySelectorAll('.counter[data-target]');
-
-  if (counterEls.length && !reducedMotion) {
-    const counterObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el     = entry.target;
-        const target = parseInt(el.dataset.target, 10);
-        const dur    = 1400;
-        const step   = dur / target;
-        let current  = 0;
-
-        const tick = () => {
-          current++;
-          el.textContent = current;
-          if (current < target) setTimeout(tick, step);
-        };
-
+  /* ── STAT COUNTERS ── */
+  const counters = $$('.counter[data-target]');
+  if (counters.length && !reduced && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        const el = en.target, target = parseInt(el.dataset.target, 10);
+        let n = 0;
+        const step = Math.max(1200 / target, 40);
+        const tick = () => { n++; el.textContent = n; if (n < target) setTimeout(tick, step); };
         setTimeout(tick, step);
-        counterObserver.unobserve(el);
+        io.unobserve(el);
       });
-    }, { threshold: 0.5 });
-
-    counterEls.forEach(el => counterObserver.observe(el));
+    }, { threshold: 0.6 });
+    counters.forEach(el => io.observe(el));
   } else {
-    counterEls.forEach(el => { el.textContent = el.dataset.target; });
+    counters.forEach(el => { el.textContent = el.dataset.target; });
   }
 
-  /* ────────────────────────────────
-     CODE WINDOW FILE SWITCHER
-  ──────────────────────────────── */
+  /* ── BOOT TERMINAL (signature) ── */
+  const boot = $('#boot');
+  if (boot && !reduced) {
+    const seq = [
+      { cmd: true,  parts: [['prompt', 'ajith@portfolio'], ['plain', ':'], ['path', '~'], ['plain', '$ whoami']] },
+      { cmd: false, parts: [['out', '→ Ajith K · Backend Engineer']] },
+      { cmd: true,  parts: [['prompt', 'ajith@portfolio'], ['plain', ':'], ['path', '~'], ['plain', '$ cat stack.txt']] },
+      { cmd: false, parts: [['key', '→ Django · FastAPI · Odoo 18 · PostgreSQL']] },
+      { cmd: true,  parts: [['prompt', 'ajith@portfolio'], ['plain', ':'], ['path', '~'], ['plain', '$ ./status --now']] },
+      { cmd: false, parts: [['ok', '● open to freelance & full-time']] },
+    ];
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-  const codeTabs     = document.querySelectorAll('.code-tab');
-  const codeSnippets = document.querySelectorAll('.code-snippet');
-  let codeInterval;
-  let currentCode = 0;
+    async function typeSeg(lineEl, cls, text) {
+      const span = document.createElement('span');
+      if (cls !== 'plain') span.className = cls;
+      lineEl.appendChild(span);
+      for (const ch of text) { span.textContent += ch; await sleep(18 + Math.random() * 28); }
+    }
 
-  function switchCode(idx) {
-    codeTabs.forEach((t, i) => t.classList.toggle('active', i === idx));
-    codeSnippets.forEach((s, i) => {
-      s.classList.toggle('active', i === idx);
-    });
-    currentCode = idx;
+    async function run() {
+      boot.textContent = '';
+      for (const line of seq) {
+        const el = document.createElement('span');
+        el.className = 'tl';
+        boot.appendChild(el);
+        if (line.cmd) {
+          for (const [cls, text] of line.parts) await typeSeg(el, cls, text);
+          await sleep(340);
+        } else {
+          el.innerHTML = line.parts.map(([c, t]) =>
+            `<span class="${c}">${t.replace('&', '&amp;')}</span>`).join('');
+          await sleep(520);
+        }
+      }
+      const last = document.createElement('span');
+      last.className = 'tl';
+      last.innerHTML = '<span class="prompt">ajith@portfolio</span>:<span class="path">~</span>$ <span class="term-cursor"></span>';
+      boot.appendChild(last);
+    }
+    // small delay so the hero settles first
+    setTimeout(run, 650);
   }
 
-  codeTabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => {
-      clearInterval(codeInterval);
-      switchCode(i);
-      startCodeCycle();
-    });
+  /* ── KEYBOARD NAVIGATION + HELP MODAL ── */
+  const overlay = $('#kb-overlay');
+  const openHelp  = () => overlay && overlay.classList.add('open');
+  const closeHelp = () => overlay && overlay.classList.remove('open');
+  $('#kbd-open')?.addEventListener('click', openHelp);
+  $('#kb-close')?.addEventListener('click', closeHelp);
+  overlay?.addEventListener('click', e => { if (e.target === overlay) closeHelp(); });
+
+  const jump = { h: '#home', a: '#about', s: '#services', k: '#skills', w: '#work', c: '#contact', e: '#experience' };
+  let gArmed = false, gTimer;
+  const go = (sel) => { const t = $(sel); if (t) window.scrollTo({ top: t.offsetTop - 70, behavior: reduced ? 'auto' : 'smooth' }); };
+
+  document.addEventListener('keydown', (e) => {
+    const tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea' || e.metaKey || e.ctrlKey || e.altKey) return;
+
+    if (e.key === 'Escape') { closeHelp(); return; }
+    if (e.key === '?') { e.preventDefault(); overlay.classList.toggle('open'); return; }
+
+    if (gArmed && jump[e.key]) { e.preventDefault(); go(jump[e.key]); gArmed = false; clearTimeout(gTimer); return; }
+
+    if (e.key === 'g') { gArmed = true; clearTimeout(gTimer); gTimer = setTimeout(() => gArmed = false, 900); return; }
+    if (e.key === 'j') { window.scrollBy({ top: 140, behavior: 'smooth' }); return; }
+    if (e.key === 'k') { window.scrollBy({ top: -140, behavior: 'smooth' }); return; }
+    gArmed = false;
   });
 
-  function startCodeCycle() {
-    if (reducedMotion) return;
-    codeInterval = setInterval(() => {
-      switchCode((currentCode + 1) % codeTabs.length);
-    }, 4500);
+  /* ── BACK TO TOP ── */
+  const top = $('#back-to-top');
+  if (top) {
+    window.addEventListener('scroll', () => top.classList.toggle('visible', window.scrollY > 500), { passive: true });
+    top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' }));
   }
 
-  if (codeTabs.length) startCodeCycle();
-
-  /* ────────────────────────────────
-     BACK TO TOP
-  ──────────────────────────────── */
-
-  const backToTop = document.getElementById('back-to-top');
-
-  if (backToTop) {
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('visible', window.scrollY > 400);
-    }, { passive: true });
-
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
-    });
-  }
-
-  /* ────────────────────────────────
-     CONSOLE EASTER EGG
-  ──────────────────────────────── */
-
-  console.log('%c⚡ Ajith K — Backend Developer', 'font-size:15px;font-weight:bold;color:#4D80FF;');
-  console.log('%cPython · Odoo · Django · PostgreSQL', 'font-size:12px;color:#8B96B5;');
-  console.log('%c→ https://github.com/ajithkalidasan', 'font-size:12px;color:#4D80FF;');
-
+  /* ── CONSOLE EASTER EGG ── */
+  console.log('%c$ whoami', 'font-family:monospace;font-size:13px;color:#FFB000;');
+  console.log('%c→ Ajith K · Backend Engineer — Django · FastAPI · Odoo', 'font-family:monospace;font-size:12px;color:#9AA0AB;');
+  console.log('%c→ github.com/ajithkalidasan', 'font-family:monospace;font-size:12px;color:#FFB000;');
 })();

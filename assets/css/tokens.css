@@ -1,210 +1,63 @@
-/*
- * Design Tokens — Modern Premium Light Theme
- * Portfolio: Ajith K — Django & FastAPI Developer | Odoo ERP Specialist
- */
+/* ══════════════════════════════════════════════════════════════
+   DESIGN TOKENS — "Terminal" theme
+   Ajith K · Backend Engineer Portfolio
+   Near-black brutalist base · single amber accent · monospace system
+   ══════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ────────────────────────────────
-     BASE SURFACES
-  ──────────────────────────────── */
-  --color-base:       #F4F7FB;   /* page background — cool off-white */
-  --color-surface-1:  #FFFFFF;   /* cards, panels */
-  --color-surface-2:  #EDF1FA;   /* hover states, subtle fills */
-  --color-surface-3:  #DDE5F5;   /* borders, dividers */
-  --color-surface-4:  #C9D6ED;   /* strong borders */
+  /* ── Surfaces ─────────────────────────────── */
+  --bg:            #0A0B0D;   /* base near-black          */
+  --bg-elev:       #0F1114;   /* panels / cards           */
+  --bg-elev-2:     #14171B;   /* raised / hover           */
+  --bg-inset:      #070809;   /* terminal body            */
 
-  /* ────────────────────────────────
-     TEXT
-  ──────────────────────────────── */
-  --color-text-primary:   #0B1526;   /* near-black, slight blue tint */
-  --color-text-secondary: #475569;   /* slate-600 */
-  --color-text-muted:     #8A97A8;   /* slate-400ish */
-  --color-text-inverse:   #FFFFFF;
+  /* ── Lines ────────────────────────────────── */
+  --line:          #20242B;   /* hairline border          */
+  --line-bright:   #2C323B;   /* border on hover          */
+  --grid:          rgba(255,255,255,0.022);
 
-  /* ────────────────────────────────
-     ACCENT PALETTE
-  ──────────────────────────────── */
-  --color-accent-primary:       #1A56DB;   /* strong professional blue */
-  --color-accent-primary-hover: #1745BA;
-  --color-accent-primary-light: rgba(26, 86, 219, 0.08);
-  --color-accent-purple:        #7E3AF2;
-  --color-accent-warm:          #E05D1A;   /* orange — high-converting CTA */
-  --color-accent-warm-hover:    #C94E10;
-  --color-accent-warm-light:    rgba(224, 93, 26, 0.08);
-  --color-accent-green:         #0B7C5A;   /* available/success */
-  --color-accent-green-light:   rgba(11, 124, 90, 0.10);
-  --color-accent-amber:         #B45309;
+  /* ── Text ─────────────────────────────────── */
+  --text:          #E9E9E6;   /* primary off-white        */
+  --text-dim:      #9AA0AB;   /* secondary                */
+  --text-faint:    #5A616C;   /* muted / captions         */
+  --text-ghost:    #3A4049;   /* faintest structural      */
 
-  /* ────────────────────────────────
-     GRADIENTS
-  ──────────────────────────────── */
-  --color-accent-gradient:      linear-gradient(135deg, #1A56DB 0%, #7E3AF2 100%);
-  --color-accent-gradient-warm: linear-gradient(135deg, #E05D1A 0%, #F97316 100%);
+  /* ── Accent: terminal amber ──────────────── */
+  --amber:         #FFB000;
+  --amber-soft:    #FFC64D;
+  --amber-dim:     rgba(255,176,0,0.10);
+  --amber-line:    rgba(255,176,0,0.32);
+  --amber-glow:    rgba(255,176,0,0.16);
 
-  /* ────────────────────────────────
-     TECH BRAND COLORS
-  ──────────────────────────────── */
-  --color-python:   #3572A5;
-  --color-django:   #092E20;
-  --color-odoo:     #874EA6;
-  --color-postgres: #336791;
-  --color-docker:   #2496ED;
-  --color-git:      #F05032;
-  --color-fastapi:  #009688;
+  /* ── Terminal signal colors (used sparingly) */
+  --sig-red:       #FF5F56;
+  --sig-yellow:    #FFBD2E;
+  --sig-green:     #27C93F;
 
-  /* ────────────────────────────────
-     BORDERS
-  ──────────────────────────────── */
-  --border-subtle:  rgba(11, 21, 38, 0.06);
-  --border-default: rgba(11, 21, 38, 0.10);
-  --border-strong:  rgba(11, 21, 38, 0.18);
-  --border-accent:  rgba(26, 86, 219, 0.30);
+  /* ── Typography ───────────────────────────── */
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', ui-monospace, Consolas, monospace;
 
-  /* ────────────────────────────────
-     SHADOWS (light theme — visible depth)
-  ──────────────────────────────── */
-  --shadow-xs:  0 1px 2px rgba(11, 21, 38, 0.04);
-  --shadow-sm:  0 1px 4px rgba(11, 21, 38, 0.05), 0 4px 8px rgba(11, 21, 38, 0.04);
-  --shadow-md:  0 2px 8px rgba(11, 21, 38, 0.07), 0 8px 20px rgba(11, 21, 38, 0.06);
-  --shadow-lg:  0 8px 24px rgba(11, 21, 38, 0.10), 0 16px 40px rgba(11, 21, 38, 0.08);
-  --shadow-xl:  0 12px 40px rgba(11, 21, 38, 0.12), 0 24px 64px rgba(11, 21, 38, 0.08);
-  --shadow-glow:      0 0 32px rgba(26, 86, 219, 0.14), 0 0 64px rgba(26, 86, 219, 0.06);
-  --shadow-glow-warm: 0 0 32px rgba(224, 93, 26, 0.18);
-  --shadow-card:      0 2px 12px rgba(11, 21, 38, 0.06), 0 6px 24px rgba(11, 21, 38, 0.05);
-  --shadow-card-hover: 0 8px 32px rgba(11, 21, 38, 0.12), 0 2px 8px rgba(26, 86, 219, 0.10);
+  /* ── Radius (brutalist = tight) ───────────── */
+  --r-sm: 2px;
+  --r:    4px;
+  --r-lg: 6px;
 
-  /* ────────────────────────────────
-     GLASS / NAV
-  ──────────────────────────────── */
-  --glass-bg:        rgba(244, 247, 251, 0.80);
-  --glass-bg-strong: rgba(244, 247, 251, 0.96);
-  --glass-border:    rgba(11, 21, 38, 0.08);
-  --glass-blur:      16px;
+  /* ── Layout ───────────────────────────────── */
+  --maxw: 1120px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
 
-  /* ────────────────────────────────
-     TYPOGRAPHY
-  ──────────────────────────────── */
-  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-family-mono:    'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-
-  --font-h1:      clamp(2.8rem, 5.5vw + 1rem, 5.5rem);
-  --font-h2:      clamp(2rem,   4vw + 0.5rem, 3.5rem);
-  --font-h3:      clamp(1.25rem, 2.5vw, 1.75rem);
-  --font-h4:      clamp(1.1rem,  2vw,   1.35rem);
-  --font-body:    1rem;
-  --font-body-lg: 1.125rem;
-  --font-small:   0.875rem;
-  --font-xs:      0.75rem;
-
-  --line-height-tight:   1.1;
-  --line-height-snug:    1.25;
-  --line-height-normal:  1.5;
-  --line-height-relaxed: 1.75;
-
-  --tracking-tight:  -0.03em;
-  --tracking-normal:  0;
-  --tracking-wide:    0.04em;
-  --tracking-wider:   0.08em;
-
-  --font-weight-normal:    400;
-  --font-weight-medium:    500;
-  --font-weight-semibold:  600;
-  --font-weight-bold:      700;
-  --font-weight-extrabold: 800;
-
-  /* ────────────────────────────────
-     SPACING
-  ──────────────────────────────── */
-  --space-1:  0.25rem;
-  --space-2:  0.5rem;
-  --space-3:  0.75rem;
-  --space-4:  1rem;
-  --space-5:  1.25rem;
-  --space-6:  1.5rem;
-  --space-8:  2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-  --space-24: 6rem;
-
-  /* ────────────────────────────────
-     BORDER RADIUS
-  ──────────────────────────────── */
-  --radius-sm:   0.375rem;
-  --radius-md:   0.5rem;
-  --radius-lg:   0.875rem;
-  --radius-xl:   1.25rem;
-  --radius-2xl:  1.75rem;
-  --radius-full: 9999px;
-
-  /* ────────────────────────────────
-     EASING & DURATION
-  ──────────────────────────────── */
-  --ease-spring:      cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-spring-soft: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-out:         cubic-bezier(0.25, 0.1, 0.25, 1);
-  --ease-in-out:      cubic-bezier(0.42, 0, 0.58, 1);
-
-  --duration-instant: 50ms;
-  --duration-fast:    150ms;
-  --duration-normal:  300ms;
-  --duration-slow:    500ms;
-  --duration-slower:  800ms;
-
-  /* ────────────────────────────────
-     Z-INDEX
-  ──────────────────────────────── */
-  --z-below: -1;  --z-base: 0;   --z-above: 1;
-  --z-dropdown: 10; --z-sticky: 20; --z-fixed: 30;
-  --z-modal-backdrop: 40; --z-modal: 50; --z-tooltip: 60;
+  /* ── Motion ───────────────────────────────── */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ────────────────────────────────
-   REDUCED MOTION
-──────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --duration-instant: 0.01ms; --duration-fast: 0.01ms;
-    --duration-normal:  0.01ms; --duration-slow: 0.01ms;
-    --duration-slower:  0.01ms;
-  }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* ────────────────────────────────
-   UTILITY CLASSES
-──────────────────────────────── */
-.text-gradient {
-  background: var(--color-accent-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.text-gradient-warm {
-  background: var(--color-accent-gradient-warm);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.text-gradient-animated {
-  background: linear-gradient(135deg, #1A56DB, #7E3AF2, #E05D1A, #1A56DB);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradient-shift 8s ease infinite;
-}
-
-@keyframes gradient-shift {
-  0%   { background-position: 0%   50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0%   50%; }
+/* Tailwind CDN color hooks (so any reused utility classes resolve) */
+:root {
+  --color-accent-primary: var(--amber);
+  --color-accent-green:   var(--sig-green);
+  --color-text-primary:   var(--text);
+  --color-text-secondary: var(--text-dim);
+  --color-text-muted:     var(--text-faint);
 }

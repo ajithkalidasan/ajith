@@ -4,727 +4,615 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#F4F7FB">
+  <meta name="theme-color" content="#0A0B0D">
   <meta name="description"
-    content="Ajith K — Django & FastAPI Developer, Odoo ERP Specialist. I build high-performance Python backends and customize Odoo for businesses that want to move faster. Available for freelance and full-time.">
+    content="Ajith K — Backend Engineer. Django & FastAPI backends, Odoo ERP customization, API integration and automation. Available for freelance and full-time.">
   <meta name="keywords"
     content="Python Developer, Odoo ERP, Django, FastAPI, PostgreSQL, API Integration, Backend Developer, Freelance, Bangalore">
   <meta name="author" content="Ajith K">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Ajith K | Backend Developer & Odoo ERP Specialist">
+  <meta property="og:title" content="Ajith K | Backend Engineer — Django · FastAPI · Odoo">
   <meta property="og:description"
     content="Python backends, Odoo ERP customization, and API integration — built for real businesses.">
   <meta property="og:type" content="website">
 
-  <title>Ajith K | Django & FastAPI Developer | Odoo ERP Specialist</title>
+  <title>Ajith K — Backend Engineer · Django · FastAPI · Odoo</title>
 
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Fonts: Space Grotesk (display) · Inter (body) · JetBrains Mono (mono) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            base: '#F4F7FB',
-            surface: { 1: '#FFFFFF', 2: '#EDF1FA', 3: '#DDE5F5' },
-            accent: { primary: '#1A56DB', purple: '#7E3AF2', warm: '#E05D1A', green: '#0B7C5A' },
-            text: { primary: '#0B1526', secondary: '#475569', muted: '#8A97A8' }
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['"JetBrains Mono"', '"Fira Code"', 'Consolas', 'monospace']
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Custom Styles -->
+  <!-- Styles -->
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body class="bg-base text-text-primary antialiased">
+<body>
 
-  <!-- Skip Link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- ══════════════════════════════════
-       NAVIGATION
-  ══════════════════════════════════ -->
-  <nav id="main-nav" class="px-6">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
+  <!-- ══════════════ NAV ══════════════ -->
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo" aria-label="Ajith K — Home">
+        <span class="c">~/</span>ajith<span class="p">.k</span>
+      </a>
 
-      <!-- Logo -->
-      <a href="#home" class="nav-logo" aria-label="Ajith K — Home">AK</a>
-
-      <!-- Desktop Links -->
-      <div class="hidden lg:flex items-center gap-1">
-        <a href="#home"          class="nav-link active">Home</a>
-        <a href="#about"         class="nav-link">About</a>
-        <a href="#services"      class="nav-link">Services</a>
-        <a href="#skills"        class="nav-link">Skills</a>
-        <a href="#experience"    class="nav-link">Experience</a>
-        <a href="#work"          class="nav-link">Projects</a>
-        <a href="#certifications" class="nav-link">Certs</a>
-        <a href="#contact"       class="nav-link">Contact</a>
+      <div class="nav-links">
+        <a href="#about"    class="nav-link">about</a>
+        <a href="#services" class="nav-link">services</a>
+        <a href="#skills"   class="nav-link">stack</a>
+        <a href="#work"     class="nav-link">work</a>
+        <a href="#contact"  class="nav-link">contact</a>
       </div>
 
-      <!-- CTA + Mobile Menu -->
-      <div class="flex items-center gap-3">
-        <a href="#contact" class="hidden md:inline-flex btn btn-nav">Hire Me</a>
-        <button id="menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl border border-white/10 text-text-secondary hover:text-text-primary transition-colors" aria-label="Toggle menu">
+      <div class="nav-right">
+        <button class="kbd-hint" id="kbd-open" aria-label="Keyboard shortcuts">
+          press <kbd>?</kbd>
+        </button>
+        <a href="#contact" class="btn-bracket">[ hire me ]</a>
+        <button class="menu-btn" id="menu-btn" aria-label="Toggle menu" aria-expanded="false">
           <i class="fas fa-bars"></i>
         </button>
       </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="lg:hidden">
-      <div class="max-w-7xl mx-auto py-2">
-        <a href="#home"           class="mobile-nav-link"><i class="fas fa-home w-4 text-accent-primary"></i>Home</a>
-        <a href="#about"          class="mobile-nav-link"><i class="fas fa-user w-4 text-accent-primary"></i>About</a>
-        <a href="#services"       class="mobile-nav-link"><i class="fas fa-briefcase w-4 text-accent-primary"></i>Services</a>
-        <a href="#skills"         class="mobile-nav-link"><i class="fas fa-code w-4 text-accent-primary"></i>Skills</a>
-        <a href="#experience"     class="mobile-nav-link"><i class="fas fa-timeline w-4 text-accent-primary"></i>Experience</a>
-        <a href="#work"           class="mobile-nav-link"><i class="fas fa-laptop-code w-4 text-accent-primary"></i>Projects</a>
-        <a href="#certifications" class="mobile-nav-link"><i class="fas fa-certificate w-4 text-accent-primary"></i>Certifications</a>
-        <a href="#contact"        class="mobile-nav-link"><i class="fas fa-envelope w-4 text-accent-primary"></i>Contact</a>
-      </div>
+    <div id="mobile-menu">
+      <a href="#about"    class="mobile-nav-link"><span class="hx">0x01</span> about</a>
+      <a href="#services" class="mobile-nav-link"><span class="hx">0x02</span> services</a>
+      <a href="#skills"   class="mobile-nav-link"><span class="hx">0x03</span> stack</a>
+      <a href="#experience" class="mobile-nav-link"><span class="hx">0x04</span> experience</a>
+      <a href="#work"     class="mobile-nav-link"><span class="hx">0x05</span> work</a>
+      <a href="#certifications" class="mobile-nav-link"><span class="hx">0x06</span> certs</a>
+      <a href="#contact"  class="mobile-nav-link"><span class="hx">0x07</span> contact</a>
     </div>
   </nav>
 
   <main id="main-content">
 
-    <!-- ══════════════════════════════════
-         HERO
-    ══════════════════════════════════ -->
-    <section id="home" class="hero-section px-6">
-      <div class="hero-grid-bg"></div>
+    <!-- ══════════════ HERO / BOOT ══════════════ -->
+    <section id="home" class="hero">
+      <div class="wrap hero-grid">
 
-      <div class="max-w-7xl mx-auto w-full relative z-10">
-        <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+        <!-- Left: thesis -->
+        <div class="reveal">
+          <div class="hero-eyebrow">
+            <span class="dot"></span>// system.init — available for work
+          </div>
 
-          <!-- Left: Content -->
-          <div class="w-full lg:w-3/5 reveal">
-            <!-- Availability badge -->
-            <div class="hero-badge">
-              <span class="badge-dot"></span>
-              Available for Freelance &amp; Full-Time
+          <h1 class="hero-title">
+            I build <span class="amber">backends</span><br>
+            businesses<br>
+            actually run on.
+          </h1>
+
+          <p class="hero-lede">
+            Backend engineer specializing in high-performance Django &amp; FastAPI systems
+            and Odoo ERP customization. Clean architecture, real automation, results you can measure.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary">./hire <i class="fas fa-arrow-right" style="font-size:0.7rem;"></i></a>
+            <a href="#work" class="btn btn-ghost">view work</a>
+          </div>
+
+          <div class="hero-status">
+            <div class="hstat">
+              <div class="hstat-num"><span class="counter" data-target="1">0</span>+</div>
+              <div class="hstat-label">yrs exp</div>
             </div>
-
-            <!-- Headline -->
-            <h1 class="hero-title">
-              Django &amp; FastAPI<br>
-              <span class="text-gradient-animated">Developer.</span><br>
-              Odoo ERP Specialist.
-            </h1>
-
-            <!-- Typewriter -->
-            <div class="hero-type-line">
-              <span class="hero-type-prefix">I'm a&nbsp;</span>
-              <span id="typewriter" class="hero-type-text"></span>
-              <span class="hero-cursor" aria-hidden="true"></span>
+            <div class="hstat">
+              <div class="hstat-num"><span class="counter" data-target="10">0</span>+</div>
+              <div class="hstat-label">projects</div>
             </div>
-
-            <!-- Tagline -->
-            <p class="hero-tagline">
-              I build high-performance Django &amp; FastAPI backends and customize Odoo ERP
-              systems for businesses that want clean code, real automation, and results they can measure.
-            </p>
-
-            <!-- CTAs -->
-            <div class="hero-cta-row">
-              <a href="#contact" class="btn btn-primary">
-                Hire Me &nbsp;<i class="fas fa-arrow-right text-xs"></i>
-              </a>
-              <a href="#work" class="btn btn-secondary">
-                View My Work
-              </a>
+            <div class="hstat">
+              <div class="hstat-num"><span class="counter" data-target="10">0</span>+</div>
+              <div class="hstat-label">apis</div>
             </div>
-
-            <!-- Stats -->
-            <div class="hero-stats reveal delay-2">
-              <div class="stat-item">
-                <div class="stat-number"><span class="counter" data-target="1">0</span>+</div>
-                <div class="stat-label">Year Experience</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number"><span class="counter" data-target="10">0</span>+</div>
-                <div class="stat-label">Projects Delivered</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number"><span class="counter" data-target="10">0</span>+</div>
-                <div class="stat-label">APIs Integrated</div>
-              </div>
-              <div class="stat-item">
-                <div class="stat-number" style="color:var(--color-accent-green);">Open</div>
-                <div class="stat-label">to Work</div>
-              </div>
-            </div>
-
-            <!-- Socials -->
-            <div class="social-row">
-              <span style="font-size:0.65rem;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:0.1em;flex-shrink:0;">Connect</span>
-              <a href="https://github.com/ajithkalidasan"       class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              <a href="https://www.linkedin.com/in/kalidasanajith/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-              <a href="https://twitter.com/ajithsview"           class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-              <a href="https://stackoverflow.com/users/16570738/ajith-k" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a>
+            <div class="hstat">
+              <div class="hstat-num ok">open</div>
+              <div class="hstat-label">to work</div>
             </div>
           </div>
 
-          <!-- Right: Code Window -->
-          <div class="w-full lg:w-2/5 reveal delay-2 hide-mobile">
-            <div class="code-window" aria-hidden="true">
-              <!-- Chrome -->
-              <div class="code-window-chrome">
-                <div class="code-dots">
-                  <span class="code-dot code-dot-red"></span>
-                  <span class="code-dot code-dot-yellow"></span>
-                  <span class="code-dot code-dot-green"></span>
-                </div>
-                <div class="code-tabs">
-                  <button class="code-tab active" data-file="0">sale_order.py</button>
-                  <button class="code-tab" data-file="1">views.py</button>
-                  <button class="code-tab" data-file="2">automation.py</button>
-                </div>
-              </div>
-
-              <!-- Code Snippets -->
-              <div class="code-body">
-
-                <!-- Snippet 0: Odoo -->
-                <div class="code-snippet active" id="code-0">
-                  <div class="code-line"><span class="code-line-num">1</span><span class="ck">from</span> <span class="co">odoo</span> <span class="ck">import</span> <span class="co">models, fields, api</span></div>
-                  <div class="code-line"><span class="code-line-num">2</span><span class="ck">from</span> <span class="co">odoo.exceptions</span> <span class="ck">import</span> <span class="co">ValidationError</span></div>
-                  <div class="code-line"><span class="code-line-num">3</span></div>
-                  <div class="code-line"><span class="code-line-num">4</span><span class="ck">class</span> <span class="cc">SaleOrder</span><span class="co">(models.Model):</span></div>
-                  <div class="code-line"><span class="code-line-num">5</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;_inherit = </span><span class="cs">'sale.order'</span></div>
-                  <div class="code-line"><span class="code-line-num">6</span></div>
-                  <div class="code-line"><span class="code-line-num">7</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;priority_level = fields.Selection([</span></div>
-                  <div class="code-line"><span class="code-line-num">8</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(</span><span class="cs">'normal'</span><span class="co">, </span><span class="cs">'Normal'</span><span class="co">),</span></div>
-                  <div class="code-line"><span class="code-line-num">9</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(</span><span class="cs">'high'</span><span class="co">, </span><span class="cs">'High'</span><span class="co">),</span></div>
-                  <div class="code-line"><span class="code-line-num">10</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;], default=</span><span class="cs">'normal'</span><span class="co">)</span></div>
-                  <div class="code-line"><span class="code-line-num">11</span></div>
-                  <div class="code-line"><span class="code-line-num">12</span><span class="cd">&nbsp;&nbsp;&nbsp;&nbsp;@api.constrains</span><span class="co">(</span><span class="cs">'amount_total'</span><span class="co">)</span></div>
-                  <div class="code-line"><span class="code-line-num">13</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ck">def</span> <span class="cf">_check_limit</span><span class="co">(self):</span></div>
-                  <div class="code-line"><span class="code-line-num">14</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ck">for</span> <span class="co">rec</span> <span class="ck">in</span> <span class="co">self:</span></div>
-                  <div class="code-line"><span class="code-line-num">15</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ck">if</span> <span class="co">rec.amount_total &gt; </span><span class="cn">1_000_000</span><span class="co">:</span></div>
-                  <div class="code-line"><span class="code-line-num">16</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ck">raise</span> <span class="cc">ValidationError</span><span class="co">(</span><span class="cs">"Exceeds limit."</span><span class="co">)</span></div>
-                </div>
-
-                <!-- Snippet 1: Django -->
-                <div class="code-snippet" id="code-1">
-                  <div class="code-line"><span class="code-line-num">1</span><span class="ck">from</span> <span class="co">rest_framework</span> <span class="ck">import</span> <span class="co">viewsets, permissions</span></div>
-                  <div class="code-line"><span class="code-line-num">2</span><span class="ck">from</span> <span class="co">rest_framework.decorators</span> <span class="ck">import</span> <span class="co">action</span></div>
-                  <div class="code-line"><span class="code-line-num">3</span><span class="ck">from</span> <span class="co">rest_framework.response</span> <span class="ck">import</span> <span class="co">Response</span></div>
-                  <div class="code-line"><span class="code-line-num">4</span><span class="ck">from</span> <span class="co">.models</span> <span class="ck">import</span> <span class="co">Product</span></div>
-                  <div class="code-line"><span class="code-line-num">5</span></div>
-                  <div class="code-line"><span class="code-line-num">6</span><span class="ck">class</span> <span class="cc">ProductViewSet</span><span class="co">(viewsets.ModelViewSet):</span></div>
-                  <div class="code-line"><span class="code-line-num">7</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;queryset = Product.objects.select_related(</span></div>
-                  <div class="code-line"><span class="code-line-num">8</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="cs">'category'</span><span class="co">, </span><span class="cs">'supplier'</span></div>
-                  <div class="code-line"><span class="code-line-num">9</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;).prefetch_related(</span><span class="cs">'tags'</span><span class="co">)</span></div>
-                  <div class="code-line"><span class="code-line-num">10</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;permission_classes = [</span></div>
-                  <div class="code-line"><span class="code-line-num">11</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;permissions.IsAuthenticated</span></div>
-                  <div class="code-line"><span class="code-line-num">12</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;]</span></div>
-                  <div class="code-line"><span class="code-line-num">13</span></div>
-                  <div class="code-line"><span class="code-line-num">14</span><span class="cd">&nbsp;&nbsp;&nbsp;&nbsp;@action</span><span class="co">(detail=</span><span class="ck">False</span><span class="co">)</span></div>
-                  <div class="code-line"><span class="code-line-num">15</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ck">def</span> <span class="cf">low_stock</span><span class="co">(self, request):</span></div>
-                  <div class="code-line"><span class="code-line-num">16</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;qs = self.get_queryset().filter(stock__lt=</span><span class="cn">10</span><span class="co">)</span></div>
-                  <div class="code-line"><span class="code-line-num">17</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ck">return</span> <span class="cc">Response</span><span class="co">(self.get_serializer(qs, many=</span><span class="ck">True</span><span class="co">).data)</span></div>
-                </div>
-
-                <!-- Snippet 2: Automation -->
-                <div class="code-snippet" id="code-2">
-                  <div class="code-line"><span class="code-line-num">1</span><span class="ck">import</span> <span class="co">schedule, time, psycopg2</span></div>
-                  <div class="code-line"><span class="code-line-num">2</span><span class="ck">from</span> <span class="co">datetime</span> <span class="ck">import</span> <span class="co">datetime</span></div>
-                  <div class="code-line"><span class="code-line-num">3</span></div>
-                  <div class="code-line"><span class="code-line-num">4</span><span class="cm"># Sync stock every 30 minutes</span></div>
-                  <div class="code-line"><span class="code-line-num">5</span><span class="ck">def</span> <span class="cf">sync_inventory</span><span class="co">():</span></div>
-                  <div class="code-line"><span class="code-line-num">6</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;conn = psycopg2.connect(</span><span class="co">DATABASE_URL</span><span class="co">)</span></div>
-                  <div class="code-line"><span class="code-line-num">7</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;cur  = conn.cursor()</span></div>
-                  <div class="code-line"><span class="code-line-num">8</span></div>
-                  <div class="code-line"><span class="code-line-num">9</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;cur.execute(</span><span class="cs">"""</span></div>
-                  <div class="code-line"><span class="code-line-num">10</span><span class="cs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UPDATE products SET</span></div>
-                  <div class="code-line"><span class="code-line-num">11</span><span class="cs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stock_qty = api.qty</span></div>
-                  <div class="code-line"><span class="code-line-num">12</span><span class="cs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM api_stock api</span></div>
-                  <div class="code-line"><span class="code-line-num">13</span><span class="cs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHERE products.sku = api.sku</span></div>
-                  <div class="code-line"><span class="code-line-num">14</span><span class="cs">&nbsp;&nbsp;&nbsp;&nbsp;"""</span><span class="co">)</span></div>
-                  <div class="code-line"><span class="code-line-num">15</span><span class="co">&nbsp;&nbsp;&nbsp;&nbsp;conn.commit()</span></div>
-                  <div class="code-line"><span class="code-line-num">16</span></div>
-                  <div class="code-line"><span class="code-line-num">17</span><span class="co">schedule.every(</span><span class="cn">30</span><span class="co">).minutes.do(sync_inventory)</span></div>
-                </div>
-              </div>
-
-              <!-- Status bar -->
-              <div class="code-window-footer">
-                <span>● Python 3.11</span>
-                <span>UTF-8</span>
-                <span>Odoo 18 / Django 5</span>
-              </div>
-            </div>
+          <div class="hero-social">
+            <span class="lbl">connect</span>
+            <a href="https://github.com/ajithkalidasan" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/kalidasanajith/" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/ajithsview" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://stackoverflow.com/users/16570738/ajith-k" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a>
           </div>
-
-        </div><!-- /flex row -->
-
-        <!-- Scroll indicator -->
-        <div class="flex flex-col items-center gap-2 mt-16 md:mt-12">
-          <div style="width:1px;height:48px;background:linear-gradient(to bottom,transparent,var(--color-text-muted));"></div>
-          <span style="font-size:0.6rem;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:0.12em;">Scroll</span>
         </div>
 
-      </div><!-- /max-w -->
+        <!-- Right: boot terminal (signature) -->
+        <div class="hero-terminal-col reveal d2">
+          <div class="terminal" aria-hidden="true">
+            <div class="term-bar">
+              <div class="term-dots"><i class="dot-r"></i><i class="dot-y"></i><i class="dot-g"></i></div>
+              <div class="term-title"><span class="amber">ajith</span>@portfolio: ~/whoami</div>
+            </div>
+            <div class="term-body" id="boot">
+              <span class="tl"><span class="prompt">ajith@portfolio</span>:<span class="path">~</span>$ whoami</span>
+              <span class="tl"><span class="out">→ Ajith K · Backend Engineer</span></span>
+              <span class="tl"><span class="prompt">ajith@portfolio</span>:<span class="path">~</span>$ cat stack.txt</span>
+              <span class="tl"><span class="key">→ Django · FastAPI · Odoo 18 · PostgreSQL</span></span>
+              <span class="tl"><span class="prompt">ajith@portfolio</span>:<span class="path">~</span>$ ./status --now</span>
+              <span class="tl"><span class="ok">● open to freelance &amp; full-time</span></span>
+              <span class="tl"><span class="prompt">ajith@portfolio</span>:<span class="path">~</span>$ <span class="term-cursor"></span></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true">
+        <span>scroll</span>
+        <div class="bar"></div>
+      </div>
     </section>
 
 
-    <!-- ══════════════════════════════════
-         ABOUT
-    ══════════════════════════════════ -->
-    <section id="about" class="section section-alt px-6">
-      <div class="max-w-7xl mx-auto">
-
-        <div class="reveal">
-          <span class="section-label">About Me</span>
-          <h2 class="section-title">Turning Requirements Into<br><span class="text-gradient">Working Software</span></h2>
-          <div class="gradient-divider mb-16"></div>
+    <!-- ══════════════ 0x01 ABOUT ══════════════ -->
+    <section id="about" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="marker"><span class="hex">0x01</span><span class="cmt">// about.md</span></div>
+          <h2 class="section-title">Turning requirements into <span class="amber">working software</span></h2>
         </div>
 
-        <div class="flex flex-col lg:flex-row gap-16 items-start">
+        <div class="about-grid">
+          <!-- ID card -->
+          <div class="id-card reveal">
+            <div class="id-avatar">AK</div>
+            <div class="id-row"><i class="fas fa-map-marker-alt"></i><span>Bangalore, India</span></div>
+            <div class="id-row"><i class="fas fa-briefcase"></i><span>Python Dev @ Smuruthi Technologies</span></div>
+            <div class="id-row"><i class="fas fa-graduation-cap"></i><span>Computer Science background</span></div>
+            <div class="id-row ok"><i class="fas fa-circle" style="font-size:0.5rem;"></i><span>Open to freelance &amp; full-time</span></div>
+          </div>
 
-          <!-- Left: Photo + Quick Facts -->
-          <div class="flex flex-col items-center lg:items-start gap-6 reveal">
-            <div class="about-photo-frame">
-              <div class="about-photo-placeholder">AK</div>
+          <!-- Story + pillars -->
+          <div class="reveal d1">
+            <div class="prose">
+              <p>
+                I'm a Python developer with hands-on experience in Odoo ERP customization and Django backend
+                development. At <strong>Smuruthi Technologies</strong> I build and maintain custom Odoo modules,
+                design REST APIs, and integrate third-party services into business systems.
+              </p>
+              <p>
+                My approach bridges technical depth and business context — I don't just write code that runs,
+                I write code that solves real workflow problems. Whether it's automating a purchase-approval flow
+                or building a scalable e-commerce API, I focus on clean architecture, clear communication, and
+                results that last.
+              </p>
             </div>
 
-            <!-- Quick Facts -->
-            <div class="w-full max-w-xs">
-              <div class="flex flex-col gap-3">
-                <div class="flex items-center gap-3 text-sm">
-                  <i class="fas fa-map-marker-alt w-4 text-accent-primary"></i>
-                  <span class="text-text-secondary">Bangalore, India</span>
+            <div class="pillars">
+              <div class="pillar">
+                <div class="pillar-ico"><i class="fas fa-server"></i></div>
+                <div>
+                  <h4>Backend depth</h4>
+                  <p>Python, Django, FastAPI, and DRF — with a focus on clean architecture, scalable APIs, and maintainable code.</p>
                 </div>
-                <div class="flex items-center gap-3 text-sm">
-                  <i class="fas fa-briefcase w-4 text-accent-primary"></i>
-                  <span class="text-text-secondary">Python Developer @ Smuruthi Technologies</span>
+              </div>
+              <div class="pillar">
+                <div class="pillar-ico"><i class="fas fa-cogs"></i></div>
+                <div>
+                  <h4>ERP expertise</h4>
+                  <p>Odoo v14–v18 across sales, inventory, purchase, HR, and accounting — I know how ERP works end to end.</p>
                 </div>
-                <div class="flex items-center gap-3 text-sm">
-                  <i class="fas fa-graduation-cap w-4 text-accent-primary"></i>
-                  <span class="text-text-secondary">Computer Science Background</span>
-                </div>
-                <div class="flex items-center gap-3 text-sm">
-                  <i class="fas fa-circle w-3 text-accent-green" style="font-size:0.55rem;"></i>
-                  <span style="color:var(--color-accent-green);" class="font-medium text-sm">Open to Work — Freelance &amp; Full-Time</span>
+              </div>
+              <div class="pillar">
+                <div class="pillar-ico"><i class="fas fa-lightbulb"></i></div>
+                <div>
+                  <h4>Business thinking</h4>
+                  <p>I understand workflows and business logic. Solutions I build are for real users in real companies — not just to pass tests.</p>
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- Right: Story + Pillars -->
-          <div class="flex-1 reveal delay-2">
-            <p class="text-text-secondary leading-relaxed mb-5" style="font-size:1.05rem;">
-              I'm a Python developer with hands-on experience in Odoo ERP customization and Django backend development.
-              Currently working at <strong class="text-text-primary">Smuruthi Technologies</strong>, I build and maintain
-              custom Odoo modules, design REST APIs, and integrate third-party services into business systems.
-            </p>
-            <p class="text-text-secondary leading-relaxed mb-10">
-              My approach bridges technical depth and business context — I don't just write code that runs,
-              I write code that solves real workflow problems. Whether it's automating a purchase approval workflow
-              or building a scalable e-commerce API, I focus on clean architecture, clear communication, and results that last.
-            </p>
-
-            <!-- Value Pillars -->
-            <div class="flex flex-col gap-4">
-              <div class="about-pillar">
-                <div class="about-pillar-icon" style="background:var(--color-accent-primary-light);color:var(--color-accent-primary);">
-                  <i class="fas fa-server"></i>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-text-primary mb-1">Backend Depth</h4>
-                  <p class="text-sm text-text-secondary">Python, Django, FastAPI, and DRF — with a focus on clean architecture, scalable APIs, and maintainable code.</p>
-                </div>
-              </div>
-
-              <div class="about-pillar">
-                <div class="about-pillar-icon" style="background:rgba(168,85,247,0.12);color:#A855F7;">
-                  <i class="fas fa-cogs"></i>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-text-primary mb-1">ERP Expertise</h4>
-                  <p class="text-sm text-text-secondary">Odoo v14–v18 customization across sales, inventory, purchase, HR, and accounting modules — I know how ERP works end-to-end.</p>
-                </div>
-              </div>
-
-              <div class="about-pillar">
-                <div class="about-pillar-icon" style="background:var(--color-accent-warm-light);color:var(--color-accent-warm);">
-                  <i class="fas fa-lightbulb"></i>
-                </div>
-                <div>
-                  <h4 class="font-semibold text-text-primary mb-1">Business Thinking</h4>
-                  <p class="text-sm text-text-secondary">I understand workflows and business logic. The solutions I build are designed for real users in real companies, not just to pass tests.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
 
 
-    <!-- ══════════════════════════════════
-         SERVICES
-    ══════════════════════════════════ -->
-    <section id="services" class="section px-6">
-      <div class="max-w-7xl mx-auto">
-
-        <div class="text-center reveal">
-          <span class="section-label">Services</span>
-          <h2 class="section-title">What I Can Build for You</h2>
-          <p class="section-subtitle mx-auto text-center">
-            From ERP customization to REST APIs — I take your requirements and turn them into
-            production-ready solutions with clear communication throughout.
-          </p>
-          <div class="gradient-divider mx-auto mb-16"></div>
+    <!-- ══════════════ 0x02 SERVICES ══════════════ -->
+    <section id="services" class="section">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <div class="marker"><span class="hex">0x02</span><span class="cmt">// services.sh</span></div>
+          <h2 class="section-title">What I can build for you</h2>
+          <p class="section-sub">From ERP customization to REST APIs — I turn requirements into production-ready solutions with clear communication throughout.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-          <!-- Service 1 — PRIMARY: Django & FastAPI -->
-          <div class="service-card featured reveal">
-            <div class="flex items-center justify-between mb-5">
-              <div class="service-icon-wrap" style="margin-bottom:0;">
-                <i class="fas fa-server"></i>
-              </div>
-              <span style="font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:var(--color-accent-primary-light);color:var(--color-accent-primary);padding:0.2rem 0.6rem;border-radius:var(--radius-full);border:1px solid var(--border-accent);">Core Service</span>
+        <div class="grid-services reveal d1">
+          <div class="svc featured">
+            <div class="svc-top">
+              <div class="svc-ico"><i class="fas fa-server"></i></div>
+              <span class="svc-flag">core</span>
             </div>
-            <h3 class="service-title">Django &amp; FastAPI Development</h3>
-            <p class="service-desc">
-              High-performance Python backends built with Django REST Framework or FastAPI.
-              Clean architecture, async-ready, documented, and production-tested.
-            </p>
-            <ul class="service-deliverables">
-              <li>REST &amp; async API design with DRF / FastAPI</li>
-              <li>Authentication, permissions, JWT &amp; OAuth2</li>
+            <h3>Django &amp; FastAPI Development</h3>
+            <p>High-performance Python backends with DRF or FastAPI. Clean architecture, async-ready, documented, production-tested.</p>
+            <ul>
+              <li>REST &amp; async API design (DRF / FastAPI)</li>
+              <li>Auth, permissions, JWT &amp; OAuth2</li>
               <li>Admin panels, dashboards &amp; background jobs</li>
             </ul>
           </div>
 
-          <!-- Service 2 — PRIMARY: Odoo ERP -->
-          <div class="service-card featured reveal delay-1">
-            <div class="flex items-center justify-between mb-5">
-              <div class="service-icon-wrap" style="background:rgba(126,58,242,0.10);color:var(--color-accent-purple);margin-bottom:0;">
-                <i class="fas fa-cogs"></i>
-              </div>
-              <span style="font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;background:rgba(126,58,242,0.08);color:var(--color-accent-purple);padding:0.2rem 0.6rem;border-radius:var(--radius-full);border:1px solid rgba(126,58,242,0.2);">Core Service</span>
+          <div class="svc featured">
+            <div class="svc-top">
+              <div class="svc-ico"><i class="fas fa-cogs"></i></div>
+              <span class="svc-flag">core</span>
             </div>
-            <h3 class="service-title">Odoo ERP Customization</h3>
-            <p class="service-desc">
-              Custom Odoo modules tailored to how your business actually works — not a generic
-              template. Sales, inventory, HR, purchase, and accounting.
-            </p>
-            <ul class="service-deliverables">
+            <h3>Odoo ERP Customization</h3>
+            <p>Custom Odoo modules tailored to how your business actually works — not a generic template. Sales, inventory, HR, purchase, accounting.</p>
+            <ul>
               <li>Custom module development (v14–v18)</li>
-              <li>Business workflow automation &amp; approvals</li>
+              <li>Workflow automation &amp; approvals</li>
               <li>Module integration, migration &amp; upgrades</li>
             </ul>
           </div>
 
-          <!-- Service 3 -->
-          <div class="service-card reveal delay-2">
-            <div class="service-icon-wrap" style="background:rgba(11,124,90,0.10);color:var(--color-accent-green);">
-              <i class="fas fa-plug"></i>
-            </div>
-            <h3 class="service-title">API Integration &amp; Automation</h3>
-            <p class="service-desc">
-              Connect your tools and eliminate manual data entry. I integrate third-party services
-              via REST, XML-RPC, webhooks, and background schedulers.
-            </p>
-            <ul class="service-deliverables">
+          <div class="svc">
+            <div class="svc-top"><div class="svc-ico"><i class="fas fa-plug"></i></div></div>
+            <h3>API Integration &amp; Automation</h3>
+            <p>Connect your tools and eliminate manual data entry via REST, XML-RPC, webhooks, and background schedulers.</p>
+            <ul>
               <li>Third-party API integration</li>
-              <li>Automated data sync pipelines</li>
+              <li>Automated data-sync pipelines</li>
               <li>Webhook &amp; event-driven flows</li>
             </ul>
           </div>
 
-          <!-- Service 4 -->
-          <div class="service-card reveal">
-            <div class="service-icon-wrap" style="background:rgba(51,103,145,0.10);color:#336791;">
-              <i class="fas fa-database"></i>
-            </div>
-            <h3 class="service-title">Database Design &amp; Optimization</h3>
-            <p class="service-desc">
-              PostgreSQL schemas and query tuning that keep your app fast as data grows.
-              I've reduced query times by up to 60% through indexing and refactoring.
-            </p>
-            <ul class="service-deliverables">
+          <div class="svc">
+            <div class="svc-top"><div class="svc-ico"><i class="fas fa-database"></i></div></div>
+            <h3>Database Design &amp; Optimization</h3>
+            <p>PostgreSQL schemas and query tuning that keep your app fast as data grows — up to 60% faster through indexing and refactoring.</p>
+            <ul>
               <li>Schema design &amp; migrations</li>
               <li>Query optimization &amp; indexing</li>
               <li>Performance profiling &amp; tuning</li>
             </ul>
           </div>
 
-          <!-- Service 5 -->
-          <div class="service-card reveal delay-1">
-            <div class="service-icon-wrap" style="background:rgba(180,83,9,0.10);color:var(--color-accent-amber);">
-              <i class="fas fa-robot"></i>
-            </div>
-            <h3 class="service-title">Business Process Automation</h3>
-            <p class="service-desc">
-              Replace repetitive manual work with Python scripts and Celery jobs — inventory sync,
-              report generation, data migration — running reliably in the background.
-            </p>
-            <ul class="service-deliverables">
+          <div class="svc">
+            <div class="svc-top"><div class="svc-ico"><i class="fas fa-robot"></i></div></div>
+            <h3>Business Process Automation</h3>
+            <p>Replace repetitive manual work with Python scripts and Celery jobs — inventory sync, reports, data migration — running reliably in the background.</p>
+            <ul>
               <li>Python automation scripts</li>
               <li>Celery &amp; scheduled background jobs</li>
               <li>Data migration &amp; ETL pipelines</li>
             </ul>
           </div>
 
-          <!-- Service 6 -->
-          <div class="service-card reveal delay-2">
-            <div class="service-icon-wrap" style="background:var(--color-accent-warm-light);color:var(--color-accent-warm);">
-              <i class="fas fa-wrench"></i>
-            </div>
-            <h3 class="service-title">Maintenance &amp; Bug Fixing</h3>
-            <p class="service-desc">
-              Diagnose and fix issues in existing Django, FastAPI, or Odoo codebases —
-              code review, refactoring, and performance wins without breaking what works.
-            </p>
-            <ul class="service-deliverables">
+          <div class="svc">
+            <div class="svc-top"><div class="svc-ico"><i class="fas fa-wrench"></i></div></div>
+            <h3>Maintenance &amp; Bug Fixing</h3>
+            <p>Diagnose and fix issues in existing Django, FastAPI, or Odoo codebases — review, refactoring, and performance wins without breaking what works.</p>
+            <ul>
               <li>Bug diagnosis &amp; resolution</li>
               <li>Code review &amp; refactoring</li>
               <li>Ongoing maintenance support</li>
             </ul>
           </div>
-
         </div>
 
-        <!-- How I Work -->
-        <div class="mt-20 reveal">
-          <div class="card max-w-4xl mx-auto">
-            <h3 class="text-xl font-semibold text-text-primary mb-8 text-center">How I Work With Clients</h3>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div class="text-center">
-                <div class="process-number mx-auto mb-3">1</div>
-                <h4 class="font-semibold text-text-primary text-sm mb-1">Discovery</h4>
-                <p class="text-xs text-text-muted">We discuss your project, requirements, and timeline</p>
-              </div>
-              <div class="text-center">
-                <div class="process-number mx-auto mb-3">2</div>
-                <h4 class="font-semibold text-text-primary text-sm mb-1">Proposal</h4>
-                <p class="text-xs text-text-muted">Detailed plan with scope, timeline, and cost estimate</p>
-              </div>
-              <div class="text-center">
-                <div class="process-number mx-auto mb-3">3</div>
-                <h4 class="font-semibold text-text-primary text-sm mb-1">Development</h4>
-                <p class="text-xs text-text-muted">I build with regular updates and milestone check-ins</p>
-              </div>
-              <div class="text-center">
-                <div class="process-number mx-auto mb-3">4</div>
-                <h4 class="font-semibold text-text-primary text-sm mb-1">Delivery</h4>
-                <p class="text-xs text-text-muted">Clean handover with docs and post-launch support</p>
-              </div>
-            </div>
+        <div class="process reveal">
+          <p class="process-title">// how I work with clients</p>
+          <div class="process-grid">
+            <div class="pstep"><div class="pnum">01</div><h4>Discovery</h4><p>We discuss your project, requirements, and timeline.</p></div>
+            <div class="pstep"><div class="pnum">02</div><h4>Proposal</h4><p>Detailed plan with scope, timeline, and cost estimate.</p></div>
+            <div class="pstep"><div class="pnum">03</div><h4>Development</h4><p>I build with regular updates and milestone check-ins.</p></div>
+            <div class="pstep"><div class="pnum">04</div><h4>Delivery</h4><p>Clean handover with docs and post-launch support.</p></div>
           </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════
-         SKILLS
-    ══════════════════════════════════ -->
-    <section id="skills" class="section section-alt px-6">
-      <div class="max-w-7xl mx-auto">
-
-        <div class="reveal">
-          <span class="section-label">Technical Skills</span>
-          <h2 class="section-title">Technologies I Work With</h2>
-          <div class="gradient-divider mb-16"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 reveal delay-1">
-
-          <!-- Backend -->
-          <div class="skills-group">
-            <div class="skills-group-label">Backend Development</div>
-            <div class="skill-tags">
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#4B8BBE;"></span>Python</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#44B78B;"></span>Django</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#009688;"></span>FastAPI</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#44B78B;"></span>Django REST Framework</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#E8334A;"></span>Celery</span>
-            </div>
-          </div>
-
-          <!-- ERP -->
-          <div class="skills-group">
-            <div class="skills-group-label">ERP &amp; Business Systems</div>
-            <div class="skill-tags">
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#A855F7;"></span>Odoo v14–v18</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#A855F7;"></span>OWL Framework</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#A855F7;"></span>QWeb Templates</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#E86A17;"></span>XML-RPC / JSON-RPC</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#4B8BBE;"></span>Business Workflows</span>
-            </div>
-          </div>
-
-          <!-- Database -->
-          <div class="skills-group">
-            <div class="skills-group-label">Databases</div>
-            <div class="skill-tags">
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#4A90D9;"></span>PostgreSQL</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#E8834A;"></span>MySQL</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#4DB33D;"></span>MongoDB</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#4A90D9;"></span>Query Optimization</span>
-            </div>
-          </div>
-
-          <!-- DevOps -->
-          <div class="skills-group">
-            <div class="skills-group-label">DevOps &amp; Tools</div>
-            <div class="skill-tags">
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#2496ED;"></span>Docker</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#F1502F;"></span>Git &amp; GitHub</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#FCC624;"></span>Linux</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#4D80FF;"></span>Nginx</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#555;"></span>REST APIs</span>
-            </div>
-          </div>
-
-          <!-- Frontend -->
-          <div class="skills-group">
-            <div class="skills-group-label">Frontend (Working Knowledge)</div>
-            <div class="skill-tags">
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#E34C26;"></span>HTML5</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#1572B6;"></span>CSS3</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#F7DF1E;"></span>JavaScript</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#7952B3;"></span>Bootstrap</span>
-              <span class="skill-tag"><span class="skill-tag-dot" style="background:#38BDF8;"></span>Tailwind CSS</span>
-            </div>
-          </div>
-
-          <!-- Learning -->
-          <div class="skills-group">
-            <div class="skills-group-label">Currently Learning</div>
-            <div class="skill-tags">
-              <span class="skill-tag learning"><span class="skill-tag-dot" style="background:#F59E0B;"></span>Data Analytics</span>
-              <span class="skill-tag learning"><span class="skill-tag-dot" style="background:#F59E0B;"></span>Pandas &amp; NumPy</span>
-              <span class="skill-tag learning"><span class="skill-tag-dot" style="background:#F59E0B;"></span>FastAPI Advanced</span>
-              <span class="skill-tag learning"><span class="skill-tag-dot" style="background:#F59E0B;"></span>Redis</span>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
 
 
-    <!-- ══════════════════════════════════
-         EXPERIENCE
-    ══════════════════════════════════ -->
-    <section id="experience" class="section px-6">
-      <div class="max-w-7xl mx-auto">
-
-        <div class="reveal">
-          <span class="section-label">Work History</span>
-          <h2 class="section-title">Professional Journey</h2>
-          <div class="gradient-divider mb-16"></div>
+    <!-- ══════════════ 0x03 STACK ══════════════ -->
+    <section id="skills" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="marker"><span class="hex">0x03</span><span class="cmt">// stack.json</span></div>
+          <h2 class="section-title">Technologies I work with</h2>
         </div>
 
-        <div class="experience-timeline max-w-3xl reveal delay-1">
+        <div class="stack-grid reveal d1">
+          <div class="stack-group">
+            <div class="stack-label">backend</div>
+            <div class="chips">
+              <span class="chip"><span class="cdot" style="background:#4B8BBE;"></span>Python</span>
+              <span class="chip"><span class="cdot" style="background:#44B78B;"></span>Django</span>
+              <span class="chip"><span class="cdot" style="background:#009688;"></span>FastAPI</span>
+              <span class="chip"><span class="cdot" style="background:#44B78B;"></span>Django REST Framework</span>
+              <span class="chip"><span class="cdot" style="background:#E8334A;"></span>Celery</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <div class="stack-label">erp &amp; business systems</div>
+            <div class="chips">
+              <span class="chip"><span class="cdot" style="background:#A855F7;"></span>Odoo v14–v18</span>
+              <span class="chip"><span class="cdot" style="background:#A855F7;"></span>OWL Framework</span>
+              <span class="chip"><span class="cdot" style="background:#A855F7;"></span>QWeb Templates</span>
+              <span class="chip"><span class="cdot" style="background:#E86A17;"></span>XML-RPC / JSON-RPC</span>
+              <span class="chip"><span class="cdot" style="background:#4B8BBE;"></span>Business Workflows</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <div class="stack-label">databases</div>
+            <div class="chips">
+              <span class="chip"><span class="cdot" style="background:#4A90D9;"></span>PostgreSQL</span>
+              <span class="chip"><span class="cdot" style="background:#E8834A;"></span>MySQL</span>
+              <span class="chip"><span class="cdot" style="background:#4DB33D;"></span>MongoDB</span>
+              <span class="chip"><span class="cdot" style="background:#4A90D9;"></span>Query Optimization</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <div class="stack-label">devops &amp; tools</div>
+            <div class="chips">
+              <span class="chip"><span class="cdot" style="background:#2496ED;"></span>Docker</span>
+              <span class="chip"><span class="cdot" style="background:#F1502F;"></span>Git &amp; GitHub</span>
+              <span class="chip"><span class="cdot" style="background:#FCC624;"></span>Linux</span>
+              <span class="chip"><span class="cdot" style="background:#00E5A0;"></span>Nginx</span>
+              <span class="chip"><span class="cdot" style="background:#8892a0;"></span>REST APIs</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <div class="stack-label">frontend (working knowledge)</div>
+            <div class="chips">
+              <span class="chip"><span class="cdot" style="background:#E34C26;"></span>HTML5</span>
+              <span class="chip"><span class="cdot" style="background:#1572B6;"></span>CSS3</span>
+              <span class="chip"><span class="cdot" style="background:#F7DF1E;"></span>JavaScript</span>
+              <span class="chip"><span class="cdot" style="background:#000000;border:1px solid #333;"></span>Next.js</span>
+              <span class="chip"><span class="cdot" style="background:#38BDF8;"></span>Tailwind CSS</span>
+            </div>
+          </div>
+          <div class="stack-group">
+            <div class="stack-label">currently learning</div>
+            <div class="chips">
+              <span class="chip learn">Data Analytics</span>
+              <span class="chip learn">Pandas &amp; NumPy</span>
+              <span class="chip learn">FastAPI Advanced</span>
+              <span class="chip learn">Redis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Job 1: Current -->
-          <div class="experience-item">
-            <div class="experience-card">
-              <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+
+    <!-- ══════════════ 0x04 EXPERIENCE ══════════════ -->
+    <section id="experience" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="marker"><span class="hex">0x04</span><span class="cmt">// experience.log</span></div>
+          <h2 class="section-title">Professional journey</h2>
+        </div>
+
+        <div class="timeline reveal d1">
+          <div class="xp">
+            <div class="xp-card">
+              <div class="xp-head">
                 <div>
-                  <h3 class="experience-role">Python Developer</h3>
-                  <div class="experience-company">Smuruthi Technologies</div>
+                  <h3 class="xp-role">Python Developer</h3>
+                  <div class="xp-company">Smuruthi Technologies</div>
                 </div>
-                <span class="experience-period">
-                  <i class="fas fa-circle text-accent-green" style="font-size:0.45rem;"></i>
-                  Oct 2024 — Present
-                </span>
+                <span class="xp-period"><span class="live"></span> Oct 2024 — Present</span>
               </div>
-
-              <ul class="experience-achievements">
-                <li>
-                  <div class="achievement-marker"><i class="fas fa-check"></i></div>
-                  <span>Developed and customized <strong class="text-text-primary">10+ Odoo modules</strong> for business workflows including sales, inventory, and HR — improving operational efficiency by 40%</span>
-                </li>
-                <li>
-                  <div class="achievement-marker"><i class="fas fa-check"></i></div>
-                  <span>Integrated <strong class="text-text-primary">10+ third-party APIs</strong> with Odoo using XML-RPC and JSON-RPC, enabling seamless data exchange between business systems</span>
-                </li>
-                <li>
-                  <div class="achievement-marker"><i class="fas fa-check"></i></div>
-                  <span>Optimized PostgreSQL queries and database schemas, achieving a <strong class="text-text-primary">60% improvement</strong> in backend response times</span>
-                </li>
-                <li>
-                  <div class="achievement-marker"><i class="fas fa-check"></i></div>
-                  <span>Built and maintained Docker-based development environments for consistent, reproducible deployments across the team</span>
-                </li>
+              <ul>
+                <li><i class="fas fa-caret-right"></i><span>Developed and customized <strong>10+ Odoo modules</strong> for sales, inventory, and HR — improving operational efficiency by 40%.</span></li>
+                <li><i class="fas fa-caret-right"></i><span>Integrated <strong>10+ third-party APIs</strong> with Odoo via XML-RPC and JSON-RPC for seamless data exchange.</span></li>
+                <li><i class="fas fa-caret-right"></i><span>Optimized PostgreSQL queries and schemas for a <strong>60% improvement</strong> in backend response times.</span></li>
+                <li><i class="fas fa-caret-right"></i><span>Built Docker-based dev environments for consistent, reproducible deployments across the team.</span></li>
               </ul>
-
-              <div class="flex flex-wrap gap-2">
-                <span class="chip">Python</span>
-                <span class="chip">Odoo 18</span>
-                <span class="chip">PostgreSQL</span>
-                <span class="chip">Docker</span>
-                <span class="chip">XML-RPC</span>
+              <div class="chips">
+                <span class="chip">Python</span><span class="chip">Odoo 18</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">XML-RPC</span>
               </div>
             </div>
           </div>
 
-          <!-- Freelance -->
-          <div class="experience-item">
-            <div class="experience-card">
-              <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+          <div class="xp past">
+            <div class="xp-card">
+              <div class="xp-head">
                 <div>
-                  <h3 class="experience-role">Freelance Backend Developer</h3>
-                  <div class="experience-company">Independent / Various Clients</div>
+                  <h3 class="xp-role">Freelance Backend Developer</h3>
+                  <div class="xp-company">Independent / Various Clients</div>
                 </div>
-                <span class="experience-period">
-                  2023 — 2024
-                </span>
+                <span class="xp-period">2023 — 2024</span>
               </div>
-
-              <ul class="experience-achievements">
-                <li>
-                  <div class="achievement-marker"><i class="fas fa-check"></i></div>
-                  <span>Delivered Django REST APIs and full-stack web applications for small businesses and startups across e-commerce and collaboration domains</span>
-                </li>
-                <li>
-                  <div class="achievement-marker"><i class="fas fa-check"></i></div>
-                  <span>Built inventory automation scripts and data sync pipelines with PostgreSQL and Python that reduced manual work by several hours per week</span>
-                </li>
-                <li>
-                  <div class="achievement-marker"><i class="fas fa-check"></i></div>
-                  <span>Managed client requirements, timelines, and deliverables independently — building skills in client communication and project ownership</span>
-                </li>
+              <ul>
+                <li><i class="fas fa-caret-right"></i><span>Delivered Django REST APIs and full-stack apps for small businesses and startups across e-commerce and collaboration.</span></li>
+                <li><i class="fas fa-caret-right"></i><span>Built inventory automation and data-sync pipelines with PostgreSQL and Python, saving hours of manual work weekly.</span></li>
+                <li><i class="fas fa-caret-right"></i><span>Managed requirements, timelines, and deliverables independently — building client communication and ownership.</span></li>
               </ul>
+              <div class="chips">
+                <span class="chip">Django</span><span class="chip">DRF</span><span class="chip">PostgreSQL</span><span class="chip">Python</span><span class="chip">Celery</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <div class="flex flex-wrap gap-2">
-                <span class="chip">Django</span>
-                <span class="chip">DRF</span>
-                <span class="chip">PostgreSQL</span>
-                <span class="chip">Python</span>
-                <span class="chip">Celery</span>
+
+    <!-- ══════════════ 0x05 WORK ══════════════ -->
+    <section id="work" class="section">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <div class="marker"><span class="hex">0x05</span><span class="cmt">// projects/</span></div>
+          <h2 class="section-title">Featured work</h2>
+          <p class="section-sub">Real projects with real outcomes — each one tackled a specific business challenge with a focused backend solution.</p>
+        </div>
+
+        <div class="grid-work">
+
+          <!-- Sira Boutique -->
+          <div class="proj reveal">
+            <div class="proj-head">
+              <span class="fname"><i class="fas fa-spa"></i> sira-boutique</span>
+              <span class="proj-cat">freelance · e-commerce</span>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">Sira Boutique — Luxury Flower Shop</h3>
+              <p class="proj-desc"><strong>Challenge:</strong> A boutique florist needed a production-grade online store — catalog, cart, subscriptions, coupons, delivery scheduling — with secure payments and a fast, animated storefront.</p>
+              <div class="metrics">
+                <div class="metric"><div class="metric-v">15+</div><div class="metric-l">backend modules</div></div>
+                <div class="metric"><div class="metric-v">Stripe</div><div class="metric-l">payments</div></div>
+                <div class="metric"><div class="metric-v">Live</div><div class="metric-l">in production</div></div>
+              </div>
+              <div class="proj-tech">
+                <span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Django</span><span class="chip">DRF</span><span class="chip">PostgreSQL</span><span class="chip">Stripe</span>
+              </div>
+              <div class="proj-foot">
+                <a href="https://siraboutique.ae/" target="_blank" rel="noopener noreferrer" class="proj-link">visit live site <i class="fas fa-arrow-up-right-from-square" style="font-size:0.65rem;"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Storenova -->
+          <div class="proj reveal d1">
+            <div class="proj-head">
+              <span class="fname"><i class="fas fa-store"></i> storenova</span>
+              <span class="proj-cat">e-commerce</span>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">Storenova — Full-Stack E-Commerce</h3>
+              <p class="proj-desc"><strong>Challenge:</strong> A retail client needed a custom platform with real-time inventory, multi-variant products, and a scalable backend that handled growing order volume without slowdowns.</p>
+              <div class="metrics">
+                <div class="metric"><div class="metric-v">99.9%</div><div class="metric-l">uptime</div></div>
+                <div class="metric"><div class="metric-v">50%</div><div class="metric-l">faster load</div></div>
+                <div class="metric"><div class="metric-v">99.8%</div><div class="metric-l">inv. accuracy</div></div>
+              </div>
+              <div class="proj-tech">
+                <span class="chip">Python</span><span class="chip">Django</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Celery</span><span class="chip">Docker</span>
+              </div>
+              <div class="proj-foot">
+                <a href="https://github.com/ajithkalidasan/storenova" target="_blank" rel="noopener noreferrer" class="proj-link">view on github <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- DevCollab -->
+          <div class="proj reveal">
+            <div class="proj-head">
+              <span class="fname"><i class="fas fa-users"></i> devcollab</span>
+              <span class="proj-cat">social platform</span>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">DevCollab — Developer Community Platform</h3>
+              <p class="proj-desc"><strong>Challenge:</strong> A social platform for developers needed real-time features, fast search, and a backend that served a growing user base without N+1 query bottlenecks.</p>
+              <div class="metrics">
+                <div class="metric"><div class="metric-v">60%</div><div class="metric-l">faster loads</div></div>
+                <div class="metric"><div class="metric-v">JWT</div><div class="metric-l">secure auth</div></div>
+                <div class="metric"><div class="metric-v">WS</div><div class="metric-l">real-time</div></div>
+              </div>
+              <div class="proj-tech">
+                <span class="chip">Python</span><span class="chip">Django</span><span class="chip">DRF</span><span class="chip">WebSocket</span><span class="chip">JWT</span><span class="chip">PostgreSQL</span>
+              </div>
+              <div class="proj-foot">
+                <a href="https://github.com/ajithkalidasan/DevCollab" target="_blank" rel="noopener noreferrer" class="proj-link">view on github <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Storefront -->
+          <div class="proj reveal d1">
+            <div class="proj-head">
+              <span class="fname"><i class="fas fa-bolt"></i> storefront</span>
+              <span class="proj-cat">backend api</span>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">Storefront — Scalable E-Commerce Backend</h3>
+              <p class="proj-desc"><strong>Challenge:</strong> A high-traffic store needed a robust backend for concurrent orders, background notifications, and 99.8% product-data accuracy across thousands of SKUs.</p>
+              <div class="metrics">
+                <div class="metric"><div class="metric-v">1000+</div><div class="metric-l">concurrent</div></div>
+                <div class="metric"><div class="metric-v">99.8%</div><div class="metric-l">data accuracy</div></div>
+                <div class="metric"><div class="metric-v">BG</div><div class="metric-l">async jobs</div></div>
+              </div>
+              <div class="proj-tech">
+                <span class="chip">Python</span><span class="chip">Django</span><span class="chip">DRF</span><span class="chip">PostgreSQL</span><span class="chip">Celery</span><span class="chip">Docker</span>
+              </div>
+              <div class="proj-foot">
+                <a href="https://github.com/ajithkalidasan/storefront" target="_blank" rel="noopener noreferrer" class="proj-link">view on github <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Odoo ERP -->
+          <div class="proj reveal">
+            <div class="proj-head">
+              <span class="fname"><i class="fas fa-cogs"></i> odoo-erp</span>
+              <span class="proj-cat">erp / odoo</span>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">Odoo 18 — Enterprise ERP Integration</h3>
+              <p class="proj-desc"><strong>Challenge:</strong> A manufacturer needed custom Odoo 18 modules to automate purchase approvals, inventory reordering, and financial reporting — plus 5+ external vendor API integrations.</p>
+              <div class="metrics">
+                <div class="metric"><div class="metric-v">40%</div><div class="metric-l">efficiency</div></div>
+                <div class="metric"><div class="metric-v">5+</div><div class="metric-l">apis</div></div>
+                <div class="metric"><div class="metric-v">10+</div><div class="metric-l">workflows</div></div>
+              </div>
+              <div class="proj-tech">
+                <span class="chip">Odoo 18</span><span class="chip">Python</span><span class="chip">OWL</span><span class="chip">XML-RPC</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span>
+              </div>
+              <div class="proj-foot">
+                <span class="proj-private"><i class="fas fa-lock"></i> private — NDA project</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hedera -->
+          <div class="proj reveal d1">
+            <div class="proj-head">
+              <span class="fname"><i class="fas fa-cubes"></i> hedera-odoo</span>
+              <span class="proj-cat">blockchain / odoo</span>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">Hedera × Odoo — On-Chain Record Traceability</h3>
+              <p class="proj-desc"><strong>Challenge:</strong> An enterprise needed tamper-proof, auditable records for critical ERP transactions — integrating the Hedera Hashgraph ledger into Odoo 18 so key events are anchored on-chain and independently verifiable.</p>
+              <div class="metrics">
+                <div class="metric"><div class="metric-v">Hedera</div><div class="metric-l">ledger</div></div>
+                <div class="metric"><div class="metric-v">Immutable</div><div class="metric-l">audit trail</div></div>
+                <div class="metric"><div class="metric-v">Odoo 18</div><div class="metric-l">erp core</div></div>
+              </div>
+              <div class="proj-tech">
+                <span class="chip">Odoo 18</span><span class="chip">Python</span><span class="chip">Hedera Hashgraph</span><span class="chip">Web3</span><span class="chip">PostgreSQL</span>
+              </div>
+              <div class="proj-foot">
+                <span class="proj-private"><i class="fas fa-lock"></i> private — NDA project</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Legacy migration -->
+          <div class="proj reveal">
+            <div class="proj-head">
+              <span class="fname"><i class="fas fa-right-left"></i> legacy-migration</span>
+              <span class="proj-cat">data migration / odoo</span>
+            </div>
+            <div class="proj-body">
+              <h3 class="proj-title">Legacy Re-Platform — PHP + SQL Server → Odoo 18</h3>
+              <p class="proj-desc"><strong>Challenge:</strong> A business ran on a legacy PHP app backed by SQL Server. The goal: migrate all historical data into Odoo 18 on PostgreSQL — mapping schemas across engines while preserving relational integrity with zero data loss.</p>
+              <div class="metrics">
+                <div class="metric"><div class="metric-v">Zero</div><div class="metric-l">data loss</div></div>
+                <div class="metric"><div class="metric-v">SQL→PG</div><div class="metric-l">engine swap</div></div>
+                <div class="metric"><div class="metric-v">PHP→Odoo</div><div class="metric-l">re-platform</div></div>
+              </div>
+              <div class="proj-tech">
+                <span class="chip">Odoo 18</span><span class="chip">Python</span><span class="chip">PostgreSQL</span><span class="chip">SQL Server</span><span class="chip">ETL</span><span class="chip">Data Mapping</span>
+              </div>
+              <div class="proj-foot">
+                <span class="proj-private"><i class="fas fa-lock"></i> private — NDA project</span>
               </div>
             </div>
           </div>
@@ -734,608 +622,178 @@
     </section>
 
 
-    <!-- ══════════════════════════════════
-         PROJECTS
-    ══════════════════════════════════ -->
-    <section id="work" class="section section-alt px-6">
-      <div class="max-w-7xl mx-auto">
-
-        <div class="text-center reveal">
-          <span class="section-label">Projects</span>
-          <h2 class="section-title">Featured Work</h2>
-          <p class="section-subtitle mx-auto text-center">
-            Real projects with real outcomes — each one tackled a specific business challenge
-            with a focused backend solution.
-          </p>
-          <div class="gradient-divider mx-auto mb-16"></div>
+    <!-- ══════════════ 0x06 TESTIMONIALS ══════════════ -->
+    <section id="testimonials" class="section">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <div class="marker"><span class="hex">0x06</span><span class="cmt">// feedback[]</span></div>
+          <h2 class="section-title">What clients say</h2>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-          <!-- Project 1: Sira Boutique -->
-          <div class="project-case reveal">
-            <div class="project-image-wrap" style="background:linear-gradient(135deg,#2a1420,#160b12);">
-              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-                <div style="text-align:center;">
-                  <i class="fas fa-spa" style="font-size:3rem;color:rgba(255,120,170,0.45);display:block;margin-bottom:0.75rem;"></i>
-                  <span style="font-size:0.75rem;color:var(--color-text-muted);letter-spacing:0.1em;text-transform:uppercase;">Luxury Flower Boutique</span>
-                </div>
-              </div>
-              <div class="project-image-overlay"></div>
-              <div class="project-tag-row">
-                <span class="project-category">Freelance · E-Commerce</span>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Sira Boutique — Luxury Flower Shop</h3>
-              <p class="project-problem">
-                <strong class="text-text-primary">Challenge:</strong> A boutique florist needed a production-grade online store — product catalog, cart,
-                subscriptions, coupons, and delivery scheduling — with secure online payments and a fast, animated storefront experience.
-              </p>
-              <div class="project-metrics">
-                <div class="metric">
-                  <div class="metric-value">15+</div>
-                  <div class="metric-label">Backend Modules</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">Stripe</div>
-                  <div class="metric-label">Payments Integrated</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">Live</div>
-                  <div class="metric-label">Deployed to Production</div>
-                </div>
-              </div>
-              <div class="tech-chips">
-                <span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Django</span>
-                <span class="chip">DRF</span><span class="chip">PostgreSQL</span><span class="chip">Stripe</span>
-              </div>
-              <a href="https://siraboutique.ae/" target="_blank" rel="noopener noreferrer" class="project-link">
-                Visit Live Site <i class="fas fa-arrow-up-right-from-square text-xs"></i>
-              </a>
+        <div class="grid-quotes">
+          <div class="quote reveal">
+            <div class="quote-mark">&ldquo;</div>
+            <div class="quote-stars">★★★★★</div>
+            <p class="quote-text">Ajith delivered a custom Odoo module that automated our purchase-approval workflow. What used to take 2+ days now runs in minutes. Reliable, communicative, and technically sharp.</p>
+            <div class="quote-author">
+              <div class="quote-avatar">RM</div>
+              <div><div class="quote-name">Rahul M.</div><div class="quote-role">Operations Manager, MedTech Startup</div></div>
             </div>
           </div>
 
-          <!-- Project 2: Storenova -->
-          <div class="project-case reveal delay-1">
-            <div class="project-image-wrap">
-              <img src="./assets/img/fullstack.jpg" alt="Storenova E-Commerce Platform" loading="lazy">
-              <div class="project-image-overlay"></div>
-              <div class="project-tag-row">
-                <span class="project-category">E-Commerce</span>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Storenova — Full-Stack E-Commerce</h3>
-              <p class="project-problem">
-                <strong class="text-text-primary">Challenge:</strong> A retail client needed a custom e-commerce platform with real-time inventory management,
-                multi-variant products, and a scalable backend that could handle growing order volume without performance degradation.
-              </p>
-              <div class="project-metrics">
-                <div class="metric">
-                  <div class="metric-value">99.9%</div>
-                  <div class="metric-label">Uptime Achieved</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">50%</div>
-                  <div class="metric-label">Faster Page Load</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">99.8%</div>
-                  <div class="metric-label">Inventory Accuracy</div>
-                </div>
-              </div>
-              <div class="tech-chips">
-                <span class="chip">Python</span><span class="chip">Django</span><span class="chip">PostgreSQL</span>
-                <span class="chip">Redis</span><span class="chip">Celery</span><span class="chip">Docker</span>
-              </div>
-              <a href="https://github.com/ajithkalidasan/storenova" target="_blank" rel="noopener noreferrer" class="project-link">
-                View on GitHub <i class="fas fa-arrow-right text-xs"></i>
-              </a>
+          <div class="quote reveal d1">
+            <div class="quote-mark">&ldquo;</div>
+            <div class="quote-stars">★★★★★</div>
+            <p class="quote-text">We needed a Django REST API with complex pricing logic under a 3-week deadline. Ajith delivered clean, well-tested code on time. It's run in production for months without issues.</p>
+            <div class="quote-author">
+              <div class="quote-avatar">PS</div>
+              <div><div class="quote-name">Priya S.</div><div class="quote-role">CTO, Fintech Startup</div></div>
             </div>
           </div>
 
-          <!-- Project 2: DevCollab -->
-          <div class="project-case reveal delay-1">
-            <div class="project-image-wrap" style="background:linear-gradient(135deg,#1a1f35,#0d1020);">
-              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-                <div style="text-align:center;">
-                  <i class="fas fa-users" style="font-size:3rem;color:rgba(77,128,255,0.4);display:block;margin-bottom:0.75rem;"></i>
-                  <span style="font-size:0.75rem;color:var(--color-text-muted);letter-spacing:0.1em;text-transform:uppercase;">Developer Platform</span>
-                </div>
-              </div>
-              <div class="project-image-overlay"></div>
-              <div class="project-tag-row">
-                <span class="project-category">Social Platform</span>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">DevCollab — Developer Community Platform</h3>
-              <p class="project-problem">
-                <strong class="text-text-primary">Challenge:</strong> Building a social platform for developers needed real-time features, fast search,
-                and a backend that could serve a growing user base without N+1 query bottlenecks slowing everything down.
-              </p>
-              <div class="project-metrics">
-                <div class="metric">
-                  <div class="metric-value">60%</div>
-                  <div class="metric-label">Load Time Reduction</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">JWT</div>
-                  <div class="metric-label">Secure Auth</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">WS</div>
-                  <div class="metric-label">Real-Time Features</div>
-                </div>
-              </div>
-              <div class="tech-chips">
-                <span class="chip">Python</span><span class="chip">Django</span><span class="chip">DRF</span>
-                <span class="chip">WebSocket</span><span class="chip">JWT</span><span class="chip">PostgreSQL</span>
-              </div>
-              <a href="https://github.com/ajithkalidasan/DevCollab" target="_blank" rel="noopener noreferrer" class="project-link">
-                View on GitHub <i class="fas fa-arrow-right text-xs"></i>
-              </a>
+          <div class="quote reveal d2">
+            <div class="quote-mark">&ldquo;</div>
+            <div class="quote-stars">★★★★★</div>
+            <p class="quote-text">Ajith built an inventory-sync automation connecting our store to our warehouse. The script runs every 30 minutes and has been flawless — saved us hours of manual work every day.</p>
+            <div class="quote-author">
+              <div class="quote-avatar">KT</div>
+              <div><div class="quote-name">Kiran T.</div><div class="quote-role">Founder, D2C Brand</div></div>
             </div>
           </div>
-
-          <!-- Project 3: Storefront -->
-          <div class="project-case reveal">
-            <div class="project-image-wrap">
-              <img src="./assets/img/ecom.jpg" alt="Storefront Backend" loading="lazy">
-              <div class="project-image-overlay"></div>
-              <div class="project-tag-row">
-                <span class="project-category">Backend API</span>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Storefront — Scalable E-Commerce Backend</h3>
-              <p class="project-problem">
-                <strong class="text-text-primary">Challenge:</strong> A high-traffic online store needed a robust backend that could handle concurrent orders,
-                background processing for notifications, and maintain 99.8% product data accuracy as catalog grew to thousands of SKUs.
-              </p>
-              <div class="project-metrics">
-                <div class="metric">
-                  <div class="metric-value">1000+</div>
-                  <div class="metric-label">Concurrent Users</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">99.8%</div>
-                  <div class="metric-label">Data Accuracy</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">BG</div>
-                  <div class="metric-label">Async Processing</div>
-                </div>
-              </div>
-              <div class="tech-chips">
-                <span class="chip">Python</span><span class="chip">Django</span><span class="chip">DRF</span>
-                <span class="chip">PostgreSQL</span><span class="chip">Celery</span><span class="chip">Docker</span>
-              </div>
-              <a href="https://github.com/ajithkalidasan/storefront" target="_blank" rel="noopener noreferrer" class="project-link">
-                View on GitHub <i class="fas fa-arrow-right text-xs"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Project 4: Odoo ERP -->
-          <div class="project-case reveal delay-1">
-            <div class="project-image-wrap">
-              <img src="./assets/img/odoo.jpg" alt="Odoo ERP Integration" loading="lazy">
-              <div class="project-image-overlay"></div>
-              <div class="project-tag-row">
-                <span class="project-category">ERP / Odoo</span>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Odoo 18 — Enterprise ERP Integration</h3>
-              <p class="project-problem">
-                <strong class="text-text-primary">Challenge:</strong> A manufacturing company needed custom Odoo 18 modules to automate purchase approvals,
-                inventory reordering, and financial reporting — while integrating 5+ external vendor APIs into the ERP.
-              </p>
-              <div class="project-metrics">
-                <div class="metric">
-                  <div class="metric-value">40%</div>
-                  <div class="metric-label">Efficiency Gain</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">5+</div>
-                  <div class="metric-label">APIs Connected</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">10+</div>
-                  <div class="metric-label">Workflows Automated</div>
-                </div>
-              </div>
-              <div class="tech-chips">
-                <span class="chip">Odoo 18</span><span class="chip">Python</span><span class="chip">OWL</span>
-                <span class="chip">XML-RPC</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span>
-              </div>
-              <span style="font-size:0.8rem;color:var(--color-text-muted);display:flex;align-items:center;gap:0.375rem;">
-                <i class="fas fa-lock"></i> Private — NDA Project
-              </span>
-            </div>
-          </div>
-
-          <!-- Project 6: Hedera Blockchain × Odoo -->
-          <div class="project-case reveal">
-            <div class="project-image-wrap" style="background:linear-gradient(135deg,#0d2a2a,#07161a);">
-              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-                <div style="text-align:center;">
-                  <i class="fas fa-cubes" style="font-size:3rem;color:rgba(80,220,200,0.4);display:block;margin-bottom:0.75rem;"></i>
-                  <span style="font-size:0.75rem;color:var(--color-text-muted);letter-spacing:0.1em;text-transform:uppercase;">Distributed Ledger</span>
-                </div>
-              </div>
-              <div class="project-image-overlay"></div>
-              <div class="project-tag-row">
-                <span class="project-category">Blockchain / Odoo</span>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Hedera × Odoo — On-Chain Record Traceability</h3>
-              <p class="project-problem">
-                <strong class="text-text-primary">Challenge:</strong> An enterprise needed tamper-proof, auditable records for critical ERP transactions —
-                integrating the Hedera Hashgraph distributed ledger directly into Odoo 18 so key business events are anchored on-chain and independently verifiable.
-              </p>
-              <div class="project-metrics">
-                <div class="metric">
-                  <div class="metric-value">Hedera</div>
-                  <div class="metric-label">Distributed Ledger</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">Immutable</div>
-                  <div class="metric-label">Audit Trail</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">Odoo 18</div>
-                  <div class="metric-label">ERP Integration</div>
-                </div>
-              </div>
-              <div class="tech-chips">
-                <span class="chip">Odoo 18</span><span class="chip">Python</span><span class="chip">Hedera Hashgraph</span>
-                <span class="chip">Web3</span><span class="chip">PostgreSQL</span>
-              </div>
-              <span style="font-size:0.8rem;color:var(--color-text-muted);display:flex;align-items:center;gap:0.375rem;">
-                <i class="fas fa-lock"></i> Private — NDA Project
-              </span>
-            </div>
-          </div>
-
-          <!-- Project 7: Legacy Migration -->
-          <div class="project-case reveal delay-1">
-            <div class="project-image-wrap" style="background:linear-gradient(135deg,#1f1a2e,#0f0d18);">
-              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-                <div style="text-align:center;">
-                  <i class="fas fa-right-left" style="font-size:3rem;color:rgba(150,130,255,0.4);display:block;margin-bottom:0.75rem;"></i>
-                  <span style="font-size:0.75rem;color:var(--color-text-muted);letter-spacing:0.1em;text-transform:uppercase;">Data Migration</span>
-                </div>
-              </div>
-              <div class="project-image-overlay"></div>
-              <div class="project-tag-row">
-                <span class="project-category">Data Migration / Odoo</span>
-              </div>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Legacy Re-Platform — PHP + SQL Server → Odoo 18</h3>
-              <p class="project-problem">
-                <strong class="text-text-primary">Challenge:</strong> A business ran on a legacy PHP application backed by Microsoft SQL Server. The goal was to
-                migrate all historical data into Odoo 18 on PostgreSQL — mapping schemas across engines and preserving relational integrity with zero data loss.
-              </p>
-              <div class="project-metrics">
-                <div class="metric">
-                  <div class="metric-value">Zero</div>
-                  <div class="metric-label">Data Loss</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">SQL→PG</div>
-                  <div class="metric-label">Engine Migration</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">PHP→Odoo</div>
-                  <div class="metric-label">Re-Platformed</div>
-                </div>
-              </div>
-              <div class="tech-chips">
-                <span class="chip">Odoo 18</span><span class="chip">Python</span><span class="chip">PostgreSQL</span>
-                <span class="chip">SQL Server</span><span class="chip">ETL</span><span class="chip">Data Mapping</span>
-              </div>
-              <span style="font-size:0.8rem;color:var(--color-text-muted);display:flex;align-items:center;gap:0.375rem;">
-                <i class="fas fa-lock"></i> Private — NDA Project
-              </span>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
 
 
-    <!-- ══════════════════════════════════
-         TESTIMONIALS
-    ══════════════════════════════════ -->
-    <section id="testimonials" class="section px-6">
-      <div class="max-w-7xl mx-auto">
-
-        <div class="text-center reveal">
-          <span class="section-label">Client Feedback</span>
-          <h2 class="section-title">What Clients Say</h2>
-          <div class="gradient-divider mx-auto mb-16"></div>
+    <!-- ══════════════ 0x07 CERTIFICATIONS ══════════════ -->
+    <section id="certifications" class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="marker"><span class="hex">0x07</span><span class="cmt">// credentials.pem</span></div>
+          <h2 class="section-title">Certifications &amp; learning</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-          <!-- T1 -->
-          <div class="testimonial-card reveal">
-            <div class="testimonial-quote-mark">&ldquo;</div>
-            <div class="testimonial-stars">
-              <i class="fas fa-star text-sm"></i><i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i><i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-            </div>
-            <p class="testimonial-text">
-              Ajith delivered a custom Odoo module that automated our purchase approval workflow.
-              What used to take our team 2+ days now runs in minutes. Reliable, communicative, and technically sharp.
-            </p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">RM</div>
-              <div>
-                <div class="testimonial-name">Rahul M.</div>
-                <div class="testimonial-role">Operations Manager, MedTech Startup</div>
-              </div>
-            </div>
+        <div class="grid-certs reveal d1">
+          <div class="cert">
+            <div class="cert-ico"><i class="fab fa-python"></i></div>
+            <div class="cert-name">Python Essentials (PCEP)</div>
+            <div class="cert-issuer">Python Institute • 2024</div>
+            <span class="cert-badge"><i class="fas fa-check-circle"></i> Certified</span>
           </div>
-
-          <!-- T2 -->
-          <div class="testimonial-card reveal delay-2">
-            <div class="testimonial-quote-mark">&ldquo;</div>
-            <div class="testimonial-stars">
-              <i class="fas fa-star text-sm"></i><i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i><i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-            </div>
-            <p class="testimonial-text">
-              We needed a Django REST API with complex pricing logic under a 3-week deadline.
-              Ajith delivered clean, well-tested code on time. It's been running in production for months without issues.
-            </p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">PS</div>
-              <div>
-                <div class="testimonial-name">Priya S.</div>
-                <div class="testimonial-role">CTO, Fintech Startup</div>
-              </div>
-            </div>
+          <div class="cert">
+            <div class="cert-ico"><i class="fas fa-cogs"></i></div>
+            <div class="cert-name">Odoo Developer Training</div>
+            <div class="cert-issuer">Odoo S.A. • 2024</div>
+            <span class="cert-badge"><i class="fas fa-check-circle"></i> Certified</span>
           </div>
-
-          <!-- T3 -->
-          <div class="testimonial-card reveal delay-3">
-            <div class="testimonial-quote-mark">&ldquo;</div>
-            <div class="testimonial-stars">
-              <i class="fas fa-star text-sm"></i><i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i><i class="fas fa-star text-sm"></i>
-              <i class="fas fa-star text-sm"></i>
-            </div>
-            <p class="testimonial-text">
-              Ajith built an inventory sync automation connecting our store to our warehouse. The script runs every 30 minutes
-              and has been flawless. Saved us hours of manual work every day.
-            </p>
-            <div class="testimonial-author">
-              <div class="testimonial-avatar">KT</div>
-              <div>
-                <div class="testimonial-name">Kiran T.</div>
-                <div class="testimonial-role">Founder, D2C Brand</div>
-              </div>
-            </div>
+          <div class="cert">
+            <div class="cert-ico"><i class="fas fa-database"></i></div>
+            <div class="cert-name">PostgreSQL for Developers</div>
+            <div class="cert-issuer">Udemy • 2023</div>
+            <span class="cert-badge"><i class="fas fa-check-circle"></i> Completed</span>
           </div>
-
+          <div class="cert">
+            <div class="cert-ico"><i class="fab fa-docker"></i></div>
+            <div class="cert-name">Docker &amp; Containerization</div>
+            <div class="cert-issuer">Udemy • 2023</div>
+            <span class="cert-badge"><i class="fas fa-check-circle"></i> Completed</span>
+          </div>
         </div>
       </div>
     </section>
 
 
-    <!-- ══════════════════════════════════
-         CERTIFICATIONS
-    ══════════════════════════════════ -->
-    <section id="certifications" class="section section-alt px-6">
-      <div class="max-w-7xl mx-auto">
-
-        <div class="reveal">
-          <span class="section-label">Credentials</span>
-          <h2 class="section-title">Certifications &amp; Learning</h2>
-          <div class="gradient-divider mb-16"></div>
+    <!-- ══════════════ 0x08 CONTACT ══════════════ -->
+    <section id="contact" class="section">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <div class="marker"><span class="hex">0x08</span><span class="cmt">// contact.init</span></div>
+          <h2 class="section-title">Ready to start your <span class="amber">next project?</span></h2>
+          <p class="section-sub">Whether you need a custom Django API, Odoo customization, or Python automation — let's talk about what you're building.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 reveal delay-1">
-
-          <!-- Cert 1 -->
-          <div class="cert-card">
-            <div class="cert-icon" style="background:rgba(75,139,190,0.15);color:#4B8BBE;">
-              <i class="fab fa-python"></i>
+        <div class="contact-grid">
+          <div class="contact-panel reveal">
+            <h3>Contact information</h3>
+            <a href="mailto:ajithkalidasan@outlook.com" class="crow">
+              <div class="crow-ico"><i class="fas fa-envelope"></i></div>
+              <div><div class="crow-k">email</div><div class="crow-v amber">ajithkalidasan@outlook.com</div></div>
+            </a>
+            <div class="crow">
+              <div class="crow-ico"><i class="fas fa-map-marker-alt"></i></div>
+              <div><div class="crow-k">location</div><div class="crow-v">Bangalore, India</div></div>
             </div>
-            <div>
-              <div class="cert-name">Python Essentials (PCEP)</div>
-              <div class="cert-issuer">Python Institute • 2024</div>
-              <span class="cert-badge"><i class="fas fa-check-circle" style="font-size:0.6rem;"></i> Certified</span>
+            <div class="crow">
+              <div class="crow-ico ok"><i class="fas fa-circle" style="font-size:0.5rem;"></i></div>
+              <div><div class="crow-k">availability</div><div class="crow-v ok">Open to freelance &amp; full-time</div></div>
             </div>
+            <div class="contact-note"><i class="fas fa-clock"></i> Typical response time: within 24 hours</div>
           </div>
 
-          <!-- Cert 2 -->
-          <div class="cert-card">
-            <div class="cert-icon" style="background:rgba(168,85,247,0.15);color:#A855F7;">
-              <i class="fas fa-cogs"></i>
-            </div>
-            <div>
-              <div class="cert-name">Odoo Developer Training</div>
-              <div class="cert-issuer">Odoo S.A. • 2024</div>
-              <span class="cert-badge"><i class="fas fa-check-circle" style="font-size:0.6rem;"></i> Certified</span>
-            </div>
-          </div>
-
-          <!-- Cert 3 -->
-          <div class="cert-card">
-            <div class="cert-icon" style="background:rgba(74,144,217,0.15);color:#4A90D9;">
-              <i class="fas fa-database"></i>
-            </div>
-            <div>
-              <div class="cert-name">PostgreSQL for Developers</div>
-              <div class="cert-issuer">Udemy • 2023</div>
-              <span class="cert-badge"><i class="fas fa-check-circle" style="font-size:0.6rem;"></i> Completed</span>
-            </div>
-          </div>
-
-          <!-- Cert 4 -->
-          <div class="cert-card">
-            <div class="cert-icon" style="background:rgba(36,150,237,0.15);color:#2496ED;">
-              <i class="fab fa-docker"></i>
-            </div>
-            <div>
-              <div class="cert-name">Docker &amp; Containerization</div>
-              <div class="cert-issuer">Udemy • 2023</div>
-              <span class="cert-badge"><i class="fas fa-check-circle" style="font-size:0.6rem;"></i> Completed</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══════════════════════════════════
-         CONTACT
-    ══════════════════════════════════ -->
-    <section id="contact" class="section px-6">
-      <div class="max-w-7xl mx-auto">
-
-        <div class="text-center reveal">
-          <span class="section-label">Get in Touch</span>
-          <h2 class="section-title">Ready to Start Your<br><span class="text-gradient">Next Project?</span></h2>
-          <p class="section-subtitle mx-auto text-center mb-4">
-            Whether you need a custom Django API, Odoo customization, or Python automation —
-            let's talk about what you're building.
-          </p>
-          <div class="gradient-divider mx-auto mb-16"></div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-
-          <!-- Left: Info -->
-          <div class="reveal">
-            <div class="contact-highlight h-full">
-              <h3 class="text-xl font-semibold text-text-primary mb-6">Contact Information</h3>
-
-              <div class="flex flex-col gap-2 mb-8">
-                <a href="mailto:ajithkalidasan@outlook.com" class="contact-info-row">
-                  <div class="contact-icon-wrap"><i class="fas fa-envelope"></i></div>
-                  <div>
-                    <div class="text-xs text-text-muted mb-0.5">Email</div>
-                    <div class="text-sm font-medium text-accent-primary">ajithkalidasan@outlook.com</div>
-                  </div>
+          <div class="reveal d1">
+            <div class="contact-cta">
+              <div class="contact-cta-ico"><i class="fas fa-envelope"></i></div>
+              <h3>Send an email</h3>
+              <p>Tell me about your project — what you're building, timeline, and budget. I'll reply within 24 hours.</p>
+              <a href="mailto:ajithkalidasan@outlook.com" class="btn btn-primary"><i class="fas fa-paper-plane" style="font-size:0.7rem;"></i> start a conversation</a>
+              <div class="contact-sub" style="width:100%;">
+                <a href="https://www.linkedin.com/in/kalidasanajith/" target="_blank" rel="noopener noreferrer" class="contact-mini">
+                  <i class="fab fa-linkedin-in"></i><span class="n">LinkedIn</span><span class="d">connect &amp; message</span>
                 </a>
-                <div class="contact-info-row">
-                  <div class="contact-icon-wrap"><i class="fas fa-map-marker-alt"></i></div>
-                  <div>
-                    <div class="text-xs text-text-muted mb-0.5">Location</div>
-                    <div class="text-sm text-text-secondary">Bangalore, India</div>
-                  </div>
-                </div>
-                <div class="contact-info-row">
-                  <div class="contact-icon-wrap" style="background:var(--color-accent-green-light);color:var(--color-accent-green);"><i class="fas fa-circle" style="font-size:0.5rem;"></i></div>
-                  <div>
-                    <div class="text-xs text-text-muted mb-0.5">Availability</div>
-                    <div class="text-sm font-semibold" style="color:var(--color-accent-green);">Open to freelance &amp; full-time roles</div>
-                  </div>
-                </div>
-              </div>
-
-              <h4 class="text-sm font-semibold text-text-primary mb-4">Find Me Online</h4>
-              <div class="social-row flex-wrap">
-                <a href="https://github.com/ajithkalidasan"          class="social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/kalidasanajith/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://twitter.com/ajithsview"              class="social-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://stackoverflow.com/users/16570738/ajith-k" class="social-link" target="_blank" rel="noopener" aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a>
-              </div>
-
-              <!-- Response time note -->
-              <div class="mt-8 pt-6 border-t border-white/5">
-                <p class="text-xs text-text-muted">
-                  <i class="fas fa-clock mr-2 text-accent-primary"></i>
-                  Typical response time: <strong class="text-text-secondary">within 24 hours</strong>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: CTAs -->
-          <div class="reveal delay-2">
-            <div class="flex flex-col gap-5 h-full">
-
-              <!-- Primary CTA -->
-              <div class="contact-action-card flex-1">
-                <div style="width:60px;height:60px;border-radius:var(--radius-xl);background:var(--color-accent-gradient-warm);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:white;">
-                  <i class="fas fa-envelope"></i>
-                </div>
-                <h3 class="text-lg font-semibold text-text-primary">Send an Email</h3>
-                <p class="text-sm text-text-secondary text-center max-w-xs">
-                  Tell me about your project — what you're building, timeline, and budget. I'll reply within 24 hours.
-                </p>
-                <a href="mailto:ajithkalidasan@outlook.com" class="btn btn-primary w-full">
-                  <i class="fas fa-paper-plane text-xs"></i> Start a Conversation
+                <a href="https://github.com/ajithkalidasan" target="_blank" rel="noopener noreferrer" class="contact-mini">
+                  <i class="fab fa-github"></i><span class="n">GitHub</span><span class="d">view my code</span>
                 </a>
               </div>
-
-              <!-- Secondary CTAs -->
-              <div class="grid grid-cols-2 gap-4">
-                <a href="https://www.linkedin.com/in/kalidasanajith/" target="_blank" rel="noopener noreferrer" class="contact-action-card" style="padding:1.5rem;">
-                  <i class="fab fa-linkedin-in text-2xl" style="color:#0A66C2;"></i>
-                  <span class="text-sm font-semibold text-text-primary">LinkedIn</span>
-                  <span class="text-xs text-text-muted">Connect &amp; message</span>
-                </a>
-                <a href="https://github.com/ajithkalidasan" target="_blank" rel="noopener noreferrer" class="contact-action-card" style="padding:1.5rem;">
-                  <i class="fab fa-github text-2xl text-text-secondary"></i>
-                  <span class="text-sm font-semibold text-text-primary">GitHub</span>
-                  <span class="text-xs text-text-muted">View my code</span>
-                </a>
-              </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
   </main>
 
-
-  <!-- ══════════════════════════════════
-       FOOTER
-  ══════════════════════════════════ -->
-  <footer class="site-footer px-6">
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="site-footer">
     <div class="footer-inner">
       <div>
-        <div class="text-xl font-bold tracking-tight mb-1">
-          <span class="text-gradient">Ajith K</span>
-        </div>
-        <p class="text-xs text-text-muted">Python Developer &amp; Odoo ERP Specialist — Bangalore, India</p>
+        <div class="footer-logo"><span class="c">~/</span><span class="amber">ajith.k</span></div>
+        <p class="footer-tag">Backend Engineer — Django · FastAPI · Odoo · Bangalore, India</p>
       </div>
-
-      <div class="flex flex-col items-center md:items-end gap-3">
-        <div class="flex gap-3">
-          <a href="https://www.linkedin.com/in/kalidasanajith/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in text-sm"></i></a>
-          <a href="https://github.com/ajithkalidasan"            class="social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github text-sm"></i></a>
-          <a href="https://twitter.com/ajithsview"               class="social-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter text-sm"></i></a>
-          <a href="https://stackoverflow.com/users/16570738/ajith-k" class="social-link" target="_blank" rel="noopener" aria-label="Stack Overflow"><i class="fab fa-stack-overflow text-sm"></i></a>
+      <div class="footer-right">
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/kalidasanajith/" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://github.com/ajithkalidasan" class="social-link" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://twitter.com/ajithsview" class="social-link" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://stackoverflow.com/users/16570738/ajith-k" class="social-link" target="_blank" rel="noopener" aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a>
         </div>
-        <p class="text-xs text-text-muted">© 2026 Ajith K. All rights reserved.</p>
+        <p class="footer-copy">© 2026 Ajith K — built from the terminal.</p>
       </div>
     </div>
   </footer>
 
-  <!-- Back to Top -->
-  <button id="back-to-top" aria-label="Back to top">
-    <i class="fas fa-arrow-up text-sm"></i>
-  </button>
+  <!-- ══════════════ KEYBOARD SHORTCUTS ══════════════ -->
+  <div class="kb-overlay" id="kb-overlay" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
+    <div class="kb-modal">
+      <div class="kb-head">
+        <span>// keyboard shortcuts</span>
+        <button class="kb-close" id="kb-close" aria-label="Close">✕ esc</button>
+      </div>
+      <div class="kb-list">
+        <div class="kb-item"><span class="desc">Jump to section</span><span class="kb-keys"><kbd>g</kbd><kbd>a</kbd> … <kbd>g</kbd><kbd>w</kbd></span></div>
+        <div class="kb-item"><span class="desc">Home</span><span class="kb-keys"><kbd>g</kbd><kbd>h</kbd></span></div>
+        <div class="kb-item"><span class="desc">About</span><span class="kb-keys"><kbd>g</kbd><kbd>a</kbd></span></div>
+        <div class="kb-item"><span class="desc">Services</span><span class="kb-keys"><kbd>g</kbd><kbd>s</kbd></span></div>
+        <div class="kb-item"><span class="desc">Stack</span><span class="kb-keys"><kbd>g</kbd><kbd>k</kbd></span></div>
+        <div class="kb-item"><span class="desc">Work</span><span class="kb-keys"><kbd>g</kbd><kbd>w</kbd></span></div>
+        <div class="kb-item"><span class="desc">Contact</span><span class="kb-keys"><kbd>g</kbd><kbd>c</kbd></span></div>
+        <div class="kb-item"><span class="desc">Scroll down / up</span><span class="kb-keys"><kbd>j</kbd><kbd>k</kbd></span></div>
+        <div class="kb-item"><span class="desc">Toggle this help</span><span class="kb-keys"><kbd>?</kbd></span></div>
+      </div>
+    </div>
+  </div>
 
-  <!-- Scripts -->
+  <button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
   <script src="assets/js/main.js" defer></script>
 
 </body>
