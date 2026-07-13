@@ -1,93 +1,76 @@
-/* ══════════════════════════════════════════════════════════════
-   DESIGN TOKENS — "Terminal" theme
-   Ajith K · Backend Engineer Portfolio
-   Near-black brutalist base · single amber accent · monospace system
-   ══════════════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════════════════
+   Ajith K — Portfolio · "Modernist" design tokens
+   Swiss-modernist system: warm off-white ground, ink text, vermilion accent.
+   Source of truth for the site's look — retune here.
+   ══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── Surfaces ─────────────────────────────── */
-  --bg:            #0A0B0D;   /* base near-black          */
-  --bg-elev:       #0F1114;   /* panels / cards           */
-  --bg-elev-2:     #14171B;   /* raised / hover           */
-  --bg-inset:      #070809;   /* terminal body            */
+  /* — core surfaces & ink — */
+  --color-bg: #f3f2f2;
+  --color-surface: #eae9e9;
+  --color-text: #201e1d;
+  --color-accent: #ec3013;
+  --color-accent-2: #e15b47;
+  --color-divider: color-mix(in srgb, #201e1d 40%, transparent);
 
-  /* ── Lines ────────────────────────────────── */
-  --line:          #20242B;   /* hairline border          */
-  --line-bright:   #2C323B;   /* border on hover          */
-  --grid:          rgba(255,255,255,0.022);
+  /* — neutral ramp (shared OKLCH lightness scale) — */
+  --color-neutral-100: #f8f4f4;
+  --color-neutral-200: #eae7e7;
+  --color-neutral-300: #d7d3d3;
+  --color-neutral-400: #bab6b6;
+  --color-neutral-500: #9b9797;
+  --color-neutral-600: #7d7979;
+  --color-neutral-700: #605d5d;
+  --color-neutral-800: #444141;
+  --color-neutral-900: #2d2b2b;
 
-  /* ── Text ─────────────────────────────────── */
-  --text:          #E9E9E6;   /* primary off-white        */
-  --text-dim:      #9AA0AB;   /* secondary                */
-  --text-faint:    #5A616C;   /* muted / captions         */
-  --text-ghost:    #3A4049;   /* faintest structural      */
+  /* — accent ramp — */
+  --color-accent-100: #fff2ef;
+  --color-accent-200: #ffe0d9;
+  --color-accent-300: #ffc4b8;
+  --color-accent-400: #ff9783;
+  --color-accent-500: #ff563c;
+  --color-accent-600: #dd2b0f;
+  --color-accent-700: #ae1800;
+  --color-accent-800: #7c1405;
+  --color-accent-900: #4d170e;
 
-  /* ── Accent: terminal amber ──────────────── */
-  --amber:         #FFB000;
-  --amber-soft:    #FFC64D;
-  --amber-dim:     rgba(255,176,0,0.10);
-  --amber-line:    rgba(255,176,0,0.32);
-  --amber-glow:    rgba(255,176,0,0.16);
+  --color-accent-2-100: #fff2ef;
+  --color-accent-2-200: #ffe0da;
+  --color-accent-2-300: #ffc4b9;
+  --color-accent-2-400: #ff9784;
+  --color-accent-2-500: #ef6853;
+  --color-accent-2-600: #c94b39;
+  --color-accent-2-700: #9e3526;
+  --color-accent-2-800: #71261b;
+  --color-accent-2-900: #471d16;
 
-  /* ── Terminal signal colors (used sparingly) */
-  --sig-red:       #FF5F56;
-  --sig-yellow:    #FFBD2E;
-  --sig-green:     #27C93F;
+  /* — type — */
+  --font-heading: "Archivo", system-ui, sans-serif;
+  --font-heading-weight: 800;
+  --font-body: "Archivo", system-ui, sans-serif;
 
-  /* ── Typography ───────────────────────────── */
-  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
-  --font-body:    'Inter', system-ui, sans-serif;
-  --font-mono:    'JetBrains Mono', 'Fira Code', ui-monospace, Consolas, monospace;
+  /* — spacing — */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
 
-  /* ── Radius (brutalist = tight) ───────────── */
-  --r-sm: 2px;
-  --r:    4px;
-  --r-lg: 6px;
+  /* — radius (modernist = square) — */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
 
-  /* ── Layout ───────────────────────────────── */
-  --maxw: 1120px;
-  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  /* — elevation — */
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
 
-  /* ── Motion ───────────────────────────────── */
-  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* ══════════════════════════════════════════════════════════════
-   LIGHT THEME — "paper terminal"
-   Warm off-white base · burnt-amber accent · same brutalist system
-   ══════════════════════════════════════════════════════════════ */
-:root[data-theme="light"] {
-  --bg:            #F4F1EA;
-  --bg-elev:       #FBF9F4;
-  --bg-elev-2:     #FFFFFF;
-  --bg-inset:      #ECE8DE;
-
-  --line:          #E1DDD1;
-  --line-bright:   #CEC9BA;
-  --grid:          rgba(30,26,16,0.028);
-
-  --text:          #1B1D1E;
-  --text-dim:      #53575C;
-  --text-faint:    #86897F;
-  --text-ghost:    #BDBAAF;
-
-  --amber:         #B4530E;   /* burnt amber — readable on paper */
-  --amber-soft:    #C8641A;
-  --amber-dim:     rgba(180,83,14,0.09);
-  --amber-line:    rgba(180,83,14,0.30);
-  --amber-glow:    rgba(180,83,14,0.16);
-
-  --sig-red:       #CF4B3F;
-  --sig-yellow:    #C08A00;
-  --sig-green:     #157F3B;
-}
-
-/* Tailwind CDN color hooks (so any reused utility classes resolve) */
-:root {
-  --color-accent-primary: var(--amber);
-  --color-accent-green:   var(--sig-green);
-  --color-text-primary:   var(--text);
-  --color-text-secondary: var(--text-dim);
-  --color-text-muted:     var(--text-faint);
+  /* — layout rhythm — */
+  --leading: 28px;
+  --half: 14px;
+  --edge: clamp(20px, 5vw, 72px);
+  --measure: 62ch;
 }
