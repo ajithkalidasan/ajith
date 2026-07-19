@@ -10,7 +10,11 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--paper);
+  /* ledger paper: the faint ruled lines run the whole page, not just the hero */
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(
+    to bottom, transparent 0 34px,
+    color-mix(in srgb, var(--ledger) 8%, transparent) 34px 35px);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: var(--text-base);
@@ -168,9 +172,6 @@ main::before {
 /* ── hero: the work order ─────────────────────────────────────────────────── */
 .hero {
   padding: clamp(48px, 8vw, 96px) 0 var(--space-6);
-  background-image: repeating-linear-gradient(
-    to bottom, transparent 0 34px,
-    color-mix(in srgb, var(--ledger) 9%, transparent) 34px 35px);
 }
 .doc { position: relative; max-width: 880px; }
 .doc-sheet {
