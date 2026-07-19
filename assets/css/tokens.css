@@ -1,76 +1,52 @@
 /* ══════════════════════════════════════════════════════════════════════════
-   Ajith K — Portfolio · "Modernist" design tokens
-   Swiss-modernist system: warm off-white ground, ink text, vermilion accent.
+   Ajith K — Portfolio · "The Working Ledger" design tokens
+   Concept: ERP = the modern ledger. The site is set like a well-kept business
+   document — ledger paper, ink-blue + ledger-red, slab type, rubber stamps.
    Source of truth for the site's look — retune here.
    ══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* — core surfaces & ink — */
-  --color-bg: #f3f2f2;
-  --color-surface: #eae9e9;
-  --color-text: #201e1d;
-  --color-accent: #ec3013;
-  --color-accent-2: #e15b47;
-  --color-divider: color-mix(in srgb, #201e1d 40%, transparent);
+  /* — surfaces — */
+  --paper: #fbf9f4;          /* page ground: warm ledger paper */
+  --card: #fffefb;           /* document sheets */
+  --tint: #eff2f9;           /* pale ledger-blue panel */
 
-  /* — neutral ramp (shared OKLCH lightness scale) — */
-  --color-neutral-100: #f8f4f4;
-  --color-neutral-200: #eae7e7;
-  --color-neutral-300: #d7d3d3;
-  --color-neutral-400: #bab6b6;
-  --color-neutral-500: #9b9797;
-  --color-neutral-600: #7d7979;
-  --color-neutral-700: #605d5d;
-  --color-neutral-800: #444141;
-  --color-neutral-900: #2d2b2b;
-
-  /* — accent ramp — */
-  --color-accent-100: #fff2ef;
-  --color-accent-200: #ffe0d9;
-  --color-accent-300: #ffc4b8;
-  --color-accent-400: #ff9783;
-  --color-accent-500: #ff563c;
-  --color-accent-600: #dd2b0f;
-  --color-accent-700: #ae1800;
-  --color-accent-800: #7c1405;
-  --color-accent-900: #4d170e;
-
-  --color-accent-2-100: #fff2ef;
-  --color-accent-2-200: #ffe0da;
-  --color-accent-2-300: #ffc4b9;
-  --color-accent-2-400: #ff9784;
-  --color-accent-2-500: #ef6853;
-  --color-accent-2-600: #c94b39;
-  --color-accent-2-700: #9e3526;
-  --color-accent-2-800: #71261b;
-  --color-accent-2-900: #471d16;
+  /* — inks — */
+  --ink: #1c2333;            /* writing ink: blue-black */
+  --ink-soft: #4c5468;       /* secondary text */
+  --ink-faint: #8a90a1;      /* captions, footnotes */
+  --ledger: #24418e;         /* ledger ink blue: headers, links, blocks */
+  --red: #c63a2b;            /* margin rule + stamps */
+  --red-deep: #a72d20;
+  --green: #2c7a4b;          /* "cleared / live" entries */
+  --rule: #d9e0ef;           /* faint ruled lines */
+  --line: color-mix(in srgb, var(--ink) 82%, transparent);   /* doc borders */
+  --line-soft: color-mix(in srgb, var(--ink) 24%, transparent);
 
   /* — type — */
-  --font-heading: "Archivo", system-ui, sans-serif;
-  --font-heading-weight: 800;
-  --font-body: "Archivo", system-ui, sans-serif;
+  --font-display: 'Zilla Slab', 'Rockwell', serif;
+  --font-body: 'Libre Franklin', 'Franklin Gothic Medium', system-ui, sans-serif;
 
-  /* — spacing — */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-6: 24px;
-  --space-8: 32px;
+  /* — scale — */
+  --text-xs: 0.6875rem;      /* 11px labels */
+  --text-sm: 0.8125rem;      /* 13px */
+  --text-base: 0.9375rem;    /* 15px */
+  --text-md: 1.0625rem;      /* 17px */
+  --text-lg: 1.375rem;       /* 22px card titles */
+  --text-xl: clamp(1.6rem, 3.4vw, 2.4rem);    /* section titles */
+  --text-hero: clamp(2.5rem, 6.2vw, 4.4rem);  /* hero headline */
 
-  /* — radius (modernist = square) — */
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
+  /* — spacing & shape — */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 64px;
+  --space-6: 104px;
+  --radius: 3px;
+  --wrap: 1120px;
 
-  /* — elevation — */
-  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
-  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
-  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
-
-  /* — layout rhythm — */
-  --leading: 28px;
-  --half: 14px;
-  --edge: clamp(20px, 5vw, 72px);
-  --measure: 62ch;
+  /* — motion — */
+  --ease-stamp: cubic-bezier(.2, 1.4, .4, 1);
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
 }

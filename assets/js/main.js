@@ -1,13 +1,13 @@
 /**
- * Portfolio — Ajith K · "Modernist" theme
- * Progressive enhancement only: scroll-reveal + active nav link.
+ * Portfolio — Ajith K · "The Working Ledger" theme
+ * Progressive enhancement only: scroll-reveal (which also triggers the
+ * stamp-in animation, see styles.css) + active nav link.
  * The page is fully functional and styled without JS.
  */
 (function () {
   'use strict';
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var $  = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
   // Mark JS available so reveal elements start hidden (see styles.css).
@@ -28,19 +28,19 @@
 
   /* ── ACTIVE NAV LINK ── */
   var sections = $$('main section[id]');
-  var navLinks = $$('.nav-links a[href^="#"]');
+  var navLinks = $$('.nav-links a[href^="#"]:not(.nav-cta)');
   function highlight() {
     var y = window.scrollY + 140;
     var current = '';
     sections.forEach(function (s) { if (y >= s.offsetTop) current = s.id; });
     navLinks.forEach(function (l) {
-      l.setAttribute('aria-current', l.getAttribute('href') === '#' + current ? 'page' : 'false');
+      if (l.getAttribute('href') === '#' + current) {
+        l.setAttribute('aria-current', 'page');
+      } else {
+        l.removeAttribute('aria-current');
+      }
     });
   }
   window.addEventListener('scroll', highlight, { passive: true });
   highlight();
-
-  /* ── CONSOLE NOTE ── */
-  console.log('%cAjith K — Backend Engineer', 'font-family:Archivo,sans-serif;font-size:13px;font-weight:800;color:#ec3013;');
-  console.log('%cDjango · FastAPI · Odoo — github.com/ajithkalidasan', 'font-size:12px;color:#605d5d;');
 })();
