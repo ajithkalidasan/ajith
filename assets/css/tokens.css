@@ -46,6 +46,11 @@
   --radius: 3px;
   --wrap: 1120px;
 
+  /* — pinning & stagger — */
+  --pin-top: 84px;           /* where sticky things rest: clears the nav, plus air */
+  --stack-peek: 9px;         /* visible paper edge left by each stacked note */
+  --stagger: 55ms;           /* gap between items in a cascading reveal */
+
   /* — motion — */
   --ease-stamp: cubic-bezier(.2, 1.4, .4, 1);
   --ease-out: cubic-bezier(.22, 1, .36, 1);

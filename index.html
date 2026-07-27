@@ -117,7 +117,7 @@
                 solves real workflow problems. I take on freelance Django &amp; ERP projects and I'm actively looking
                 for a full-time Python backend role — clean code, clear communication, results that last.</p>
             </div>
-            <div class="pillars">
+            <div class="pillars" data-stagger>
               <div class="pillar">
                 <h4>Backend depth</h4>
                 <p>Python, Django, FastAPI, and DRF — with a focus on clean architecture, scalable APIs, and
@@ -125,7 +125,7 @@
               </div>
               <div class="pillar">
                 <h4>ERP background</h4>
-                <p>Odoo v14–v18 across sales, inventory, purchase, HR, and accounting — I know how business systems
+                <p>Odoo v14–v19 across sales, inventory, purchase, HR, and accounting — I know how business systems
                   work end to end.</p>
               </div>
               <div class="pillar">
@@ -148,8 +148,8 @@
           <p class="sec-sub">Available for freelance engagements — from Django &amp; FastAPI builds to ERP
             customization. I turn requirements into production-ready solutions with clear communication throughout.</p>
         </div>
-        <div class="grid-services">
-          <div class="svc reveal">
+        <div class="grid-services reveal" data-stagger>
+          <div class="svc">
             <div class="svc-top"><span class="code">SVC-01</span><span class="flag">Core</span></div>
             <h3>Django &amp; FastAPI Development</h3>
             <p>High-performance Python backends with DRF or FastAPI. Clean architecture, async-ready, documented,
@@ -160,18 +160,18 @@
               <li>Admin panels, dashboards &amp; background jobs</li>
             </ul>
           </div>
-          <div class="svc reveal">
+          <div class="svc">
             <div class="svc-top"><span class="code">SVC-02</span><span class="flag">Core</span></div>
             <h3>Odoo ERP Customization</h3>
             <p>Custom Odoo modules tailored to how your business actually works — not a generic template. Sales,
               inventory, HR, purchase, accounting.</p>
             <ul>
-              <li>Custom module development (v14–v18)</li>
+              <li>Custom module development (v14–v19)</li>
               <li>Workflow automation &amp; approvals</li>
               <li>Module integration, migration &amp; upgrades</li>
             </ul>
           </div>
-          <div class="svc reveal">
+          <div class="svc">
             <div class="svc-top"><span class="code">SVC-03</span></div>
             <h3>API Integration &amp; Automation</h3>
             <p>Connect your tools and eliminate manual data entry via REST, XML-RPC, webhooks, and background
@@ -182,7 +182,7 @@
               <li>Webhook &amp; event-driven flows</li>
             </ul>
           </div>
-          <div class="svc reveal">
+          <div class="svc">
             <div class="svc-top"><span class="code">SVC-04</span></div>
             <h3>Database Design &amp; Optimization</h3>
             <p>PostgreSQL schemas and query tuning that keep your app fast as data grows — up to 60% faster through
@@ -193,7 +193,7 @@
               <li>Performance profiling &amp; tuning</li>
             </ul>
           </div>
-          <div class="svc reveal">
+          <div class="svc">
             <div class="svc-top"><span class="code">SVC-05</span></div>
             <h3>Business Process Automation</h3>
             <p>Replace repetitive manual work with Python scripts and Celery jobs — inventory sync, reports, data
@@ -204,7 +204,7 @@
               <li>Data migration &amp; ETL pipelines</li>
             </ul>
           </div>
-          <div class="svc reveal">
+          <div class="svc">
             <div class="svc-top"><span class="code">SVC-06</span></div>
             <h3>Maintenance &amp; Bug Fixing</h3>
             <p>Diagnose and fix issues in existing Django, FastAPI, or Odoo codebases — review, refactoring, and
@@ -218,7 +218,7 @@
         </div>
         <div class="process reveal">
           <p class="process-title lbl">How a project moves through my desk</p>
-          <div class="process-grid">
+          <div class="process-grid" data-stagger>
             <div class="pstep">
               <div class="pnum">1</div>
               <h4>Discovery</h4>
@@ -251,7 +251,7 @@
           <div class="sec-mark"><span class="lbl entry">Entry 03 — Stack</span><span class="rule"></span></div>
           <h2 class="sec-title">Tools on the shelf</h2>
         </div>
-        <div class="stack-grid reveal">
+        <div class="stack-grid reveal" data-stagger>
           <div class="stack-group">
             <div class="stack-label">Backend</div>
             <div class="chips">
@@ -262,7 +262,7 @@
           <div class="stack-group">
             <div class="stack-label">ERP &amp; business systems</div>
             <div class="chips">
-              <span class="tag">Odoo v14–v18</span><span class="tag">OWL Framework</span><span class="tag">QWeb
+              <span class="tag">Odoo v14–v19</span><span class="tag">OWL Framework</span><span class="tag">QWeb
                 Templates</span><span class="tag">XML-RPC / JSON-RPC</span><span class="tag">Business Workflows</span>
             </div>
           </div>
@@ -496,38 +496,53 @@
             <div>
               <h3 class="exp-role">Python Developer</h3>
               <ul class="exp-list">
-                <li>Developed and customized <strong>30+ Odoo modules</strong> for sales, inventory, and HR — improving
-                  operational efficiency by 40%.</li>
-                <li>Integrated <strong>10+ third-party APIs</strong> with Odoo via XML-RPC and JSON-RPC for seamless
-                  data exchange.</li>
-                <li>Optimized PostgreSQL queries and schemas for a <strong>60% improvement</strong> in backend response
-                  times.</li>
-                <li>Built Docker-based dev environments for consistent, reproducible deployments across the team.</li>
+                <li>Developed and customized <strong>10+ Odoo ERP modules</strong> (Sales, Inventory, Accounting) that
+                  automated manual workflows, reducing processing time by 30%.</li>
+                <li>Optimized PostgreSQL queries and indexing strategies, cutting report generation time from
+                  <strong>~12s to under 4s</strong> for high-traffic modules.</li>
+                <li>Built multiple dynamic financial and operational reports in Odoo, improving real-time visibility for
+                  management and reducing manual report preparation time by 40%.</li>
+                <li>Designed and deployed a Docker image for the Odoo project, enabling faster environment setup and
+                  reducing developer onboarding time by 70%.</li>
+                <li>Developed role-based access control and authentication (JWT / OAuth2) in Odoo, increasing platform
+                  security and reducing unauthorized access attempts by 95%.</li>
+                <li>Integrated the <strong>Hedera blockchain</strong> into a client project to issue tamper-proof,
+                  independently verifiable digital certificates — eliminating forgery and manual verification.</li>
+                <li>Led two legacy migrations — a full PHP/MySQL application into Odoo 18, and three years of Tally
+                  accounting data into Odoo 19 — with complete data integrity, enabling unified real-time financial
+                  reporting.</li>
+                <li>Built a fully integrated HR attendance system in Odoo using the <strong>ZKTeco biometric device
+                  API</strong>, automating attendance capture and payroll inputs and eliminating manual timesheet
+                  entry.</li>
               </ul>
               <div class="chips">
-                <span class="tag">Python</span><span class="tag">Odoo 18</span><span class="tag">PostgreSQL</span><span
-                  class="tag">Docker</span><span class="tag">XML-RPC</span>
+                <span class="tag">Odoo</span><span class="tag">Python</span><span class="tag">PostgreSQL</span><span
+                  class="tag">REST APIs</span><span class="tag">Docker</span><span class="tag">Git</span><span
+                  class="tag">JavaScript (OWL)</span><span class="tag">Linux</span>
               </div>
             </div>
           </div>
           <div class="exp-row reveal">
             <div>
               <div class="exp-dates"><span class="live"></span>2023 — Present</div>
-              <div class="exp-co">Independent / Various Clients</div>
+              <div class="exp-co">Sira Boutique · siraboutique.ae</div>
             </div>
             <div>
               <h3 class="exp-role">Freelance Backend Developer</h3>
               <ul class="exp-list">
-                <li>Delivered Django REST APIs and full-stack apps for small businesses and startups across e-commerce
-                  and collaboration.</li>
-                <li>Built inventory automation and data-sync pipelines with PostgreSQL and Python, saving hours of
-                  manual work weekly.</li>
-                <li>Managed requirements, timelines, and deliverables independently — building client communication and
-                  ownership.</li>
+                <li>Designed and built the production backend for <strong>Sira Boutique</strong>, a luxury florist in the
+                  UAE — a Django REST API powering catalog, cart, subscriptions, coupons, and delivery scheduling for a
+                  Next.js storefront.</li>
+                <li>Delivered <strong>15+ backend modules</strong> and integrated <strong>Stripe</strong> for secure
+                  payments and full order-lifecycle handling.</li>
+                <li>Modeled the PostgreSQL schema and optimized queries to keep the storefront fast under real customer
+                  traffic — now <strong>live in production</strong> at siraboutique.ae.</li>
+                <li>Owned the engagement end to end — requirements, timelines, and delivery — with direct client
+                  communication throughout.</li>
               </ul>
               <div class="chips">
                 <span class="tag">Django</span><span class="tag">DRF</span><span class="tag">PostgreSQL</span><span
-                  class="tag">Python</span><span class="tag">Celery</span>
+                  class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Stripe</span>
               </div>
             </div>
           </div>
@@ -563,11 +578,11 @@
           <div class="sec-mark"><span class="lbl entry">Entry 07 — Credentials</span><span class="rule"></span></div>
           <h2 class="sec-title">Certifications &amp; learning</h2>
         </div>
-        <div class="certs reveal">
-          <div class="cert"><span class="cert-name">Python Essentials (PCEP)</span><span class="dots"></span><span
-              class="cert-issuer">Python Institute · 2024</span></div>
-          <div class="cert"><span class="cert-name">Odoo Developer Training</span><span class="dots"></span><span
-              class="cert-issuer">Odoo S.A. · 2024</span></div>
+        <div class="certs reveal" data-stagger>
+          <div class="cert"><span class="cert-name">Python Django: Complete Course</span><span class="dots"></span><span
+              class="cert-issuer">Udemy . 2022</span></div>
+          <div class="cert"><span class="cert-name">Python with Data Science Training</span><span class="dots"></span><span
+              class="cert-issuer">Besant Technologies . 2020</span></div>
           <div class="cert"><span class="cert-name">PostgreSQL for Developers</span><span class="dots"></span><span
               class="cert-issuer">Udemy · 2023</span></div>
           <div class="cert"><span class="cert-name">Docker &amp; Containerization</span><span class="dots"></span><span
@@ -586,7 +601,7 @@
           <p class="close-sub">Hiring for a Python backend role, or need a Django / ERP freelancer? Email works best —
             tell me what you're building and I'll take it from there.</p>
         </div>
-        <div class="reach-grid reveal">
+        <div class="reach-grid reveal" data-stagger>
           <div class="reach-card">
             <div class="reach-k">Email — <span class="star">preferred ★</span></div>
             <div class="reach-v">joinwithajith@gmail.com</div>

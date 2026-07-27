@@ -49,16 +49,25 @@ figure { margin: 0; }
 }
 
 /* the red double margin rule — ledger paper, running the whole page */
-main { position: relative; }
-main::before {
+main { position: relative; --rule-x: max(30px, calc(50% - 632px)); }
+main::before, main::after {
   content: "";
-  position: absolute; top: 0; bottom: 0;
-  left: max(30px, calc(50% - 632px));
-  width: 6px;
-  border-inline: 1.5px solid color-mix(in srgb, var(--red) 52%, transparent);
+  position: absolute; top: 0;
   pointer-events: none;
 }
-@media (max-width: 899px) { main::before { display: none; } }
+main::before {
+  bottom: 0; left: var(--rule-x); width: 6px;
+  border-inline: 1.5px solid color-mix(in srgb, var(--red) 52%, transparent);
+}
+/* how far you've read, inked into the channel between the two rules
+   (inset so the rules themselves stay crisp) — main.js sets --progress */
+main::after {
+  height: 100%; left: calc(var(--rule-x) + 1.5px); width: 3px;
+  background: color-mix(in srgb, var(--red) 20%, transparent);
+  transform: scaleY(var(--progress, 0));
+  transform-origin: top;
+}
+@media (max-width: 899px) { main::before, main::after { display: none; } }
 
 /* ── labels, buttons, tags ────────────────────────────────────────────────── */
 .lbl {
@@ -133,6 +142,20 @@ main::before {
   html.js .reveal.revealed {
     opacity: 1; transform: none;
     transition: opacity .55s var(--ease-out), transform .55s var(--ease-out);
+  }
+
+  /* Cascading reveal — children of [data-stagger] enter one after another,
+     like line items being written down the page. main.js numbers them (--d);
+     the container itself stays put so only the items move.
+     Works whether the stagger element IS the reveal target or sits inside one. */
+  html.js [data-stagger] { opacity: 1; transform: none; }
+  html.js [data-stagger] > * { opacity: 0; transform: translateY(12px); }
+  html.js .revealed[data-stagger] > *,
+  html.js .revealed [data-stagger] > * {
+    opacity: 1; transform: none;
+    transition:
+      opacity .5s var(--ease-out) calc(var(--d, 0) * var(--stagger)),
+      transform .5s var(--ease-out) calc(var(--d, 0) * var(--stagger));
   }
 }
 
@@ -241,6 +264,11 @@ main::before {
   border: 2px solid var(--ink); border-radius: var(--radius); background: var(--card);
   box-shadow: 0 2px 0 color-mix(in srgb, var(--ledger) 14%, transparent);
 }
+/* the summary rides along while the prose scrolls past — only where there's a
+   second column to ride beside, and only if it's short enough to sit clear */
+@media (min-width: 900px) and (min-height: 620px) {
+  .account { position: sticky; top: var(--pin-top); }
+}
 .account-head {
   padding: 9px 16px; border-bottom: 2px solid var(--ink);
   background: var(--tint); color: var(--ledger);
@@ -273,10 +301,12 @@ main::before {
   display: flex; flex-direction: column;
   border: 1.5px solid var(--line); border-radius: var(--radius);
   background: var(--card); padding: 20px;
-  transition: box-shadow .2s, transform .2s;
+  transition: box-shadow .2s, translate .2s;
 }
+/* lift via `translate`, not `transform` — the reveal/stagger rules own
+   `transform` at a higher specificity and would otherwise cancel the hover */
 .svc:hover {
-  transform: translateY(-3px);
+  translate: 0 -3px;
   box-shadow: 0 6px 0 color-mix(in srgb, var(--ledger) 16%, transparent);
 }
 .svc-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
@@ -317,17 +347,56 @@ main::before {
 @media (max-width: 520px) { .stack-group { grid-template-columns: 1fr; gap: 8px; } }
 
 /* ── 04 work: delivery notes ──────────────────────────────────────────────── */
-.grid-work { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-@media (max-width: 899px) { .grid-work { grid-template-columns: 1fr; } }
+/* One column, hero-width — the notes read as a single pile of paper, and the
+   stack effect below needs them to share a lane. */
+.grid-work { display: grid; grid-template-columns: 1fr; gap: var(--space-3); max-width: 880px; }
 
 .note {
   position: relative; display: flex; flex-direction: column;
   border: 1.5px solid var(--line); border-radius: var(--radius); background: var(--card);
-  transition: box-shadow .2s, transform .2s;
+  transition: box-shadow .2s, translate .2s;
 }
 .note:hover {
-  transform: translateY(-3px);
+  translate: 0 -3px;
   box-shadow: 0 6px 0 color-mix(in srgb, var(--ledger) 16%, transparent);
+}
+
+/* ── the stack: each note sticks under the nav and the next one slides over ──
+   Guarded on viewport height — a note taller than the viewport can't be read
+   while it's pinned, so short screens keep the plain scrolling list. Reduced
+   motion opts out of the scroll-driven effect entirely. */
+@media (min-height: 700px) and (prefers-reduced-motion: no-preference) {
+  /* padding-bottom extends the sticky containing block, so the finished pile
+     holds on screen for a beat instead of the top note releasing instantly */
+  .grid-work { gap: var(--space-4); padding-bottom: var(--space-5); }
+
+  .note {
+    position: sticky;
+    top: calc(var(--pin-top) + var(--i, 0) * var(--stack-peek));
+    /* the incoming note casts onto the one beneath — reads as stacked paper */
+    box-shadow: 0 -14px 30px -20px color-mix(in srgb, var(--ink) 70%, transparent);
+  }
+  /* no lift while pinned — it would open a seam onto the note beneath */
+  .note:hover {
+    translate: none;
+    box-shadow:
+      0 -14px 30px -20px color-mix(in srgb, var(--ink) 70%, transparent),
+      0 6px 0 color-mix(in srgb, var(--ledger) 16%, transparent);
+  }
+
+  /* stagger the pin points so every note beneath keeps a visible edge */
+  .grid-work .note:nth-child(1) { --i: 0; }
+  .grid-work .note:nth-child(2) { --i: 1; }
+  .grid-work .note:nth-child(3) { --i: 2; }
+  .grid-work .note:nth-child(4) { --i: 3; }
+  .grid-work .note:nth-child(5) { --i: 4; }
+  .grid-work .note:nth-child(6) { --i: 5; }
+  .grid-work .note:nth-child(7) { --i: 6; }
+}
+/* phones wrap the notes taller, so pin them higher and tighten the peek —
+   otherwise a pinned note's footer falls below the fold and can't be read */
+@media (min-height: 700px) and (max-width: 640px) and (prefers-reduced-motion: no-preference) {
+  .grid-work { --pin-top: 68px; --stack-peek: 6px; }
 }
 .note-head {
   display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
@@ -358,6 +427,10 @@ main::before {
   padding: var(--space-3) 0; border-bottom: 1px solid var(--line-soft);
 }
 @media (max-width: 760px) { .exp-row { grid-template-columns: 1fr; } }
+/* dates + employer stay pinned beside their (long) list of entries */
+@media (min-width: 761px) and (min-height: 620px) {
+  .exp-row > div:first-child { position: sticky; top: var(--pin-top); align-self: start; }
+}
 .exp-dates { font-family: var(--font-display); font-weight: 600; font-size: var(--text-md); }
 .exp-dates .live { display: inline-block; width: 8px; height: 8px; border-radius: 50%;
   background: var(--green); margin-right: 8px; }
@@ -399,6 +472,16 @@ main::before {
 .cert-name { font-family: var(--font-display); font-weight: 600; font-size: var(--text-md); white-space: nowrap; }
 .cert .dots { flex: 1; min-width: 24px; border-bottom: 2px dotted var(--line-soft); transform: translateY(-4px); }
 .cert-issuer { color: var(--ink-soft); white-space: nowrap; }
+
+/* each leader rules itself in left-to-right, one row after the next.
+   The row's own stagger delay is reused so dots and text arrive together. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-stagger] > .cert .dots { transform: translateY(-4px) scaleX(0); transform-origin: left; }
+  html.js .revealed[data-stagger] > .cert .dots {
+    transform: translateY(-4px) scaleX(1);
+    transition: transform .55s var(--ease-out) calc(var(--d, 0) * var(--stagger) + 120ms);
+  }
+}
 @media (max-width: 560px) {
   .cert { flex-wrap: wrap; }
   .cert-name { white-space: normal; }

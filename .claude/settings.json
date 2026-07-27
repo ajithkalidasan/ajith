@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node check.js)",
+      "Bash(node shot2.js)",
+      "Bash(pkill -f \"http.server 8899\")"
+    ]
+  }
+}
